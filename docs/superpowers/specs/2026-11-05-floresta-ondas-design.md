@@ -57,17 +57,18 @@ Geração offline de PNG a partir de SVG (ImageMagick `convert`), estilo pixel a
 | `tile_grass.png` | 32×32 | Chão da arena |
 | `tile_wall.png` | 32×32 | Paredes / limites |
 
-Script Python ou shell em `tools/generate_sprites.sh` (ou `.py`) regenera os PNGs em `assets/sprites/`.
+SVGs fonte em `assets/svg/`. Script `tools/generate_sprites.sh` usa ImageMagick `convert` e grava PNGs em `assets/sprites/`.
 
 ## Balanceamento inicial
 
 | Entidade | Valores |
 |---|---|
-| Jogador | 5 HP, velocidade média, cooldown de tiro ~0,25 s, i-frames ~0,6 s após dano |
-| Projétil | 1 dano, velocidade alta, some na parede ou no inimigo |
-| Slime | 2 HP, mais lento que o jogador, 1 dano no contato |
-| Ondas | Onda 1: 4 inimigos; Onda 2: 6; Onda 3: 8 |
+| Jogador | 5 HP, velocidade 180 px/s, cooldown de tiro 0,25 s, i-frames 0,6 s após dano |
+| Projétil | 1 dano, velocidade 400 px/s, some na parede ou no inimigo |
+| Slime | 2 HP, velocidade 90 px/s, 1 dano no contato |
+| Ondas | Onda 1: 4 inimigos; Onda 2: 6; Onda 3: 8; intervalo entre ondas 1,5 s |
 | Spawn | Pontos nas bordas internas da arena, longe do centro onde o jogador nasce |
+| Arena | Retângulo ~640×480 px com paredes sólidas nas bordas |
 
 ## Controles
 
