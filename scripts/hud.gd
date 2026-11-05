@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 @onready var health_label: Label = $Margin/VBox/HealthLabel
+@onready var well_health_label: Label = $Margin/VBox/WellHealthLabel
+@onready var gold_label: Label = $Margin/VBox/GoldLabel
+@onready var potions_label: Label = $Margin/VBox/PotionsLabel
 @onready var wave_label: Label = $Margin/VBox/WaveLabel
 @onready var enemies_label: Label = $Margin/VBox/EnemiesLabel
 @onready var overlay: ColorRect = $Overlay
@@ -15,6 +18,15 @@ func _ready() -> void:
 
 func set_health(current: int, max_health: int) -> void:
 	health_label.text = "Vida: %d/%d" % [current, max_health]
+
+func set_well_health(current: int, max_health: int) -> void:
+	well_health_label.text = "Poço: %d/%d" % [current, max_health]
+
+func set_gold(amount: int) -> void:
+	gold_label.text = "Ouro: %d" % amount
+
+func set_potions(small: int, large: int) -> void:
+	potions_label.text = "Poções: %d / %d" % [small, large]
 
 func set_wave(wave_index: int, total_waves: int) -> void:
 	wave_label.text = "Onda: %d/%d" % [wave_index, total_waves]
