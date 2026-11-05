@@ -49,6 +49,20 @@ func _build_walls() -> void:
 	_add_wall(Vector2(320, 480 + thickness / 2), Vector2(704, thickness))
 	_add_wall(Vector2(-thickness / 2, 240), Vector2(thickness, 544))
 	_add_wall(Vector2(640 + thickness / 2, 240), Vector2(thickness, 544))
+	var tex: Texture2D = load("res://assets/sprites/tile_wall.png")
+	for x in range(0, 640, 32):
+		_add_wall_sprite(tex, Vector2(x, 0))
+		_add_wall_sprite(tex, Vector2(x, 448))
+	for y in range(32, 448, 32):
+		_add_wall_sprite(tex, Vector2(0, y))
+		_add_wall_sprite(tex, Vector2(608, y))
+
+func _add_wall_sprite(tex: Texture2D, pos: Vector2) -> void:
+	var s := Sprite2D.new()
+	s.texture = tex
+	s.centered = false
+	s.position = pos
+	walls.add_child(s)
 
 func _add_wall(center: Vector2, size: Vector2) -> void:
 	var shape_node := CollisionShape2D.new()
