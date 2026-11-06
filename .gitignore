@@ -1,7 +1,2 @@
-.worktrees/
-.godot/
-.cache/
-*.translation
-export.cfg
-export_presets.cfg
-*.tmp
+.godot
+docs

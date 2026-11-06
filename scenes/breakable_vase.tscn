@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvase01"]
+
+[ext_resource type="Script" path="res://scripts/breakable.gd" id="1_break"]
+
+[sub_resource type="CylinderShape3D" id="Shape"]
+radius = 0.2
+height = 0.65
+
+[node name="BreakableVase" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_break")
+gold_reward = 4
+max_hp = 1
+model_path = "res://assets/models/vase.glb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0, 0)
+shape = SubResource("Shape")

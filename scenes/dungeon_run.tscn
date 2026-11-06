@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddungeonrun01"]
+
+[ext_resource type="Script" path="res://scripts/dungeon_run.gd" id="1_run"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+
+[sub_resource type="Environment" id="EnvDungeon"]
+background_mode = 1
+background_color = Color(0.02, 0.02, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.2, 0.18, 0.16, 1)
+ambient_light_energy = 0.15
+tonemap_mode = 2
+
+[node name="DungeonRun" type="Node3D"]
+script = ExtResource("1_run")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("EnvDungeon")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Floor" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 520.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.75, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Andar 1"
+
+[node name="HP" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 360.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.95, 0.45, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "HP 100/100"
+
+[node name="Gold" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 360.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "Ouro: 0"
+
+[node name="Weapon" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.85, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Arma: Espada/Escudo"
+
+[node name="Relics" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 720.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.7, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Relíquias: nenhuma"
+
+[node name="Map" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 900.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.65, 0.9, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Mapa: —"
+
+[node name="Message" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 140.0
+offset_right = 360.0
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.55, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -56.0
+offset_right = 900.0
+offset_bottom = -12.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.85)
+theme_override_font_sizes/font_size = 14
+text = "1/2/3 armas | LMB atacar | RMB escudo/puxar | E relíquia | Q poção | T tocha"

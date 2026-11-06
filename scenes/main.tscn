@@ -1,180 +1,45 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bmainscene01"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
-[ext_resource type="Script" path="res://scripts/wave_manager.gd" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="4"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="5"]
-[ext_resource type="Script" path="res://scripts/shop.gd" id="6"]
-[ext_resource type="Texture2D" path="res://assets/sprites/npc_villager.png" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/forest_world.gd" id="2_forest"]
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1")
+[sub_resource type="Environment" id="EnvForest"]
+background_mode = 1
+background_color = Color(0.62, 0.74, 0.72, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.8, 0.7, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+fog_enabled = false
+volumetric_fog_enabled = false
 
-[node name="Walls" type="StaticBody2D" parent="."]
+[node name="Main" type="Node3D"]
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("EnvForest")
 
-[node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(48, 48)
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.813798, -0.44097, 0.378862, 0, 0.651118, 0.759001, -0.581145, -0.61768, 0.529919, 0, 28, 0)
+shadow_enabled = true
+light_energy = 1.05
+light_color = Color(1, 0.96, 0.88, 1)
+shadow_bias = 0.04
 
-[node name="Spawn2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(592, 48)
+[node name="ForestWorld" type="Node3D" parent="."]
+script = ExtResource("2_forest")
 
-[node name="Spawn3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(48, 432)
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 3)
 
-[node name="Spawn4" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(592, 432)
-
-[node name="Spawn5" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(320, 48)
-
-[node name="Spawn6" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(320, 432)
-
-[node name="Spawn7" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(48, 240)
-
-[node name="Spawn8" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(592, 240)
-
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="NPC" type="Sprite2D" parent="."]
-visible = false
-z_index = 2
-position = Vector2(360, 280)
-texture = ExtResource("7")
-
-[node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(280, 280)
-
-[node name="WaveManager" type="Node" parent="."]
-script = ExtResource("3")
-enemy_scene = ExtResource("4")
-
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("5")
-
-[node name="Margin" type="MarginContainer" parent="HUD"]
-offset_right = 640.0
-offset_bottom = 160.0
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBox" type="VBoxContainer" parent="HUD/Margin"]
-layout_mode = 2
-
-[node name="HealthLabel" type="Label" parent="HUD/Margin/VBox"]
-layout_mode = 2
-text = "Vida: 5/5"
-
-[node name="WellHealthLabel" type="Label" parent="HUD/Margin/VBox"]
-layout_mode = 2
-text = "Poço: 20/20"
-
-[node name="GoldLabel" type="Label" parent="HUD/Margin/VBox"]
-layout_mode = 2
-text = "Ouro: 0"
-
-[node name="PotionsLabel" type="Label" parent="HUD/Margin/VBox"]
-layout_mode = 2
-text = "Poções: 0 / 0"
-
-[node name="WaveLabel" type="Label" parent="HUD/Margin/VBox"]
-layout_mode = 2
-text = "Onda: 0/0"
-
-[node name="EnemiesLabel" type="Label" parent="HUD/Margin/VBox"]
-layout_mode = 2
-text = "Inimigos: 0"
-
-[node name="ShopPanel" type="PanelContainer" parent="HUD"]
-process_mode = 3
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -160.0
-offset_right = 180.0
-offset_bottom = 160.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6")
-
-[node name="VBox" type="VBoxContainer" parent="HUD/ShopPanel"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Title" type="Label" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Loja"
-horizontal_alignment = 1
-
-[node name="GoldLabel" type="Label" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "Ouro: 0"
-horizontal_alignment = 1
-
-[node name="BuyPotionSmall" type="Button" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "Poção pequena"
-
-[node name="BuyPotionLarge" type="Button" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "Poção grande"
-
-[node name="BuyMaxHp" type="Button" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "+1 vida máxima"
-
-[node name="BuyAttack" type="Button" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "+1 ataque"
-
-[node name="BuySword" type="Button" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "Espada melhor"
-
-[node name="NextWaveButton" type="Button" parent="HUD/ShopPanel/VBox"]
-layout_mode = 2
-text = "Próxima onda"
-
-[node name="Overlay" type="ColorRect" parent="HUD"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
+[node name="Hint" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-color = Color(0, 0, 0, 0.65)
-
-[node name="Center" type="CenterContainer" parent="HUD/Overlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBox" type="VBoxContainer" parent="HUD/Overlay/Center"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Message" type="Label" parent="HUD/Overlay/Center/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Vitória!"
-horizontal_alignment = 1
-
-[node name="RestartButton" type="Button" parent="HUD/Overlay/Center/VBox"]
-layout_mode = 2
-text = "Reiniciar"
+offset_left = 16.0
+offset_top = -72.0
+offset_right = 560.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "WASD andar | Mouse olhar | LMB/RMB soco | Esc mouse | Espaço pular"

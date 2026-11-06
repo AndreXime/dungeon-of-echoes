@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://benemyskel01"]
+
+[ext_resource type="Script" path="res://scripts/enemy_skeleton.gd" id="1_skel"]
+
+[sub_resource type="CapsuleShape3D" id="Cap"]
+radius = 0.35
+height = 1.7
+
+[node name="EnemySkeleton" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_skel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("Cap")
+
+[node name="ModelRoot" type="Node3D" parent="."]

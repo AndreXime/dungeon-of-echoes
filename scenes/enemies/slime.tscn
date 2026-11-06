@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy_base.gd" id="1"]
+[sub_resource type="SphereShape3D" id="S"]
+radius = 0.4
+
+[node name="Slime" type="CharacterBody3D"]
+script = ExtResource("1")
+move_speed = 1.6
+attack_damage = 10
+max_hp = 28
+gold_reward = 12
+essence_reward = 2
+model_path = "res://assets/models/slime.glb"
+can_split = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("S")

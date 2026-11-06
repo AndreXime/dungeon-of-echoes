@@ -1,32 +1,105 @@
-# Vila sob Ataque
+# Dungeon Of Echoes
 
-Jogo 2D top-down em Godot 4.7: defenda o poço da vila por 12 ondas.
+Roguelike de ação em primeira pessoa. Você entra numa masmorra que muda a cada run, luta, coleta ouro e relíquias, sobe andares por biomas, e volta ao acampamento para melhorar o personagem.
 
-## Rodar
+Projeto em **Godot 4.7** (Forward+).
+
+## Requisitos
+
+- [Godot 4.7+](https://godotengine.org/) no `PATH` (testado com `4.7.2`)
+- Opcional: Blender (para editar/gerar modelos `.glb`)
+
+## Como rodar
 
 ```bash
-godot --path .
+godot --path /home/andre/Projetos/newgame
 ```
 
-Ou abra a pasta no Godot Editor e rode a cena Main.
+Cena principal: `scenes/hub.tscn`.
+
+### Abrir só a masmorra (debug)
+
+```bash
+godot --path /home/andre/Projetos/newgame --scene res://scenes/dungeon_run.tscn
+```
 
 ## Controles
 
-- WASD: mover
-- Setas: atacar na direção
-- 1 / 2: poção pequena / grande
-- E: interagir (loja)
-- UI: comprar, Próxima onda e Reiniciar
+| Tecla / botão | Ação |
+|---------------|------|
+| WASD | Andar |
+| Mouse | Olhar |
+| Espaço | Pular |
+| Esc | Liberar / capturar mouse |
+| E | Interagir (NPCs, portal, relíquias) |
+| 1 / 2 / 3 | Espada+escudo / Adaga / Besteira |
+| LMB | Ataque (avançando = estocada) / adaga / besta |
+| RMB | Escudo (espada) ou puxar adaga |
+| Q | Usar poção |
+| T | Ligar / desligar tocha |
 
-## Loop
+## Loop de jogo
 
-Defenda o poço. Inimigos dropam ouro. A cada 4 ondas há loja com upgrades.
-Vitória na onda 12. Derrota se herói ou poço chegar a 0 de vida.
+1. **Hub** — ferreiro, alquimista, cartógrafo e portal
+2. **Masmorra** — andares 1–9 em três biomas
+3. Salas procedurais, inimigos, armadilhas, relíquias
+4. Andares 3 / 6 / 9 têm **chefe** (saída só após derrotar)
+5. Vitória no andar 9 ou morte → volta ao hub com ouro e minério
 
-## Sprites
+Progresso permanente: `user://meta_save.cfg`.
 
-```bash
-./tools/apply_game_sprites.sh
+## Biomas
+
+| Andares | Bioma | Inimigos |
+|---------|-------|----------|
+| 1–3 | Catacumbas Esquecidas | Esqueleto, morcego, slime (+ chefe esqueleto) |
+| 4–6 | Minas de Fogo-Fátuo | Minerador, autômato, aranha (+ chefe autômato) |
+| 7–9 | Jardim Sem Sol | Guardião, golem, atirador (+ chefe golem) |
+
+## Hub (meta)
+
+- **Ferreiro:** reforça espada (ouro), desbloqueia adaga/besta (minério), escolhe arma inicial. Cada E cicla a oferta.
+- **Alquimista:** +HP, +capacidade de poções, sorte de relíquia. Cada E cicla a oferta.
+- **Cartógrafo:** sobe nível do mapa (revela mais salas no HUD).
+- **Portal:** inicia run.
+
+## Combate e exploração
+
+- Escudo bloqueia melee frontal e **projéteis**
+- Empurrar no escudo joga inimigos (útil em espinhos)
+- Poços, cordas, espinhos, vinhas cortáveis (Jardim)
+- Tocha na câmera como luz principal
+- Mapa textual no HUD (salas reveladas pelo cartógrafo)
+
+## Relíquias
+
+| Relíquia | Efeito |
+|----------|--------|
+| Olho de Vidro | Projétil marca. Próximo melee causa dobro |
+| Vampirismo Cristalino | Quebrar cenário cura |
+| Essência Vulcânica | Impacto de lâmina explode em área |
+| Núcleo Gravitacional | Ao puxar a adaga, inimigos são atraídos |
+
+## Estrutura
+
+```
+scenes/hub.tscn
+scenes/dungeon_run.tscn
+scenes/player.tscn
+scenes/enemies/          # todos os inimigos EnemyBase
+scripts/autoload/        # MetaProgress, RunState, Sfx
+assets/models/           # GLBs low-poly
+tools/                   # geração Blender
 ```
 
-Packs Kenney (CC0) em `assets/third_party/`. Veja `assets/third_party/ATTRIBUTION.md`.
+## Gerar modelos (Blender headless)
+
+Pipeline stylized flat-shaded (bevel, displace, shade flat, vertex colors):
+
+```bash
+~/Downloads/blender/blender --background --python tools/rebuild_all_stylized.py
+~/Downloads/blender/blender --background --python tools/rebuild_all_stylized.py -- --only sword,skeleton
+godot --headless --path . --import
+```
+
+Scripts antigos em `tools/create_*.py` ficam só como referência.

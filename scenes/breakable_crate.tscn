@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcrate01"]
+
+[ext_resource type="Script" path="res://scripts/breakable.gd" id="1_break"]
+
+[sub_resource type="BoxShape3D" id="Shape"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[node name="BreakableCrate" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_break")
+gold_reward = 5
+max_hp = 2
+model_path = "res://assets/models/crate.glb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape")
