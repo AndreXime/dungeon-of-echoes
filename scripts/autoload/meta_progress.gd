@@ -16,10 +16,31 @@ var relic_luck: int = 0
 var cartographer_level: int = 0
 var unlocked_start_weapons: Array[String] = ["sword"]
 var selected_start_weapon: String = "sword"
+var fullscreen_enabled: bool = false
 
 
 func _ready() -> void:
 	load_save()
+	apply_fullscreen()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_fullscreen"):
+		toggle_fullscreen()
+		get_viewport().set_input_as_handled()
+
+
+func toggle_fullscreen() -> void:
+	fullscreen_enabled = not fullscreen_enabled
+	apply_fullscreen()
+	save()
+
+
+func apply_fullscreen() -> void:
+	if fullscreen_enabled:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
 func sword_damage() -> int:
@@ -138,6 +159,7 @@ func save() -> void:
 	cfg.set_value("meta", "cartographer_level", cartographer_level)
 	cfg.set_value("meta", "unlocked_start_weapons", ",".join(PackedStringArray(unlocked_start_weapons)))
 	cfg.set_value("meta", "selected_start_weapon", selected_start_weapon)
+	cfg.set_value("meta", "fullscreen_enabled", fullscreen_enabled)
 	cfg.save(SAVE_PATH)
 
 
@@ -159,3 +181,4 @@ func load_save() -> void:
 	if unlocked_start_weapons.is_empty():
 		unlocked_start_weapons.append("sword")
 	selected_start_weapon = String(cfg.get_value("meta", "selected_start_weapon", "sword"))
+	fullscreen_enabled = bool(cfg.get_value("meta", "fullscreen_enabled", false))

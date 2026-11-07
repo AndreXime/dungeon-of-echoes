@@ -23,6 +23,8 @@ var marked_enemies: Dictionary = {}
 var map_rooms: Array[Dictionary] = []
 var boss_cleared: bool = false
 
+signal damaged(amount: int)
+
 
 func reset_for_new_run() -> void:
 	max_hp = 100 + MetaProgress.bonus_max_hp
@@ -92,7 +94,11 @@ func mark_enemy(enemy: Object) -> void:
 
 
 func apply_damage(amount: int) -> void:
+	var before := hp
 	hp = maxi(hp - amount, 0)
+	var dealt := before - hp
+	if dealt > 0:
+		damaged.emit(dealt)
 
 
 func heal(amount: int) -> void:

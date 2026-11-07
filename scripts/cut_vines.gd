@@ -29,7 +29,9 @@ func _ready() -> void:
 
 func take_hit(damage: int, _knockback: Vector3) -> void:
 	hp -= damage
-	Sfx.play(self, "hit", global_position)
 	if hp <= 0:
-		Sfx.play(self, "break", global_position)
+		Juice.on_break(global_position)
 		queue_free()
+	else:
+		Juice.flash(self, Color(1.4, 2.0, 1.2), 0.06)
+		Sfx.play(self, "hit", global_position)

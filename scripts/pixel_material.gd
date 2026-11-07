@@ -14,6 +14,7 @@ static func enable_vertex_colors(node: Node) -> void:
 					var sm := (mat as StandardMaterial3D).duplicate() as StandardMaterial3D
 					sm.vertex_color_use_as_albedo = true
 					sm.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+					sm.cull_mode = BaseMaterial3D.CULL_BACK
 					mi.set_surface_override_material(s, sm)
 	for child in node.get_children():
 		enable_vertex_colors(child)

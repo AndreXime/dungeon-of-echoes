@@ -29,7 +29,6 @@ func _attach_model() -> void:
 	add_child(model)
 	var PixelMat = preload("res://scripts/pixel_material.gd")
 	PixelMat.enable_vertex_colors(model)
-	# origem do GLB no chão / centro da caixa
 	if model_path.ends_with("crate.glb"):
 		model.position = Vector3(0, -0.4, 0)
 	elif model_path.ends_with("barrel.glb"):
@@ -40,10 +39,12 @@ func _attach_model() -> void:
 
 func take_hit(damage: int, _knockback: Vector3) -> void:
 	hp -= damage
-	Sfx.play(self, "hit", global_position)
 	if hp <= 0:
 		RunState.add_gold(gold_reward)
 		if RunState.has_relic(RunState.RELIC_CRYSTAL_VAMP):
 			RunState.heal(4)
-		Sfx.play(self, "break", global_position)
+		Juice.on_break(global_position)
 		queue_free()
+	else:
+		Juice.flash(self, Color(2.0, 1.8, 1.4), 0.06)
+		Sfx.play(self, "hit", global_position)

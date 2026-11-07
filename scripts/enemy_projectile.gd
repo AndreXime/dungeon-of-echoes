@@ -20,11 +20,10 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		_spent = true
 		if body.has_method("is_blocking") and body.is_blocking():
-			Sfx.play(self, "block", global_position)
+			Juice.on_block()
 			queue_free()
 			return
 		RunState.apply_damage(damage)
-		Sfx.play(self, "hit", global_position)
 		queue_free()
 	elif body is StaticBody3D:
 		_spent = true
