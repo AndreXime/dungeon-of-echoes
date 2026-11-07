@@ -103,22 +103,44 @@ Progresso permanente: `user://meta_save.cfg`.
 ## Estrutura
 
 ```
-scenes/                  # hub, dungeon, player, enemies…
-scripts/autoload/        # MetaProgress, RunState, Sfx, Juice, Music
-scripts/player/          # player e projéteis
-scripts/enemies/         # EnemyBase e variantes
-scripts/world/           # hub, dungeon, floresta, gerador
-scripts/interactables/   # baús, traps, relíquias
-scripts/ui/              # pause menu
-scripts/kaykit/          # paths e animações KayKit
-scripts/util/            # helpers
-assets/models/           # packs KayKit (gltf/glb)
-assets/fonts/            # Lilita One (OFL) — UI e Label3D
-assets/audio/            # BGM e SFX
+scenes/
+  hub.tscn / dungeon_run.tscn / player.tscn
+  enemies/               # variantes por bioma
+  props/                 # barris, caixas, vasos quebráveis
+  ui/                    # pause_menu, npc_shop
+scripts/
+  autoload/              # MetaProgress, RunState, Sfx, Juice, Music, MouseCapture
+  player/                # player e projéteis
+  enemies/               # EnemyBase e variantes
+  world/                 # hub, dungeon_run, dungeon_generator, dungeon_layout
+  interactables/         # baús, traps, portas, relíquias
+  ui/                    # pause, loja, HUD
+  assets/                # KayKit paths (class_name KayKit) e animações
+  util/                  # fontes e helpers
+  dev/                   # serve_web e utilitários de build
+assets/
+  models/                # packs KayKit (gltf/glb) + skyboxes
+  fonts/                 # Lilita One (OFL)
+  audio/                 # BGM e SFX
+  ui/                    # theme pergaminho (Kenney RPG UI, CC0)
 ```
 
-Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits, Halloween).
+### Packs KayKit em `assets/models/`
 
-Tipografia: **Lilita One** (SIL OFL). UI em pergaminho (Kenney RPG UI, CC0) via `assets/ui/game_theme.tres`. Lojas de NPC abrem lista de ofertas (paginada).
+| Pasta | Uso |
+|-------|-----|
+| `dungeon/` | tiles, props e luzes da masmorra |
+| `adventurers/` | herói e NPCs do hub |
+| `skeletons/` | inimigos das catacumbas |
+| `weapons/` | armas extras / variações |
+| `tools/` | tocha, bigorna, mapa, corda |
+| `forest/` | vegetação e rochas do hub |
+| `mixed/` | traps e props (beartrap, mirror…) |
+| `animations/` | rigs de animação KayKit |
+| `skyboxes/` | céu do hub |
+| `blocks/` | reserva (Block Bits, ainda sem uso in-game) |
+| `halloween/` | reserva (Halloween Bits, ainda sem uso in-game) |
+
+Tipografia: **Lilita One** (SIL OFL). UI em pergaminho via `assets/ui/game_theme.tres`. Lojas de NPC abrem lista de ofertas (paginada). Ouro do hub só aparece na loja.
 
 Áudio em `assets/audio/` (hub, dungeon e SFX). Gerado com o `music-studio` em Downloads (`just run dungeon_echoes_*.py` / `sfx_dungeon_echoes.py`).
