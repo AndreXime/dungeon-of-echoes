@@ -235,8 +235,8 @@ func _build_portal(pos: Vector3) -> void:
 	var tag := Label3D.new()
 	tag.text = "Portal da Masmorra"
 	tag.position = Vector3(0, 3.4, 0)
-	tag.font_size = 42
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	GameFonts.style_label3d(tag, 42)
 	root.add_child(tag)
 
 	var area := Area3D.new()

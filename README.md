@@ -93,9 +93,12 @@ scripts/ui/              # pause menu
 scripts/kaykit/          # paths e animações KayKit
 scripts/util/            # helpers
 assets/models/           # packs KayKit (gltf/glb)
+assets/fonts/            # Lilita One (OFL) — UI e Label3D
 assets/audio/            # BGM e SFX
 ```
 
-Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits).
+Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits, Halloween).
+
+Tipografia: **Lilita One** (SIL OFL) em `assets/fonts/`, tema global `assets/ui/game_theme.tres`.
 
 Áudio em `assets/audio/` (hub, dungeon e SFX). Gerado com o `music-studio` em Downloads (`just run dungeon_echoes_*.py` / `sfx_dungeon_echoes.py`).

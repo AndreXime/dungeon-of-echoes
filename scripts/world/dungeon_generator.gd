@@ -569,8 +569,8 @@ func _spawn_relic(room: Node3D, local_pos: Vector3, relic_id: String, relic_name
 	label.name = "Label"
 	label.text = relic_name
 	label.position = Vector3(0, 1.4, 0)
-	label.font_size = 42
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	GameFonts.style_label3d(label, 42)
 	root.add_child(label)
 	var area := Area3D.new()
 	area.set_script(load("res://scripts/interactables/relic_pedestal.gd"))
@@ -614,8 +614,8 @@ func _add_exit_trigger(room: Node3D, local_pos: Vector3, requires_boss: bool) ->
 	var tag := Label3D.new()
 	tag.text = "Próximo andar" if RunState.floor_index < 9 else "Vitória"
 	tag.position = Vector3(0, 2.2, 0)
-	tag.font_size = 56
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	GameFonts.style_label3d(tag, 56)
 	area.add_child(tag)
 
 
