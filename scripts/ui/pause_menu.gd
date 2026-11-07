@@ -20,6 +20,7 @@ var _allow_quit_hub := true
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 100
+	add_to_group("pause_menu")
 	visible = false
 	root.visible = false
 	btn_resume.pressed.connect(close)

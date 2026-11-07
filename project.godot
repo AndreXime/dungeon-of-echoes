@@ -1,4 +1,11 @@
 ; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
@@ -15,6 +22,7 @@ RunState="*res://scripts/autoload/run_state.gd"
 Sfx="*res://scripts/autoload/sfx.gd"
 Juice="*res://scripts/autoload/juice.gd"
 Music="*res://scripts/autoload/music.gd"
+MouseCapture="*res://scripts/autoload/mouse_capture.gd"
 
 [display]
 
