@@ -97,13 +97,13 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dir.z * move_speed
 		if flying:
 			velocity.y = dir.y * move_speed * 0.5
-		if Vector3(dir.x, 0.0, dir.z).length() > 0.01:
-			look_at(global_position + Vector3(dir.x, 0.0, dir.z), Vector3.UP)
+		_face_toward(Vector3(dir.x, 0.0, dir.z))
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		if flying:
 			velocity.y = 0.0
+		_face_toward(Vector3(to_player.x, 0.0, to_player.z))
 		if _attack_cd <= 0.0:
 			_do_attack(player)
 			_attack_cd = attack_cooldown
@@ -111,6 +111,12 @@ func _physics_process(delta: float) -> void:
 	var planar_speed := Vector2(velocity.x, velocity.z).length()
 	KayKitAnim.update_locomotion(_anim, planar_speed > 0.35, _skeleton_anim)
 	move_and_slide()
+
+
+func _face_toward(dir: Vector3) -> void:
+	if dir.length() < 0.01:
+		return
+	look_at(global_position + dir.normalized(), Vector3.UP)
 
 
 func _update_aggro(player: Node3D, dist: float) -> void:
@@ -151,7 +157,7 @@ func _do_attack(player: Node3D) -> void:
 
 func _shoot(player: Node3D) -> void:
 	var proj := RigidBody3D.new()
-	proj.set_script(load("res://scripts/enemy_projectile.gd"))
+	proj.set_script(load("res://scripts/enemies/enemy_projectile.gd"))
 	proj.damage = projectile_damage
 	var mesh := MeshInstance3D.new()
 	var sphere := SphereMesh.new()

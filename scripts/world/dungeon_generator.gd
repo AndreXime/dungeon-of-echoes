@@ -399,7 +399,7 @@ func _spawn_pit(room: Node3D, local_pos: Vector3) -> void:
 	room.add_child(void_mi)
 	var area := Area3D.new()
 	area.position = local_pos + Vector3(0, 0.4, 0)
-	area.set_script(load("res://scripts/pit_hazard.gd"))
+	area.set_script(load("res://scripts/interactables/pit_hazard.gd"))
 	room.add_child(area)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
@@ -430,7 +430,7 @@ func _spawn_rope(room: Node3D, local_pos: Vector3) -> void:
 	KayKit.add_model(root, KayKit.ROPE)
 	KayKit.add_model(root, KayKit.BEARTRAP, Vector3(0.4, 0, 0), 0.0, 0.85)
 	var area := Area3D.new()
-	area.set_script(load("res://scripts/rope_trap.gd"))
+	area.set_script(load("res://scripts/interactables/rope_trap.gd"))
 	root.add_child(area)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
@@ -443,7 +443,7 @@ func _spawn_rope(room: Node3D, local_pos: Vector3) -> void:
 func _spawn_vines(room: Node3D, local_pos: Vector3) -> void:
 	var vines := StaticBody3D.new()
 	vines.position = local_pos
-	vines.set_script(load("res://scripts/cut_vines.gd"))
+	vines.set_script(load("res://scripts/interactables/cut_vines.gd"))
 	room.add_child(vines)
 
 
@@ -522,7 +522,7 @@ func _spawn_spikes(room: Node3D, local_pos: Vector3) -> void:
 	room.add_child(root)
 	KayKit.add_model(root, KayKit.FLOOR_SPIKES)
 	var area := Area3D.new()
-	area.set_script(load("res://scripts/spike_trap.gd"))
+	area.set_script(load("res://scripts/interactables/spike_trap.gd"))
 	root.add_child(area)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
@@ -578,7 +578,7 @@ func _spawn_relic(room: Node3D, local_pos: Vector3, relic_id: String, relic_name
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	root.add_child(label)
 	var area := Area3D.new()
-	area.set_script(load("res://scripts/relic_pedestal.gd"))
+	area.set_script(load("res://scripts/interactables/relic_pedestal.gd"))
 	area.relic_id = relic_id
 	area.relic_name = relic_name
 	area.relic_desc = relic_desc

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmainscene01"]
 
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
-[ext_resource type="Script" path="res://scripts/forest_world.gd" id="2_forest"]
+[ext_resource type="Script" path="res://scripts/world/forest_world.gd" id="2_forest"]
 
 [sub_resource type="Environment" id="EnvForest"]
 background_mode = 1

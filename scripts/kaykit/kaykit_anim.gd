@@ -30,6 +30,8 @@ static func setup(model: Node, skeleton_style: bool = false) -> AnimationPlayer:
 	var character := _find_character_root(model)
 	if character == null:
 		return null
+	# KayKit olha para +Z. Godot usa -Z como frente (look_at).
+	fix_facing(character)
 	_ensure_libraries()
 	var existing := character.get_node_or_null("AnimationPlayer") as AnimationPlayer
 	if existing:
@@ -44,6 +46,13 @@ static func setup(model: Node, skeleton_style: bool = false) -> AnimationPlayer:
 	if skeleton_style and _lib_special:
 		ap.add_animation_library("special", _lib_special)
 	return ap
+
+
+static func fix_facing(character: Node3D) -> void:
+	if character == null or character.has_meta("kaykit_facing_fixed"):
+		return
+	character.rotate_y(PI)
+	character.set_meta("kaykit_facing_fixed", true)
 
 
 static func play_idle(ap: AnimationPlayer, skeleton_style: bool = false) -> void:

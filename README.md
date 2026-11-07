@@ -7,7 +7,6 @@ Projeto em **Godot 4.7** (Forward+).
 ## Requisitos
 
 - [Godot 4.7+](https://godotengine.org/) no `PATH` (testado com `4.7.2`)
-- Opcional: Blender (para editar/gerar modelos `.glb`)
 
 ## Como rodar
 
@@ -84,14 +83,17 @@ Progresso permanente: `user://meta_save.cfg`.
 ## Estrutura
 
 ```
-scenes/hub.tscn
-scenes/dungeon_run.tscn
-scenes/player.tscn
-scenes/enemies/          # inimigos EnemyBase (KayKit)
-scripts/autoload/        # MetaProgress, RunState, Sfx, Juice
-scripts/kaykit_paths.gd  # paths centralizados KayKit
-assets/kaykit/           # packs KayKit extraídos (gltf/glb)
-assets/*.zip             # zips originais KayKit (fonte)
+scenes/                  # hub, dungeon, player, enemies…
+scripts/autoload/        # MetaProgress, RunState, Sfx, Juice, Music
+scripts/player/          # player e projéteis
+scripts/enemies/         # EnemyBase e variantes
+scripts/world/           # hub, dungeon, floresta, gerador
+scripts/interactables/   # baús, traps, relíquias
+scripts/ui/              # pause menu
+scripts/kaykit/          # paths e animações KayKit
+scripts/util/            # helpers
+assets/kaykit/           # packs KayKit (gltf/glb)
+assets/audio/            # BGM e SFX
 ```
 
 Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits).

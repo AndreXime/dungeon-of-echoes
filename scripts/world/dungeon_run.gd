@@ -7,7 +7,7 @@ extends Node3D
 @onready var hud_relics: Label = $HUD/Relics
 @onready var hud_message: Label = $HUD/Message
 @onready var hud_floor: Label = $HUD/Floor
-var _generator := preload("res://scripts/dungeon_generator.gd").new()
+var _generator := preload("res://scripts/world/dungeon_generator.gd").new()
 var _pause_menu: Node
 
 

@@ -362,7 +362,7 @@ func _throw_dagger() -> void:
 	dagger_pivot.visible = false
 	Sfx.play(self, "shoot", global_position)
 	var dagger := Area3D.new()
-	dagger.set_script(load("res://scripts/returning_dagger.gd"))
+	dagger.set_script(load("res://scripts/player/returning_dagger.gd"))
 	_attach_weapon(DAGGER_GLB, dagger, Vector3.ZERO, Vector3(-90, 0, 0), 1.0)
 	var shape := CollisionShape3D.new()
 	var sphere := SphereShape3D.new()
@@ -392,7 +392,7 @@ func _shoot_crossbow() -> void:
 	Sfx.play(self, "shoot", global_position)
 
 	var bolt := RigidBody3D.new()
-	bolt.set_script(load("res://scripts/projectile_bolt.gd"))
+	bolt.set_script(load("res://scripts/player/projectile_bolt.gd"))
 	bolt.damage = BOLT_DAMAGE
 	if ResourceLoader.exists(BOLT_GLB):
 		var packed := load(BOLT_GLB) as PackedScene

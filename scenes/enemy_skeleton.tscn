@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://benemyskel01"]
 
-[ext_resource type="Script" path="res://scripts/enemy_skeleton.gd" id="1_skel"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_skeleton.gd" id="1_skel"]
 
 [sub_resource type="CapsuleShape3D" id="Cap"]
 radius = 0.35

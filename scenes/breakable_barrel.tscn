@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbarrel01"]
 
-[ext_resource type="Script" path="res://scripts/breakable.gd" id="1_break"]
+[ext_resource type="Script" path="res://scripts/interactables/breakable.gd" id="1_break"]
 
 [sub_resource type="CylinderShape3D" id="Shape"]
 radius = 0.4

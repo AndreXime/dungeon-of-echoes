@@ -80,10 +80,11 @@ func _build_npc(pos: Vector3, label: String, action: String, model_path: String,
 	if character:
 		var ap := KayKitAnim.setup(character, false)
 		KayKitAnim.play_idle(ap, false)
-		var toward := -character.global_position
-		toward.y = 0.0
-		if toward.length() > 0.1:
-			character.look_at(character.global_position + toward, Vector3.UP)
+	# Gira o root (não o mesh) para a fogueira. O mesh já tem +180° no setup.
+	var toward := -root.global_position
+	toward.y = 0.0
+	if toward.length() > 0.1:
+		root.look_at(root.global_position + toward, Vector3.UP)
 	_instance_model(prop_path, Vector3(0.7, 0, 0.3), body, 0.9)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
@@ -100,7 +101,7 @@ func _build_npc(pos: Vector3, label: String, action: String, model_path: String,
 	root.add_child(tag)
 
 	var area := Area3D.new()
-	area.set_script(load("res://scripts/interactable.gd"))
+	area.set_script(load("res://scripts/interactables/interactable.gd"))
 	area.prompt_text = label
 	area.action_id = action
 	area.add_to_group("hub_interactable")
@@ -134,7 +135,7 @@ func _build_portal(pos: Vector3) -> void:
 	root.add_child(tag)
 
 	var area := Area3D.new()
-	area.set_script(load("res://scripts/interactable.gd"))
+	area.set_script(load("res://scripts/interactables/interactable.gd"))
 	area.prompt_text = "Entrar na masmorra"
 	area.action_id = "portal"
 	area.add_to_group("hub_interactable")
