@@ -67,7 +67,7 @@ Progresso permanente: `user://meta_save.cfg`.
 
 - Escudo bloqueia melee frontal e **projéteis**
 - Empurrar no escudo joga inimigos (útil em espinhos)
-- Poços, cordas, espinhos, vinhas cortáveis (Jardim)
+- Cordas, espinhos, vinhas cortáveis (Jardim)
 - Tocha na câmera como luz principal
 - Mapa textual no HUD (salas reveladas pelo cartógrafo)
 

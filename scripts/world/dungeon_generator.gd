@@ -235,6 +235,19 @@ func _place_scene(parent: Node, packed: PackedScene, pos: Vector3, rot_y: float 
 	return model
 
 
+func _place_door(parent: Node, pos: Vector3, rot_y: float = 0.0) -> Node3D:
+	if _wall_door_scene == null:
+		return null
+	var model := _wall_door_scene.instantiate() as Node3D
+	model.set_script(load("res://scripts/interactables/door_passage.gd"))
+	model.position = pos
+	model.rotation.y = rot_y
+	parent.add_child(model)
+	if model.has_method("setup"):
+		model.setup()
+	return model
+
+
 func _enemy_pool() -> Array:
 	match RunState.biome:
 		RunState.BIOME_MINES:
@@ -263,36 +276,28 @@ func _build_room(kind: String, rng: RandomNumberGenerator, doors: Dictionary = {
 	_build_wall_ew(room, hx, hy, d_e, -PI * 0.5)
 	_build_wall_ew(room, -hx, hy, d_w, PI * 0.5)
 
-	_spawn_torch(room, Vector3(-5.5, 2.0, 0), PI * 0.5)
-	_spawn_torch(room, Vector3(5.5, 2.0, 0), -PI * 0.5)
-
-	var light := OmniLight3D.new()
-	light.position = Vector3(0, 3.2, 0)
-	light.light_color = _light_color()
-	light.light_energy = 1.5
-	light.omni_range = 14.0
-	light.shadow_enabled = true
-	room.add_child(light)
+	# Parede em ±hx, face interna ±(hx-0.5). torch_mounted: costas z≈0, chama +Z.
+	# Porta EW fica em z=0: se houver porta, joga a tocha pro trecho sólido (±5).
+	const TORCH_INSET := 0.04
+	const TORCH_Y := 2.0
+	var west_z := 5.0 if d_w else 0.0
+	var east_z := -5.0 if d_e else 0.0
+	_spawn_torch(room, Vector3(-hx + 0.5 + TORCH_INSET, TORCH_Y, west_z), PI * 0.5)
+	_spawn_torch(room, Vector3(hx - 0.5 - TORCH_INSET, TORCH_Y, east_z), -PI * 0.5)
 
 	match kind:
 		"bridge":
-			_spawn_pit(room, Vector3(-4.5, 0, 0))
-			_spawn_pit(room, Vector3(4.5, 0, 0))
 			KayKit.add_model(room, KayKit.BOX_LARGE, Vector3(0, 0, 0), 0.0, 1.2)
 			_add_collision_box(room, Vector3(3.0, 0.3, 10.0), Vector3(0, 0.15, 0))
 			_spawn_spikes(room, Vector3(-4.5, 0, 3))
 			_spawn_spikes(room, Vector3(4.5, 0, -3))
 			_spawn_rope(room, Vector3(0, 0, 2))
 		"hazard":
-			_spawn_pit(room, Vector3(-3, 0, 1))
-			_spawn_pit(room, Vector3(3, 0, -2))
 			_spawn_rope(room, Vector3(0, 0, 0))
 			_spawn_spikes(room, Vector3(0, 0, 3))
+			_spawn_spikes(room, Vector3(-4, 0, -2))
+			_spawn_spikes(room, Vector3(4, 0, 2))
 		"cross":
-			KayKit.add_model(room, KayKit.COLUMN, Vector3(-4, 0, -3), 0.0, 1.5)
-			KayKit.add_model(room, KayKit.COLUMN, Vector3(4, 0, 2), 0.0, 1.2)
-			_add_collision_box(room, Vector3(1.0, 2.5, 1.0), Vector3(-4, 1.25, -3))
-			_add_collision_box(room, Vector3(1.0, 2.0, 1.0), Vector3(4, 1.0, 2))
 			_spawn_spikes(room, Vector3(0, 0, 3))
 			if rng.randf() > 0.4:
 				_spawn_random_relic(room, Vector3(0, 0, -2), rng)
@@ -307,12 +312,9 @@ func _build_room(kind: String, rng: RandomNumberGenerator, doors: Dictionary = {
 			_spawn_boss(room, Vector3(0, 0, -1))
 			_spawn_random_relic(room, Vector3(3, 0, 2), rng, true)
 		"end":
-			KayKit.add_model(room, KayKit.CHEST, Vector3(0, 0, -5))
 			_spawn_random_relic(room, Vector3(2.5, 0, -2), rng, true)
 			_spawn_enemy(room, Vector3(rng.randf_range(-2, 2), 0, 0), rng)
 		_:
-			KayKit.add_model(room, KayKit.COLUMN, Vector3(-5, 0, 0), 0.0, 1.3)
-			_add_collision_box(room, Vector3(0.8, 2.2, 0.8), Vector3(-5, 1.1, 0))
 			if rng.randf() > 0.72:
 				_spawn_random_relic(room, Vector3(4, 0, -2), rng)
 
@@ -357,11 +359,12 @@ func _build_wall_ns(room: Node3D, z: float, hy: float, has_door: bool, rot_y: fl
 	if has_door:
 		_place_scene(visuals, _wall_scene, Vector3(-6.0, 0.0, z), rot_y)
 		_place_scene(visuals, _wall_half_scene, Vector3(-4.0, 0.0, z), rot_y)
-		_place_scene(visuals, _wall_door_scene, Vector3(0.0, 0.0, z), rot_y)
+		_place_door(visuals, Vector3(0.0, 0.0, z), rot_y)
 		_place_scene(visuals, _wall_half_scene, Vector3(4.0, 0.0, z), rot_y + PI)
 		_place_scene(visuals, _wall_scene, Vector3(6.0, 0.0, z), rot_y)
-		_add_collision_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(-5.0, hy, z))
-		_add_collision_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(5.0, hy, z))
+		# Vão da folha ~±1. Batentes (−2..−1 e 1..2) precisam de colisão.
+		_add_collision_box(room, Vector3(7.0, ROOM_SIZE.y, 0.5), Vector3(-4.5, hy, z))
+		_add_collision_box(room, Vector3(7.0, ROOM_SIZE.y, 0.5), Vector3(4.5, hy, z))
 	else:
 		for x in [-6.0, -2.0, 2.0, 6.0]:
 			_place_scene(visuals, _wall_scene, Vector3(x, 0.0, z), rot_y)
@@ -375,37 +378,15 @@ func _build_wall_ew(room: Node3D, x: float, hy: float, has_door: bool, rot_y: fl
 	if has_door:
 		_place_scene(visuals, _wall_scene, Vector3(x, 0.0, -6.0), rot_y)
 		_place_scene(visuals, _wall_half_scene, Vector3(x, 0.0, -4.0), rot_y)
-		_place_scene(visuals, _wall_door_scene, Vector3(x, 0.0, 0.0), rot_y)
+		_place_door(visuals, Vector3(x, 0.0, 0.0), rot_y)
 		_place_scene(visuals, _wall_half_scene, Vector3(x, 0.0, 4.0), rot_y + PI)
 		_place_scene(visuals, _wall_scene, Vector3(x, 0.0, 6.0), rot_y)
-		_add_collision_box(room, Vector3(0.5, ROOM_SIZE.y, 6.0), Vector3(x, hy, -5.0))
-		_add_collision_box(room, Vector3(0.5, ROOM_SIZE.y, 6.0), Vector3(x, hy, 5.0))
+		_add_collision_box(room, Vector3(0.5, ROOM_SIZE.y, 7.0), Vector3(x, hy, -4.5))
+		_add_collision_box(room, Vector3(0.5, ROOM_SIZE.y, 7.0), Vector3(x, hy, 4.5))
 	else:
 		for z in [-6.0, -2.0, 2.0, 6.0]:
 			_place_scene(visuals, _wall_scene, Vector3(x, 0.0, z), rot_y)
 		_add_collision_box(room, Vector3(0.5, ROOM_SIZE.y, ROOM_SIZE.z), Vector3(x, hy, 0))
-
-
-func _spawn_pit(room: Node3D, local_pos: Vector3) -> void:
-	var size := Vector3(3.2, 0.5, 3.2)
-	var void_mi := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = size
-	void_mi.mesh = box
-	void_mi.position = local_pos + Vector3(0, -0.05, 0)
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.05, 0.04, 0.06)
-	void_mi.material_override = mat
-	room.add_child(void_mi)
-	var area := Area3D.new()
-	area.position = local_pos + Vector3(0, 0.4, 0)
-	area.set_script(load("res://scripts/interactables/pit_hazard.gd"))
-	room.add_child(area)
-	var col := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(size.x * 0.85, 1.2, size.z * 0.85)
-	col.shape = shape
-	area.add_child(col)
 
 
 func _spawn_torch(room: Node3D, local_pos: Vector3, rot_y: float = 0.0) -> void:
@@ -413,13 +394,23 @@ func _spawn_torch(room: Node3D, local_pos: Vector3, rot_y: float = 0.0) -> void:
 	root.position = local_pos
 	root.rotation.y = rot_y
 	room.add_child(root)
-	if not KayKit.add_model(root, KayKit.TORCH_MOUNTED):
-		KayKit.add_model(root, KayKit.TORCH_LIT)
+	var model := KayKit.add_model(root, KayKit.TORCH_MOUNTED)
+	if model == null:
+		model = KayKit.add_model(root, KayKit.TORCH_LIT)
+	# Mesh da tocha não precisa projetar sombra (evita auto-sombra estranha).
+	if model:
+		_disable_shadows(model)
 	var glow := OmniLight3D.new()
-	glow.position = Vector3(0, 0.35, 0.2)
-	glow.light_color = Color(1.0, 0.7, 0.35)
-	glow.light_energy = 0.9
-	glow.omni_range = 5.0
+	# Luz um pouco pra dentro da sala: radial no cômodo, parede bloqueia o vizinho.
+	glow.position = Vector3(0.0, 0.55, 1.05)
+	glow.light_color = _light_color()
+	glow.light_energy = 1.55
+	glow.omni_range = 8.5
+	glow.omni_attenuation = 1.0
+	glow.shadow_enabled = true
+	glow.shadow_blur = 2.0
+	glow.shadow_bias = 0.04
+	glow.shadow_normal_bias = 1.0
 	root.add_child(glow)
 
 
@@ -520,15 +511,19 @@ func _spawn_spikes(room: Node3D, local_pos: Vector3) -> void:
 	var root := Node3D.new()
 	root.position = local_pos
 	room.add_child(root)
-	KayKit.add_model(root, KayKit.FLOOR_SPIKES)
+	# Laje + espinhos juntos. Scale uniforme pra não separar as meshes (espinhos y=2 → ~0.7).
+	const TRAP_SCALE := 0.35
+	KayKit.add_model(root, KayKit.FLOOR_SPIKES, Vector3.ZERO, 0.0, TRAP_SCALE)
+	# Hitbox só na área dos espinhos (AABB 2.2×2.0×2.2), mesma origem da laje.
+	var spike_size := Vector3(2.2, 2.0, 2.2) * TRAP_SCALE
 	var area := Area3D.new()
 	area.set_script(load("res://scripts/interactables/spike_trap.gd"))
 	root.add_child(area)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
-	shape.size = Vector3(2.2, 0.9, 2.2)
+	shape.size = spike_size
 	col.shape = shape
-	col.position.y = 0.4
+	col.position.y = spike_size.y * 0.5
 	area.add_child(col)
 
 
@@ -628,8 +623,10 @@ func _show_run_message(text: String) -> void:
 	for node in get_tree().get_nodes_in_group("run_message"):
 		if node is Label:
 			node.text = text
+			var label_id := node.get_instance_id()
 			get_tree().create_timer(2.0).timeout.connect(func() -> void:
-				if is_instance_valid(node):
-					node.text = ""
+				var live := instance_from_id(label_id) as Label
+				if live:
+					live.text = ""
 			)
 			return

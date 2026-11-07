@@ -45,12 +45,15 @@ func _apply_biome_environment() -> void:
 		RunState.BIOME_MINES:
 			env.background_color = Color(0.08, 0.03, 0.02)
 			env.ambient_light_color = Color(0.35, 0.18, 0.1)
+			env.ambient_light_energy = 0.38
 		RunState.BIOME_GARDEN:
 			env.background_color = Color(0.02, 0.06, 0.03)
 			env.ambient_light_color = Color(0.15, 0.28, 0.18)
+			env.ambient_light_energy = 0.34
 		_:
 			env.background_color = Color(0.02, 0.02, 0.03)
 			env.ambient_light_color = Color(0.2, 0.18, 0.16)
+			env.ambient_light_energy = 0.32
 
 
 func _process(_delta: float) -> void:
