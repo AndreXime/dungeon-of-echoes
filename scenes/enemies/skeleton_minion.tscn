@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1"]
+
+[sub_resource type="CapsuleShape3D" id="C"]
+radius = 0.36
+height = 1.55
+
+[node name="SkeletonMinion" type="CharacterBody3D"]
+script = ExtResource("1")
+move_speed = 2.6
+attack_damage = 9
+max_hp = 24
+gold_reward = 10
+essence_reward = 1
+model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Minion.glb"
+model_scale = 0.85
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78, 0)
+shape = SubResource("C")

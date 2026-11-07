@@ -215,7 +215,7 @@ func _die() -> void:
 
 func _spawn_split() -> void:
 	for offset in [Vector3(-0.6, 0, 0), Vector3(0.6, 0, 0)]:
-		var child := load("res://scenes/enemies/slime.tscn") as PackedScene
+		var child := load("res://scenes/enemies/skeleton_minion.tscn") as PackedScene
 		if child == null:
 			continue
 		var s := child.instantiate() as Node3D

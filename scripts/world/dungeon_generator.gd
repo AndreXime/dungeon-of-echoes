@@ -5,19 +5,19 @@ const ROOM_TILES := 4
 const ROOM_SIZE := Vector3(TILE * ROOM_TILES, 4.0, TILE * ROOM_TILES)
 
 const ENEMIES_CATACOMBS := [
-	"res://scenes/enemies/skeleton.tscn",
-	"res://scenes/enemies/crystal_bat.tscn",
-	"res://scenes/enemies/slime.tscn",
+	"res://scenes/enemies/skeleton_warrior.tscn",
+	"res://scenes/enemies/skeleton_rogue.tscn",
+	"res://scenes/enemies/skeleton_minion.tscn",
 ]
 const ENEMIES_MINES := [
-	"res://scenes/enemies/corrupted_miner.tscn",
-	"res://scenes/enemies/stone_automaton.tscn",
-	"res://scenes/enemies/acid_spider.tscn",
+	"res://scenes/enemies/barbarian.tscn",
+	"res://scenes/enemies/skeleton_minion_brute.tscn",
+	"res://scenes/enemies/skeleton_minion_ranged.tscn",
 ]
 const ENEMIES_GARDEN := [
-	"res://scenes/enemies/wood_guardian.tscn",
-	"res://scenes/enemies/vine_golem.tscn",
-	"res://scenes/enemies/foliage_shooter.tscn",
+	"res://scenes/enemies/ranger.tscn",
+	"res://scenes/enemies/rogue_hooded.tscn",
+	"res://scenes/enemies/ranger_archer.tscn",
 ]
 
 const RELICS := [
@@ -479,12 +479,12 @@ func _spawn_enemy(room: Node3D, local_pos: Vector3, rng: RandomNumberGenerator) 
 
 
 func _spawn_boss(room: Node3D, local_pos: Vector3) -> void:
-	var path := "res://scenes/enemies/boss_skeleton.tscn"
+	var path := "res://scenes/enemies/skeleton_mage.tscn"
 	match RunState.biome:
 		RunState.BIOME_MINES:
-			path = "res://scenes/enemies/stone_automaton.tscn"
+			path = "res://scenes/enemies/skeleton_minion_brute.tscn"
 		RunState.BIOME_GARDEN:
-			path = "res://scenes/enemies/vine_golem.tscn"
+			path = "res://scenes/enemies/rogue_hooded.tscn"
 	var packed := load(path) as PackedScene
 	if packed == null:
 		return

@@ -52,9 +52,9 @@ Progresso permanente: `user://meta_save.cfg`.
 
 | Andares | Bioma | Inimigos |
 |---------|-------|----------|
-| 1–3 | Catacumbas Esquecidas | Esqueleto, morcego, slime (+ chefe esqueleto) |
-| 4–6 | Minas de Fogo-Fátuo | Minerador, autômato, aranha (+ chefe autômato) |
-| 7–9 | Jardim Sem Sol | Guardião, golem, atirador (+ chefe golem) |
+| 1–3 | Catacumbas Esquecidas | Esqueleto guerreiro, ladino, minion (+ chefe mago) |
+| 4–6 | Minas de Fogo-Fátuo | Bárbaro, minion bruto, minion à distância (+ chefe minion bruto) |
+| 7–9 | Jardim Sem Sol | Ranger, ladino encapuzado, ranger arqueiro (+ chefe ladino encapuzado) |
 
 ## Hub (meta)
 
