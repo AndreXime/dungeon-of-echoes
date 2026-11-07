@@ -13,7 +13,7 @@ attack_damage = 16
 max_hp = 55
 gold_reward = 20
 essence_reward = 3
-model_path = "res://assets/kaykit/adventurers/characters/Ranger.glb"
+model_path = "res://assets/models/adventurers/characters/Ranger.glb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)

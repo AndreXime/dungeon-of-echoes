@@ -13,7 +13,7 @@ attack_damage = 9
 max_hp = 24
 gold_reward = 10
 essence_reward = 1
-model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Minion.glb"
+model_path = "res://assets/models/skeletons/characters/Skeleton_Minion.glb"
 model_scale = 0.85
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

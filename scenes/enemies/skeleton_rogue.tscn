@@ -14,7 +14,7 @@ attack_damage = 8
 max_hp = 18
 gold_reward = 8
 essence_reward = 2
-model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Rogue.glb"
+model_path = "res://assets/models/skeletons/characters/Skeleton_Rogue.glb"
 flying = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

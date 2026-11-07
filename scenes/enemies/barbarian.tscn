@@ -13,7 +13,7 @@ attack_damage = 14
 max_hp = 45
 gold_reward = 18
 essence_reward = 3
-model_path = "res://assets/kaykit/adventurers/characters/Barbarian.glb"
+model_path = "res://assets/models/adventurers/characters/Barbarian.glb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, 0)

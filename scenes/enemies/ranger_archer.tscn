@@ -14,7 +14,7 @@ attack_damage = 8
 max_hp = 28
 gold_reward = 14
 essence_reward = 3
-model_path = "res://assets/kaykit/adventurers/characters/Ranger.glb"
+model_path = "res://assets/models/adventurers/characters/Ranger.glb"
 ranged = true
 projectile_damage = 10
 

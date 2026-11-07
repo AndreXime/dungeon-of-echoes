@@ -5,14 +5,14 @@ class_name KayKit
 
 const TILE := 4.0
 
-const DUNGEON := "res://assets/kaykit/dungeon/"
-const ADV_CHAR := "res://assets/kaykit/adventurers/characters/"
-const ADV_PROP := "res://assets/kaykit/adventurers/props/"
-const SKEL_CHAR := "res://assets/kaykit/skeletons/characters/"
-const WEAPONS := "res://assets/kaykit/weapons/"
-const TOOLS := "res://assets/kaykit/tools/"
-const FOREST := "res://assets/kaykit/forest/"
-const MIXED := "res://assets/kaykit/mixed/"
+const DUNGEON := "res://assets/models/dungeon/"
+const ADV_CHAR := "res://assets/models/adventurers/characters/"
+const ADV_PROP := "res://assets/models/adventurers/props/"
+const SKEL_CHAR := "res://assets/models/skeletons/characters/"
+const WEAPONS := "res://assets/models/weapons/"
+const TOOLS := "res://assets/models/tools/"
+const FOREST := "res://assets/models/forest/"
+const MIXED := "res://assets/models/mixed/"
 
 const WALL := DUNGEON + "wall.gltf"
 const WALL_DOORWAY := DUNGEON + "wall_doorway.gltf"

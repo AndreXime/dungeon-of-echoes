@@ -3,9 +3,9 @@ class_name KayKitAnim
 
 ## Aplica AnimationPlayer KayKit (Rig_Medium) em personagens com hierarquia Rig_Medium/Skeleton3D.
 
-const ANIM_GENERAL := "res://assets/kaykit/animations/Rig_Medium/Rig_Medium_General.glb"
-const ANIM_MOVE := "res://assets/kaykit/animations/Rig_Medium/Rig_Medium_MovementBasic.glb"
-const ANIM_SPECIAL := "res://assets/kaykit/animations/Rig_Medium/Rig_Medium_Special.glb"
+const ANIM_GENERAL := "res://assets/models/animations/Rig_Medium/Rig_Medium_General.glb"
+const ANIM_MOVE := "res://assets/models/animations/Rig_Medium/Rig_Medium_MovementBasic.glb"
+const ANIM_SPECIAL := "res://assets/models/animations/Rig_Medium/Rig_Medium_Special.glb"
 
 const IDLE_HUMAN := &"general/Idle_A"
 const WALK_HUMAN := &"move/Walking_A"

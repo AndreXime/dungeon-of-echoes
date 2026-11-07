@@ -92,7 +92,7 @@ scripts/interactables/   # baús, traps, relíquias
 scripts/ui/              # pause menu
 scripts/kaykit/          # paths e animações KayKit
 scripts/util/            # helpers
-assets/kaykit/           # packs KayKit (gltf/glb)
+assets/models/           # packs KayKit (gltf/glb)
 assets/audio/            # BGM e SFX
 ```
 

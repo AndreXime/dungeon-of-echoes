@@ -15,7 +15,7 @@ attack_damage = 22
 max_hp = 160
 gold_reward = 80
 essence_reward = 12
-model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Mage.glb"
+model_path = "res://assets/models/skeletons/characters/Skeleton_Mage.glb"
 model_scale = 1.35
 is_boss = true
 
