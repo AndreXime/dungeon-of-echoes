@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _spawn_pause_menu() -> void:
-	var packed := load("res://scenes/pause_menu.tscn") as PackedScene
+	var packed := load("res://scenes/ui/pause_menu.tscn") as PackedScene
 	if packed == null:
 		return
 	_pause_menu = packed.instantiate()

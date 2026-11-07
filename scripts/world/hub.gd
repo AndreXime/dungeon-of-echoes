@@ -18,7 +18,7 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("hub_interactable"):
 		if node.has_signal("interacted"):
 			node.interacted.connect(_on_interact.bind(node))
-	var pause_packed := load("res://scenes/pause_menu.tscn") as PackedScene
+	var pause_packed := load("res://scenes/ui/pause_menu.tscn") as PackedScene
 	if pause_packed:
 		_pause_menu = pause_packed.instantiate()
 		add_child(_pause_menu)
