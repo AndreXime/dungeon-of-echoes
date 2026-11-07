@@ -11,15 +11,32 @@ Projeto em **Godot 4.7** (Forward+).
 ## Como rodar
 
 ```bash
-godot --path /home/andre/Projetos/newgame
+just run
+# ou: godot --path .
 ```
 
-Cena principal: `scenes/hub.tscn`.
+Cena principal: `scenes/hub.tscn`. Editor: `just editor`.
 
 ### Abrir só a masmorra (debug)
 
 ```bash
-godot --path /home/andre/Projetos/newgame --scene res://scenes/dungeon_run.tscn
+godot --path . --scene res://scenes/dungeon_run.tscn
+```
+
+## Builds (`just`)
+
+Requer Godot 4.7+ no `PATH` e export templates instalados.
+
+```bash
+just build-linux              # x86_64 + arm64 em build/linux/
+just build-linux-x86_64
+just build-linux-arm64
+just build-windows            # x86_64 + arm64 em build/windows/
+just build-windows-x86_64
+just build-windows-arm64
+just build-web                # build/web/index.html (WASM)
+just build-all
+just serve-web                # http://127.0.0.1:8080/
 ```
 
 ## Controles
