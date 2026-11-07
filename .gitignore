@@ -1,2 +1,3 @@
 .godot
-docs
+docs__pycache__/
+*.pyc
