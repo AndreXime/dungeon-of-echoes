@@ -76,7 +76,14 @@ func _build_npc(pos: Vector3, label: String, action: String, model_path: String,
 
 	var body := StaticBody3D.new()
 	root.add_child(body)
-	_instance_model(model_path, Vector3.ZERO, body)
+	var character := _instance_model(model_path, Vector3.ZERO, body)
+	if character:
+		var ap := KayKitAnim.setup(character, false)
+		KayKitAnim.play_idle(ap, false)
+		var toward := -character.global_position
+		toward.y = 0.0
+		if toward.length() > 0.1:
+			character.look_at(character.global_position + toward, Vector3.UP)
 	_instance_model(prop_path, Vector3(0.7, 0, 0.3), body, 0.9)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()

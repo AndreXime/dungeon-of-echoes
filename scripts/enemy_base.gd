@@ -23,6 +23,8 @@ var _attack_cd := 0.0
 var _push_vel := Vector3.ZERO
 var _split_done := false
 var _aggro := false
+var _anim: AnimationPlayer
+var _skeleton_anim := false
 
 
 func _ready() -> void:
@@ -58,6 +60,9 @@ func _attach_model() -> void:
 		if not is_equal_approx(model_scale, 1.0):
 			model.scale = Vector3.ONE * model_scale
 		root.add_child(model)
+		_skeleton_anim = KayKitAnim.is_skeleton_model(model_path)
+		_anim = KayKitAnim.setup(model, _skeleton_anim)
+		KayKitAnim.play_idle(_anim, _skeleton_anim)
 
 
 func _physics_process(delta: float) -> void:
@@ -103,6 +108,8 @@ func _physics_process(delta: float) -> void:
 			_do_attack(player)
 			_attack_cd = attack_cooldown
 
+	var planar_speed := Vector2(velocity.x, velocity.z).length()
+	KayKitAnim.update_locomotion(_anim, planar_speed > 0.35, _skeleton_anim)
 	move_and_slide()
 
 
