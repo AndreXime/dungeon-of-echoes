@@ -131,13 +131,14 @@ def add_box(name, size, loc, material, parent=None, rot=None, asymmetry=0.0):
         (hx * (1.0 - asymmetry * 0.03), hy, hz),
         (-hx, hy, hz),
     ]
+    # Ordem CCW com normals para fora (Z-up).
     faces = [
-        (0, 1, 2, 3),
-        (4, 7, 6, 5),
-        (0, 4, 5, 1),
-        (1, 5, 6, 2),
-        (2, 6, 7, 3),
-        (3, 7, 4, 0),
+        (0, 3, 2, 1),  # -Z
+        (4, 5, 6, 7),  # +Z
+        (0, 1, 5, 4),  # -Y
+        (1, 2, 6, 5),  # +X
+        (2, 3, 7, 6),  # +Y
+        (3, 0, 4, 7),  # -X
     ]
     mesh.from_pydata(verts, [], faces)
     mesh.update()
@@ -184,6 +185,13 @@ def stylize(obj, bevel_width=None, displace_strength=0.008):
             bpy.ops.object.modifier_apply(modifier=mod.name)
         except RuntimeError:
             obj.modifiers.remove(mod)
+
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.mesh.normals_make_consistent(inside=False)
+    bpy.ops.object.mode_set(mode="OBJECT")
 
     for poly in obj.data.polygons:
         poly.use_smooth = False
