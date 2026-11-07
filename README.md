@@ -87,20 +87,11 @@ Progresso permanente: `user://meta_save.cfg`.
 scenes/hub.tscn
 scenes/dungeon_run.tscn
 scenes/player.tscn
-scenes/enemies/          # todos os inimigos EnemyBase
-scripts/autoload/        # MetaProgress, RunState, Sfx
-assets/models/           # GLBs low-poly
-tools/                   # geração Blender
+scenes/enemies/          # inimigos EnemyBase (KayKit)
+scripts/autoload/        # MetaProgress, RunState, Sfx, Juice
+scripts/kaykit_paths.gd  # paths centralizados KayKit
+assets/kaykit/           # packs KayKit extraídos (gltf/glb)
+assets/*.zip             # zips originais KayKit (fonte)
 ```
 
-## Gerar modelos (Blender headless)
-
-Pipeline stylized flat-shaded (bevel, displace, shade flat, vertex colors):
-
-```bash
-~/Downloads/blender/blender --background --python tools/rebuild_all_stylized.py
-~/Downloads/blender/blender --background --python tools/rebuild_all_stylized.py -- --only sword,skeleton
-godot --headless --path . --import
-```
-
-Scripts antigos em `tools/create_*.py` ficam só como referência.
+Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits).

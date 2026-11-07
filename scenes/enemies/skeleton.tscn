@@ -12,7 +12,7 @@ attack_damage = 12
 max_hp = 40
 gold_reward = 15
 essence_reward = 1
-model_path = "res://assets/models/skeleton.glb"
+model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Warrior.glb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

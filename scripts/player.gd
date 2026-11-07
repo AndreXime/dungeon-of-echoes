@@ -12,14 +12,12 @@ const KNOCKBACK_STRENGTH := 6.0
 const DAGGER_DAMAGE := 9
 const BOLT_DAMAGE := 14
 const CROSSBOW_RELOAD := 1.15
-const SWORD_GLB := "res://assets/models/sword.glb"
-const SHIELD_GLB := "res://assets/models/shield.glb"
-const BODY_GLB := "res://assets/models/player_body.glb"
-const DAGGER_GLB := "res://assets/models/dagger.glb"
-const CROSSBOW_GLB := "res://assets/models/crossbow.glb"
-const BOLT_GLB := "res://assets/models/bolt.glb"
-const TORCH_GLB := "res://assets/models/torch.glb"
-const PixelMat = preload("res://scripts/pixel_material.gd")
+const SWORD_GLB := KayKit.SWORD
+const SHIELD_GLB := KayKit.SHIELD
+const DAGGER_GLB := KayKit.DAGGER
+const CROSSBOW_GLB := KayKit.CROSSBOW
+const BOLT_GLB := KayKit.BOLT
+const TORCH_GLB := KayKit.TORCH_HAND
 
 @onready var camera: Camera3D = $Camera3D
 @onready var body_root: Node3D = $BodyRoot
@@ -49,7 +47,9 @@ var _torch_equipped := false
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	_attach_body()
+	# FPS: sem corpo local (o Knight inteiro ficava dentro da câmera).
+	if body_root:
+		body_root.visible = false
 	_attach_weapon(SWORD_GLB, sword_pivot, Vector3(0.02, -0.02, -0.05), Vector3(10, 0, -10), 1.1)
 	_attach_weapon(SHIELD_GLB, shield_pivot, Vector3(0, 0, 0), Vector3(0, 0, 0), 1.0)
 	_attach_weapon(DAGGER_GLB, dagger_pivot, Vector3(0, 0, 0), Vector3(-90, 0, 0), 1.15)
@@ -77,17 +77,6 @@ func _apply_start_weapon() -> void:
 			_weapon = Weapon.SWORD
 
 
-func _attach_body() -> void:
-	if not ResourceLoader.exists(BODY_GLB):
-		return
-	var packed := load(BODY_GLB) as PackedScene
-	if packed == null:
-		return
-	var model := packed.instantiate()
-	body_root.add_child(model)
-	PixelMat.enable_vertex_colors(model)
-
-
 func _attach_torch() -> void:
 	_torch_root = Node3D.new()
 	_torch_root.name = "TorchRoot"
@@ -99,7 +88,6 @@ func _attach_torch() -> void:
 		if packed:
 			var torch_model := packed.instantiate()
 			_torch_root.add_child(torch_model)
-			PixelMat.enable_vertex_colors(torch_model)
 	var glow := OmniLight3D.new()
 	glow.name = "TorchLight"
 	glow.position = Vector3(0, 0.25, 0)
@@ -121,7 +109,6 @@ func _attach_weapon(path: String, pivot: Node3D, pos: Vector3, rot_deg: Vector3,
 	model.position = pos
 	model.rotation_degrees = rot_deg
 	model.scale = Vector3.ONE * scale_f
-	PixelMat.enable_vertex_colors(model)
 
 
 func is_blocking() -> bool:

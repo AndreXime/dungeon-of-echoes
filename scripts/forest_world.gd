@@ -14,14 +14,15 @@ const EDGE_ROWS := 3
 const EDGE_INSET := 1.2
 
 const TREE_PATHS := [
-	"res://assets/models/tree_a.glb",
-	"res://assets/models/tree_b.glb",
+	KayKit.TREE_A,
+	KayKit.TREE_B,
+	KayKit.TREE_C,
 ]
 const ROCK_PATHS := [
-	"res://assets/models/rock_a.glb",
-	"res://assets/models/rock_b.glb",
+	KayKit.ROCK_A,
+	KayKit.ROCK_B,
 ]
-const GRASS_PATH := "res://assets/models/grass.glb"
+const GRASS_PATH := KayKit.GRASS
 
 var _rng := RandomNumberGenerator.new()
 var _tree_scenes: Array[PackedScene] = []

@@ -7,7 +7,7 @@ const ATTACK_DAMAGE := 12
 const MAX_HP := 40
 const GOLD_REWARD := 15
 const FRONT_DAMAGE_MULT := 0.45
-const SKELETON_GLB := "res://assets/models/skeleton.glb"
+const SKELETON_GLB := KayKit.SKELETON_WARRIOR
 
 var hp: int = MAX_HP
 var _attack_cd := 0.0

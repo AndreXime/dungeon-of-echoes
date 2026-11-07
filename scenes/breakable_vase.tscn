@@ -12,7 +12,7 @@ collision_mask = 1
 script = ExtResource("1_break")
 gold_reward = 4
 max_hp = 1
-model_path = "res://assets/models/vase.glb"
+model_path = "res://assets/kaykit/dungeon/bottle_A_brown.gltf"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0, 0)

@@ -11,13 +11,12 @@ func _ready() -> void:
 	hp = max_hp
 	collision_layer = 4
 	collision_mask = 1
-	if not has_node("ModelRoot") and ResourceLoader.exists("res://assets/models/cut_vines.glb"):
+	if not has_node("ModelRoot"):
 		var root := Node3D.new()
 		root.name = "ModelRoot"
 		add_child(root)
-		var packed := load("res://assets/models/cut_vines.glb") as PackedScene
-		if packed:
-			root.add_child(packed.instantiate())
+		KayKit.add_model(root, KayKit.BUSH, Vector3.ZERO, 0.0, 1.3)
+		KayKit.add_model(root, KayKit.COBWEB, Vector3(0, 1.0, 0.2), 0.2, 0.9)
 	if not has_node("CollisionShape3D"):
 		var col := CollisionShape3D.new()
 		var shape := BoxShape3D.new()

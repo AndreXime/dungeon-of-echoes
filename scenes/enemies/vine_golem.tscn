@@ -12,7 +12,7 @@ attack_damage = 20
 max_hp = 80
 gold_reward = 28
 essence_reward = 5
-model_path = "res://assets/models/vine_golem.glb"
+model_path = "res://assets/kaykit/adventurers/characters/Rogue_Hooded.glb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

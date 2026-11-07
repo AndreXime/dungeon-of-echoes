@@ -2,7 +2,7 @@ extends StaticBody3D
 
 @export var gold_reward: int = 5
 @export var max_hp: int = 2
-@export_file("*.glb") var model_path: String = "res://assets/models/crate.glb"
+@export var model_path: String = KayKit.BOX_SMALL
 
 var hp: int
 
@@ -20,21 +20,10 @@ func _attach_model() -> void:
 	for child in get_children():
 		if child is MeshInstance3D:
 			child.queue_free()
-	if not ResourceLoader.exists(model_path):
+	var model := KayKit.instantiate(model_path)
+	if model == null:
 		return
-	var packed := load(model_path) as PackedScene
-	if packed == null:
-		return
-	var model := packed.instantiate() as Node3D
 	add_child(model)
-	var PixelMat = preload("res://scripts/pixel_material.gd")
-	PixelMat.enable_vertex_colors(model)
-	if model_path.ends_with("crate.glb"):
-		model.position = Vector3(0, -0.4, 0)
-	elif model_path.ends_with("barrel.glb"):
-		model.position = Vector3(0, -0.45, 0)
-	elif model_path.ends_with("vase.glb"):
-		model.position = Vector3(0, -0.4, 0)
 
 
 func take_hit(damage: int, _knockback: Vector3) -> void:

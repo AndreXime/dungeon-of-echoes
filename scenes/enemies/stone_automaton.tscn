@@ -12,7 +12,8 @@ attack_damage = 18
 max_hp = 70
 gold_reward = 25
 essence_reward = 4
-model_path = "res://assets/models/stone_automaton.glb"
+model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Minion.glb"
+model_scale = 1.45
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

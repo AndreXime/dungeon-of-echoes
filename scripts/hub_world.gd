@@ -1,54 +1,62 @@
 extends Node3D
 
-## Monta o acampamento com modelos GLB.
-
-const PixelMat = preload("res://scripts/pixel_material.gd")
+## Acampamento com props e personagens KayKit.
 
 
 func _ready() -> void:
 	_build_ground()
-	_instance_glb("res://assets/models/campfire.glb", Vector3(0, 0, 0))
+	_build_campfire(Vector3(0, 0, 0))
 	_add_fire_light(Vector3(0, 1.2, 0))
-	_build_npc(Vector3(-4, 0, -2), "Ferreiro", "blacksmith", "res://assets/models/npc_blacksmith.glb")
-	_build_npc(Vector3(0, 0, -4), "Alquimista", "alchemist", "res://assets/models/npc_alchemist.glb")
-	_build_npc(Vector3(4, 0, -2), "Cartógrafo", "cartographer", "res://assets/models/npc_cartographer.glb")
+	_build_npc(Vector3(-4, 0, -2), "Ferreiro", "blacksmith", KayKit.BARBARIAN, KayKit.ANVIL)
+	_build_npc(Vector3(0, 0, -4), "Alquimista", "alchemist", KayKit.MAGE, KayKit.JOURNAL)
+	_build_npc(Vector3(4, 0, -2), "Cartógrafo", "cartographer", KayKit.RANGER, KayKit.MAP_PROP)
 	_build_portal(Vector3(0, 0, 6))
 
 
-func _flat(color: Color) -> StandardMaterial3D:
-	return PixelMat.make(color)
-
-
-func _instance_glb(path: String, pos: Vector3, parent: Node = null) -> Node3D:
+func _instance_model(path: String, pos: Vector3, parent: Node = null, scale_f: float = 1.0) -> Node3D:
 	var host: Node = parent if parent else self
-	if not ResourceLoader.exists(path):
-		return null
-	var packed := load(path) as PackedScene
-	if packed == null:
-		return null
-	var model := packed.instantiate() as Node3D
-	model.position = pos
-	host.add_child(model)
-	PixelMat.enable_vertex_colors(model)
-	return model
+	return KayKit.add_model(host, path, pos, 0.0, scale_f)
 
 
 func _build_ground() -> void:
 	var body := StaticBody3D.new()
 	add_child(body)
-	var mi := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = Vector3(40, 1, 40)
-	mi.mesh = box
-	mi.material_override = _flat(Color(0.28, 0.32, 0.26))
-	mi.position.y = -0.5
-	body.add_child(mi)
+	var visual := Node3D.new()
+	body.add_child(visual)
+	for x in range(-5, 6):
+		for z in range(-5, 6):
+			KayKit.add_model(
+				visual,
+				KayKit.FLOOR_DIRT,
+				Vector3(float(x) * KayKit.TILE, 0.0, float(z) * KayKit.TILE)
+			)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
-	shape.size = Vector3(40, 1, 40)
+	shape.size = Vector3(44, 1, 44)
 	col.shape = shape
 	col.position.y = -0.5
 	body.add_child(col)
+	for i in 18:
+		var ang := float(i) / 18.0 * TAU
+		var r := 14.0 + float(i % 3)
+		KayKit.add_model(
+			self,
+			KayKit.TREE_A if i % 2 == 0 else KayKit.TREE_B,
+			Vector3(cos(ang) * r, 0.0, sin(ang) * r),
+			ang,
+			1.1 + float(i % 4) * 0.1
+		)
+
+
+func _build_campfire(pos: Vector3) -> void:
+	var root := Node3D.new()
+	root.position = pos
+	add_child(root)
+	KayKit.add_model(root, KayKit.CANDLE_LIT, Vector3(0.15, 0, 0.1), 0.0, 1.4)
+	KayKit.add_model(root, KayKit.CANDLE_LIT, Vector3(-0.2, 0, -0.05), 0.4, 1.2)
+	KayKit.add_model(root, KayKit.TORCH_LIT, Vector3(0, 0, 0), 0.0, 0.9)
+	KayKit.add_model(root, KayKit.BOX_SMALL, Vector3(1.2, 0, 0.8), 0.3, 0.8)
+	KayKit.add_model(root, KayKit.BARREL, Vector3(-1.4, 0, 0.6))
 
 
 func _add_fire_light(pos: Vector3) -> void:
@@ -61,14 +69,15 @@ func _add_fire_light(pos: Vector3) -> void:
 	add_child(light)
 
 
-func _build_npc(pos: Vector3, label: String, action: String, model_path: String) -> void:
+func _build_npc(pos: Vector3, label: String, action: String, model_path: String, prop_path: String) -> void:
 	var root := Node3D.new()
 	root.position = pos
 	add_child(root)
 
 	var body := StaticBody3D.new()
 	root.add_child(body)
-	_instance_glb(model_path, Vector3.ZERO, body)
+	_instance_model(model_path, Vector3.ZERO, body)
+	_instance_model(prop_path, Vector3(0.7, 0, 0.3), body, 0.9)
 	var col := CollisionShape3D.new()
 	var shape := BoxShape3D.new()
 	shape.size = Vector3(0.7, 1.6, 0.5)
@@ -78,7 +87,7 @@ func _build_npc(pos: Vector3, label: String, action: String, model_path: String)
 
 	var tag := Label3D.new()
 	tag.text = label
-	tag.position = Vector3(0, 2.0, 0)
+	tag.position = Vector3(0, 2.2, 0)
 	tag.font_size = 48
 	tag.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	root.add_child(tag)
@@ -101,7 +110,9 @@ func _build_portal(pos: Vector3) -> void:
 	var root := Node3D.new()
 	root.position = pos
 	add_child(root)
-	_instance_glb("res://assets/models/portal.glb", Vector3.ZERO, root)
+	KayKit.add_model(root, KayKit.MIRROR, Vector3.ZERO, 0.0, 1.4)
+	KayKit.add_model(root, KayKit.COLUMN, Vector3(-1.2, 0, 0), 0.0, 1.6)
+	KayKit.add_model(root, KayKit.COLUMN, Vector3(1.2, 0, 0), 0.0, 1.6)
 	var glow := OmniLight3D.new()
 	glow.position = Vector3(0, 1.5, 0)
 	glow.light_color = Color(0.45, 0.55, 1.0)

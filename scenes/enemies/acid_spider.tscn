@@ -12,7 +12,7 @@ attack_damage = 10
 max_hp = 32
 gold_reward = 16
 essence_reward = 3
-model_path = "res://assets/models/acid_spider.glb"
+model_path = "res://assets/kaykit/skeletons/characters/Skeleton_Minion.glb"
 ranged = true
 projectile_damage = 9
 

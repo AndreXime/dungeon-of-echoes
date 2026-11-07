@@ -1,8 +1,6 @@
 extends CharacterBody3D
 class_name EnemyBase
 
-const PixelMat = preload("res://scripts/pixel_material.gd")
-
 @export var move_speed: float = 2.2
 @export var attack_range: float = 1.6
 @export var attack_cooldown: float = 1.3
@@ -11,6 +9,7 @@ const PixelMat = preload("res://scripts/pixel_material.gd")
 @export var gold_reward: int = 10
 @export var essence_reward: int = 1
 @export var model_path: String = ""
+@export var model_scale: float = 1.0
 @export var flying: bool = false
 @export var can_split: bool = false
 @export var is_boss: bool = false
@@ -55,9 +54,10 @@ func _attach_model() -> void:
 	add_child(root)
 	var packed := load(model_path) as PackedScene
 	if packed:
-		var model := packed.instantiate()
+		var model := packed.instantiate() as Node3D
+		if not is_equal_approx(model_scale, 1.0):
+			model.scale = Vector3.ONE * model_scale
 		root.add_child(model)
-		PixelMat.enable_vertex_colors(model)
 
 
 func _physics_process(delta: float) -> void:
@@ -150,7 +150,9 @@ func _shoot(player: Node3D) -> void:
 	var sphere := SphereMesh.new()
 	sphere.radius = 0.1
 	mesh.mesh = sphere
-	mesh.material_override = PixelMat.make(Color(0.7, 1.0, 0.3))
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = Color(0.7, 1.0, 0.3)
+	mesh.material_override = mat
 	proj.add_child(mesh)
 	var col := CollisionShape3D.new()
 	var shape := SphereShape3D.new()
