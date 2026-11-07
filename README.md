@@ -30,19 +30,20 @@ godot --path /home/andre/Projetos/newgame --scene res://scenes/dungeon_run.tscn
 | WASD | Andar |
 | Mouse | Olhar |
 | Espaço | Pular |
-| Esc | Liberar / capturar mouse |
+| Esc | Pausar / menu (abas Ficha e Controles) |
+| F4 | Alternar tela cheia (preferência salva) |
 | E | Interagir (NPCs, portal, relíquias) |
 | 1 / 2 / 3 | Espada+escudo / Adaga / Besteira |
 | LMB | Ataque (avançando = estocada) / adaga / besta |
 | RMB | Escudo (espada) ou puxar adaga |
 | Q | Usar poção |
-| T | Ligar / desligar tocha |
+| T | Alternar tocha ↔ escudo (só um por vez) |
 
 ## Loop de jogo
 
 1. **Hub** — ferreiro, alquimista, cartógrafo e portal
-2. **Masmorra** — andares 1–9 em três biomas
-3. Salas procedurais, inimigos, armadilhas, relíquias
+2. **Masmorra** — andares 1–9 em três biomas (layout em grafo, não só corredor)
+3. Salas com ramos, inimigos com aggro/visão, relíquias únicas por run
 4. Andares 3 / 6 / 9 têm **chefe** (saída só após derrotar)
 5. Vitória no andar 9 ou morte → volta ao hub com ouro e minério
 

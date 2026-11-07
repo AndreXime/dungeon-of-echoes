@@ -36,62 +36,162 @@ const RELICS := [
 
 signal generation_done(player_spawn: Vector3, exit_pos: Vector3)
 
+var _spawned_relic_ids: Array[String] = []
+
 
 func generate(parent: Node3D, seed_value: int) -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value if seed_value != 0 else 1
 	RunState.map_rooms.clear()
+	_spawned_relic_ids.clear()
 
-	var boss_floor := RunState.floor_index % 3 == 0
-	var count := rng.randi_range(4, 6)
-	var sequence: Array[String] = []
-	for i in count:
-		if i == count - 1:
-			sequence.append("boss" if boss_floor else "end")
-		elif i == 0:
-			sequence.append("hall")
-		else:
-			var roll := rng.randf()
-			if roll < 0.18:
-				sequence.append("treasure")
-			elif roll < 0.32:
-				sequence.append("bridge")
-			elif roll < 0.46:
-				sequence.append("hazard")
-			elif roll < 0.58:
-				sequence.append("cross")
-			else:
-				sequence.append("hall")
-
-	var cursor_z := 0.0
+	var layout := _build_layout(rng)
 	var player_spawn := Vector3(0, 0.2, 2)
 	var exit_pos := Vector3.ZERO
 	var reveal := MetaProgress.cartographer_level
+	var index := 0
 
-	for i in sequence.size():
-		var kind: String = sequence[i]
-		var room := _build_room(kind, rng)
-		room.name = "Room_%d_%s" % [i, kind]
-		room.position = Vector3(0, 0, cursor_z)
+	for cell in layout:
+		var kind: String = cell["kind"]
+		var grid: Vector2i = cell["grid"]
+		var doors: Dictionary = cell["doors"]
+		var room := _build_room(kind, rng, doors)
+		room.name = "Room_%d_%s" % [index, kind]
+		room.position = Vector3(float(grid.x) * ROOM_SIZE.x, 0.0, float(grid.y) * ROOM_SIZE.z)
 		parent.add_child(room)
 
-		var map_entry := {
-			"index": i,
+		RunState.map_rooms.append({
+			"index": index,
 			"kind": kind,
 			"biome": RunState.biome,
-			"revealed": i == 0 or i < reveal or kind in ["treasure", "boss", "end"],
+			"grid": [grid.x, grid.y],
+			"revealed": index == 0 or index < reveal or kind in ["treasure", "boss", "end"],
 			"cleared": false,
-		}
-		RunState.map_rooms.append(map_entry)
+		})
 
-		if i == 0:
-			player_spawn = room.global_position + Vector3(0, 0.2, ROOM_SIZE.z * 0.3)
+		if index == 0:
+			player_spawn = room.global_position + Vector3(0, 0.2, ROOM_SIZE.z * 0.25)
 		if kind == "end" or kind == "boss":
 			exit_pos = room.global_position + Vector3(0, 1.0, -ROOM_SIZE.z * 0.3)
 			_add_exit_trigger(room, Vector3(0, 1.0, -ROOM_SIZE.z * 0.3), kind == "boss")
-		cursor_z -= ROOM_SIZE.z
+		index += 1
 
 	generation_done.emit(player_spawn, exit_pos)
+
+
+func _build_layout(rng: RandomNumberGenerator) -> Array[Dictionary]:
+	var boss_floor := RunState.floor_index % 3 == 0
+	var main_count := rng.randi_range(5, 7)
+	var occupied: Dictionary = {}
+	var order: Array[Vector2i] = []
+	var kinds: Dictionary = {}
+	var doors: Dictionary = {}
+
+	var pos := Vector2i(0, 0)
+	occupied[pos] = true
+	order.append(pos)
+	kinds[pos] = "hall"
+	doors[pos] = {"n": false, "s": false, "e": false, "w": false}
+
+	var dirs := [
+		Vector2i(0, -1),
+		Vector2i(0, -1),
+		Vector2i(0, -1),
+		Vector2i(1, 0),
+		Vector2i(-1, 0),
+	]
+
+	while order.size() < main_count:
+		var placed := false
+		var shuffled := dirs.duplicate()
+		for i in shuffled.size():
+			var j := rng.randi_range(i, shuffled.size() - 1)
+			var tmp: Vector2i = shuffled[i]
+			shuffled[i] = shuffled[j]
+			shuffled[j] = tmp
+		for d in shuffled:
+			var nxt: Vector2i = pos + d
+			if occupied.has(nxt):
+				continue
+			_link_doors(doors, pos, nxt, d)
+			occupied[nxt] = true
+			order.append(nxt)
+			pos = nxt
+			placed = true
+			break
+		if not placed:
+			break
+
+	for i in order.size():
+		var p: Vector2i = order[i]
+		if i == 0:
+			kinds[p] = "hall"
+		elif i == order.size() - 1:
+			kinds[p] = "boss" if boss_floor else "end"
+		else:
+			var roll := rng.randf()
+			if roll < 0.22:
+				kinds[p] = "bridge"
+			elif roll < 0.4:
+				kinds[p] = "hazard"
+			elif roll < 0.55:
+				kinds[p] = "cross"
+			else:
+				kinds[p] = "hall"
+
+	# 1–2 salas laterais (tesouro / cross)
+	var branch_budget := 1 + int(rng.randf() > 0.45)
+	var mid_candidates: Array[Vector2i] = []
+	for i in range(1, maxi(order.size() - 1, 1)):
+		mid_candidates.append(order[i])
+	for _b in branch_budget:
+		if mid_candidates.is_empty():
+			break
+		var from: Vector2i = mid_candidates[rng.randi_range(0, mid_candidates.size() - 1)]
+		var side_dirs := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1)]
+		for i in side_dirs.size():
+			var j := rng.randi_range(i, side_dirs.size() - 1)
+			var tmp2: Vector2i = side_dirs[i]
+			side_dirs[i] = side_dirs[j]
+			side_dirs[j] = tmp2
+		for d in side_dirs:
+			var nxt2: Vector2i = from + d
+			if occupied.has(nxt2):
+				continue
+			_link_doors(doors, from, nxt2, d)
+			occupied[nxt2] = true
+			order.append(nxt2)
+			kinds[nxt2] = "treasure" if rng.randf() > 0.35 else "cross"
+			break
+
+	var result: Array[Dictionary] = []
+	for p2 in order:
+		result.append({
+			"grid": p2,
+			"kind": kinds[p2],
+			"doors": doors[p2],
+		})
+	return result
+
+
+func _link_doors(doors: Dictionary, a: Vector2i, b: Vector2i, delta: Vector2i) -> void:
+	if not doors.has(a):
+		doors[a] = {"n": false, "s": false, "e": false, "w": false}
+	if not doors.has(b):
+		doors[b] = {"n": false, "s": false, "e": false, "w": false}
+	# grid y negativo = norte (-Z)
+	if delta == Vector2i(0, -1):
+		doors[a]["n"] = true
+		doors[b]["s"] = true
+	elif delta == Vector2i(0, 1):
+		doors[a]["s"] = true
+		doors[b]["n"] = true
+	elif delta == Vector2i(1, 0):
+		doors[a]["e"] = true
+		doors[b]["w"] = true
+	elif delta == Vector2i(-1, 0):
+		doors[a]["w"] = true
+		doors[b]["e"] = true
 
 
 func _palette() -> Dictionary:
@@ -154,8 +254,9 @@ func _enemy_pool() -> Array:
 			return ENEMIES_CATACOMBS
 
 
-func _build_room(kind: String, rng: RandomNumberGenerator) -> Node3D:
+func _build_room(kind: String, rng: RandomNumberGenerator, doors: Dictionary = {}) -> Node3D:
 	var room := Node3D.new()
+	room.set_meta("has_relic", false)
 	var pal := _palette()
 	var stone: Color = pal["stone"]
 	var floor_c: Color = pal["floor"]
@@ -163,15 +264,17 @@ func _build_room(kind: String, rng: RandomNumberGenerator) -> Node3D:
 	var hz := ROOM_SIZE.z * 0.5
 	var hx := ROOM_SIZE.x * 0.5
 	var hy := ROOM_SIZE.y * 0.5
+	var d_n := bool(doors.get("n", false))
+	var d_s := bool(doors.get("s", false))
+	var d_e := bool(doors.get("e", false))
+	var d_w := bool(doors.get("w", false))
 
 	_add_box(room, Vector3(ROOM_SIZE.x, 0.5, ROOM_SIZE.z), Vector3(0, -0.25, 0), floor_c)
 	_add_box(room, Vector3(ROOM_SIZE.x, 0.4, ROOM_SIZE.z), Vector3(0, ROOM_SIZE.y, 0), stone)
-	_add_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(-5.0, hy, hz), stone)
-	_add_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(5.0, hy, hz), stone)
-	_add_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(-5.0, hy, -hz), stone)
-	_add_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(5.0, hy, -hz), stone)
-	_add_box(room, Vector3(0.5, ROOM_SIZE.y, ROOM_SIZE.z), Vector3(hx, hy, 0), stone)
-	_add_box(room, Vector3(0.5, ROOM_SIZE.y, ROOM_SIZE.z), Vector3(-hx, hy, 0), stone)
+	_build_wall_ns(room, hz, hy, stone, d_s)   # +Z sul
+	_build_wall_ns(room, -hz, hy, stone, d_n)  # -Z norte
+	_build_wall_ew(room, hx, hy, stone, d_e)   # +X leste
+	_build_wall_ew(room, -hx, hy, stone, d_w)  # -X oeste
 
 	_spawn_torch(room, Vector3(-5.5, 2.2, 0))
 	_spawn_torch(room, Vector3(5.5, 2.2, 0))
@@ -201,25 +304,24 @@ func _build_room(kind: String, rng: RandomNumberGenerator) -> Node3D:
 			_add_box(room, Vector3(2, 2, 2), Vector3(-4, 1, -3), stone)
 			_add_box(room, Vector3(2, 1.2, 2), Vector3(4, 0.6, 2), stone)
 			_spawn_spikes(room, Vector3(0, 0.15, 3))
-			if rng.randf() > 0.35:
+			if rng.randf() > 0.4:
 				_spawn_random_relic(room, Vector3(0, 0.2, -2), rng)
 		"treasure":
 			_add_box(room, Vector3(1.2, 1.2, 1.2), Vector3(0, 0.6, 0), pal["accent"])
-			_spawn_random_relic(room, Vector3(2.5, 0.2, -1), rng)
-			_spawn_random_relic(room, Vector3(-2.5, 0.2, -1), rng)
+			_spawn_random_relic(room, Vector3(0, 0.2, -2), rng, true)
 			for _i in 3:
 				_spawn_crate(room, Vector3(rng.randf_range(-4, 4), 0.45, rng.randf_range(-3, 3)))
 		"boss":
 			_add_box(room, Vector3(2.0, 2.8, 0.5), Vector3(0, 1.4, -5), pal["accent"])
 			_spawn_boss(room, Vector3(0, 0.1, -1))
-			_spawn_random_relic(room, Vector3(3, 0.2, 2), rng)
+			_spawn_random_relic(room, Vector3(3, 0.2, 2), rng, true)
 		"end":
 			_add_box(room, Vector3(1.5, 2.5, 0.4), Vector3(0, 1.25, -5), pal["accent"])
-			_spawn_random_relic(room, Vector3(2.5, 0.2, -2), rng)
+			_spawn_random_relic(room, Vector3(2.5, 0.2, -2), rng, true)
 			_spawn_enemy(room, Vector3(rng.randf_range(-2, 2), 0.1, 0), rng)
 		_:
 			_add_box(room, Vector3(1.5, 1.5, 1.5), Vector3(-5, 0.75, 0), stone)
-			if rng.randf() > 0.6:
+			if rng.randf() > 0.72:
 				_spawn_random_relic(room, Vector3(4, 0.2, -2), rng)
 
 	if RunState.biome == RunState.BIOME_GARDEN:
@@ -243,6 +345,22 @@ func _build_room(kind: String, rng: RandomNumberGenerator) -> Node3D:
 		_spawn_crate(room, Vector3(rng.randf_range(-5, 5), 0.45, rng.randf_range(-4, 4)))
 
 	return room
+
+
+func _build_wall_ns(room: Node3D, z: float, hy: float, stone: Color, has_door: bool) -> void:
+	if has_door:
+		_add_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(-5.0, hy, z), stone)
+		_add_box(room, Vector3(6.0, ROOM_SIZE.y, 0.5), Vector3(5.0, hy, z), stone)
+	else:
+		_add_box(room, Vector3(ROOM_SIZE.x, ROOM_SIZE.y, 0.5), Vector3(0, hy, z), stone)
+
+
+func _build_wall_ew(room: Node3D, x: float, hy: float, stone: Color, has_door: bool) -> void:
+	if has_door:
+		_add_box(room, Vector3(0.5, ROOM_SIZE.y, 6.0), Vector3(x, hy, -5.0), stone)
+		_add_box(room, Vector3(0.5, ROOM_SIZE.y, 6.0), Vector3(x, hy, 5.0), stone)
+	else:
+		_add_box(room, Vector3(0.5, ROOM_SIZE.y, ROOM_SIZE.z), Vector3(x, hy, 0), stone)
 
 
 func _carve_pit(room: Node3D, pos: Vector3, size: Vector3) -> void:
@@ -397,15 +515,33 @@ func _spawn_spikes(room: Node3D, local_pos: Vector3) -> void:
 	area.add_child(col)
 
 
-func _spawn_random_relic(room: Node3D, local_pos: Vector3, rng: RandomNumberGenerator) -> void:
-	var luck_bonus := MetaProgress.relic_luck * 0.08
-	if rng.randf() > 0.55 + luck_bonus:
+func _spawn_random_relic(room: Node3D, local_pos: Vector3, rng: RandomNumberGenerator, force: bool = false) -> void:
+	if bool(room.get_meta("has_relic", false)):
 		return
-	var relic: Dictionary = RELICS[rng.randi_range(0, RELICS.size() - 1)]
-	_spawn_relic(room, local_pos, relic["id"], relic["name"], relic["desc"])
+	var luck_bonus := MetaProgress.relic_luck * 0.08
+	if not force and rng.randf() > 0.5 + luck_bonus:
+		return
+	var available: Array[Dictionary] = []
+	for relic in RELICS:
+		var id := String(relic["id"])
+		if _spawned_relic_ids.has(id):
+			continue
+		if RunState.has_relic(id):
+			continue
+		available.append(relic)
+	if available.is_empty():
+		return
+	var pick: Dictionary = available[rng.randi_range(0, available.size() - 1)]
+	_spawn_relic(room, local_pos, pick["id"], pick["name"], pick["desc"])
 
 
 func _spawn_relic(room: Node3D, local_pos: Vector3, relic_id: String, relic_name: String, relic_desc: String) -> void:
+	if bool(room.get_meta("has_relic", false)):
+		return
+	if _spawned_relic_ids.has(relic_id) or RunState.has_relic(relic_id):
+		return
+	room.set_meta("has_relic", true)
+	_spawned_relic_ids.append(relic_id)
 	var root := Node3D.new()
 	root.position = local_pos
 	room.add_child(root)

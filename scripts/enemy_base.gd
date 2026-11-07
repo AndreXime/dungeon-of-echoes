@@ -16,11 +16,14 @@ const PixelMat = preload("res://scripts/pixel_material.gd")
 @export var is_boss: bool = false
 @export var ranged: bool = false
 @export var projectile_damage: int = 8
+@export var detect_range: float = 9.0
+@export var lose_range: float = 14.0
 
 var hp: int
 var _attack_cd := 0.0
 var _push_vel := Vector3.ZERO
 var _split_done := false
+var _aggro := false
 
 
 func _ready() -> void:
@@ -28,6 +31,9 @@ func _ready() -> void:
 	collision_layer = 4
 	collision_mask = 1
 	hp = max_hp
+	if is_boss:
+		detect_range = maxf(detect_range, 12.0)
+		lose_range = maxf(lose_range, 18.0)
 	_attach_model()
 	if not has_node("CollisionShape3D"):
 		var col := CollisionShape3D.new()
@@ -69,17 +75,25 @@ func _physics_process(delta: float) -> void:
 		to_player.y = 0.0
 	var dist := to_player.length()
 
+	_update_aggro(player, dist)
+
 	if _push_vel.length() > 0.1:
 		velocity.x = _push_vel.x
 		velocity.z = _push_vel.z
 		_push_vel = _push_vel.move_toward(Vector3.ZERO, 18.0 * delta)
+	elif not _aggro:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if flying:
+			velocity.y = 0.0
 	elif dist > attack_range:
 		var dir := to_player.normalized()
 		velocity.x = dir.x * move_speed
 		velocity.z = dir.z * move_speed
 		if flying:
 			velocity.y = dir.y * move_speed * 0.5
-		look_at(global_position + Vector3(dir.x, 0.0, dir.z), Vector3.UP)
+		if Vector3(dir.x, 0.0, dir.z).length() > 0.01:
+			look_at(global_position + Vector3(dir.x, 0.0, dir.z), Vector3.UP)
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -92,6 +106,29 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func _update_aggro(player: Node3D, dist: float) -> void:
+	if dist > lose_range:
+		_aggro = false
+		return
+	if _aggro:
+		return
+	if dist <= detect_range and _has_line_of_sight(player):
+		_aggro = true
+
+
+func _has_line_of_sight(player: Node3D) -> bool:
+	var space := get_world_3d().direct_space_state
+	if space == null:
+		return false
+	var from := global_position + Vector3(0, 1.0, 0)
+	var to := player.global_position + Vector3(0, 1.2, 0)
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.collision_mask = 1
+	query.exclude = [get_rid()]
+	var hit := space.intersect_ray(query)
+	return hit.is_empty()
+
+
 func _do_attack(player: Node3D) -> void:
 	if ranged:
 		_shoot(player)
@@ -100,10 +137,9 @@ func _do_attack(player: Node3D) -> void:
 		var to_me := (global_position - player.global_position).normalized()
 		var facing := -player.global_transform.basis.z
 		if facing.dot(to_me) > 0.35:
-			Sfx.play(self, "block", player.global_position)
+			Juice.on_block()
 			return
 	RunState.apply_damage(attack_damage)
-	Sfx.play(self, "hit", global_position)
 
 
 func _shoot(player: Node3D) -> void:
@@ -138,13 +174,17 @@ func _find_player() -> Node3D:
 func take_hit(damage: int, knockback: Vector3) -> void:
 	hp -= damage
 	_push_vel = knockback
-	Sfx.play(self, "hit", global_position)
+	_aggro = true
 	if hp <= 0:
+		Juice.on_hit(self, true)
 		_die()
+	else:
+		Juice.on_hit(self, false)
 
 
 func apply_push(force: Vector3) -> void:
 	_push_vel = force
+	_aggro = true
 
 
 func _die() -> void:
@@ -171,3 +211,4 @@ func _spawn_split() -> void:
 		s.global_position = global_position + offset
 		if "hp" in s:
 			s.set("hp", s.get("max_hp"))
+		s.set("_aggro", true)
