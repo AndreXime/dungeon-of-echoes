@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Dungeon Of Echoes"
 config/description="Roguelike FPS — vertical slice Catacumbas"
+config/version="0.3.0"
 run/main_scene="res://scenes/hub.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
