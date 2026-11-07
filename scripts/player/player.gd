@@ -17,10 +17,13 @@ const SHIELD_GLB := KayKit.SHIELD
 const DAGGER_GLB := KayKit.DAGGER
 const CROSSBOW_GLB := KayKit.CROSSBOW
 const BOLT_GLB := KayKit.BOLT
-const TORCH_GLB := KayKit.TORCH_HAND
+const TORCH_GLB := KayKit.TORCH_LIT
+## Layer só pra sombra do corpo (a tocha na mão não ilumina/sombreia essa layer).
+const BODY_SHADOW_LAYER := 2
 
 @onready var camera: Camera3D = $Camera3D
 @onready var body_root: Node3D = $BodyRoot
+@onready var weapons_root: Node3D = $Camera3D/WeaponsRoot
 @onready var sword_pivot: Node3D = $Camera3D/WeaponsRoot/SwordPivot
 @onready var shield_pivot: Node3D = $Camera3D/WeaponsRoot/ShieldPivot
 @onready var dagger_pivot: Node3D = $Camera3D/WeaponsRoot/DaggerPivot
@@ -43,14 +46,14 @@ var _torch_root: Node3D
 ## Offhand: true = tocha, false = escudo. Nunca os dois ao mesmo tempo.
 var _torch_equipped := false
 var _melee_slash_shape: BoxShape3D
+var _body_anim: AnimationPlayer
 
 
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	# FPS: sem corpo local (o Knight inteiro ficava dentro da câmera).
-	if body_root:
-		body_root.visible = false
+	# FPS: corpo só na sombra (não aparece no POV).
+	_attach_body_for_shadow()
 	_attach_sword()
 	_attach_weapon(SHIELD_GLB, shield_pivot, Vector3(0, -0.02, 0.04), Vector3(8, 20, -8), 0.72)
 	_attach_weapon(DAGGER_GLB, dagger_pivot, Vector3(0, 0, 0), Vector3(-90, 0, 0), 1.15)
@@ -84,22 +87,77 @@ func _apply_start_weapon() -> void:
 func _attach_torch() -> void:
 	_torch_root = Node3D.new()
 	_torch_root.name = "TorchRoot"
-	camera.add_child(_torch_root)
-	_torch_root.position = Vector3(-0.32, -0.38, -0.45)
-	_torch_root.rotation_degrees = Vector3(25, 15, -8)
+	# Mesma mão do escudo. Mesh sobe no +Y: escala menor + offset pra não furar o topo do POV.
+	weapons_root.add_child(_torch_root)
+	# −Z = pra frente da câmera (menos colado no POV).
+	_torch_root.position = shield_pivot.position + Vector3(0.02, -0.08, -0.14)
+	_torch_root.rotation_degrees = Vector3(18, 12, -10)
 	if ResourceLoader.exists(TORCH_GLB):
 		var packed := load(TORCH_GLB) as PackedScene
 		if packed:
-			var torch_model := packed.instantiate()
+			var torch_model := packed.instantiate() as Node3D
 			_torch_root.add_child(torch_model)
+			torch_model.position = Vector3(0.0, -0.22, 0.0)
+			torch_model.scale = Vector3.ONE * 0.75
+			_make_torch_look_lit(torch_model)
 	var glow := OmniLight3D.new()
 	glow.name = "TorchLight"
-	glow.position = Vector3(0, 0.25, 0)
+	glow.position = Vector3(0.0, 0.42, 0.0)
 	glow.light_color = Color(1.0, 0.72, 0.35)
-	glow.light_energy = 1.35
+	glow.light_energy = 1.7
 	glow.omni_range = 9.0
 	glow.shadow_enabled = true
+	# Não usa o corpo do jogador: a sombra dele apagava a própria tocha.
+	glow.light_cull_mask = 0xFFFFF & ~BODY_SHADOW_LAYER
 	_torch_root.add_child(glow)
+
+
+func _make_torch_look_lit(node: Node) -> void:
+	if node is MeshInstance3D:
+		var mi := node as MeshInstance3D
+		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		if mi.mesh:
+			for surface_i in mi.mesh.get_surface_count():
+				var base := mi.get_active_material(surface_i)
+				var lit: StandardMaterial3D
+				if base is StandardMaterial3D:
+					lit = (base as StandardMaterial3D).duplicate() as StandardMaterial3D
+				else:
+					lit = StandardMaterial3D.new()
+					if base:
+						lit.next_pass = base
+				lit.emission_enabled = true
+				lit.emission = Color(1.0, 0.5, 0.15)
+				lit.emission_energy_multiplier = 2.2
+				# Usa albedo da textura como mapa de emissão (chama brilha, cabo menos).
+				if lit.albedo_texture != null:
+					lit.emission_texture = lit.albedo_texture
+				mi.set_surface_override_material(surface_i, lit)
+	for child in node.get_children():
+		_make_torch_look_lit(child)
+
+
+func _attach_body_for_shadow() -> void:
+	if body_root == null or not ResourceLoader.exists(KayKit.KNIGHT):
+		return
+	var packed := load(KayKit.KNIGHT) as PackedScene
+	if packed == null:
+		return
+	var model := packed.instantiate() as Node3D
+	body_root.add_child(model)
+	_body_anim = KayKitAnim.setup(model, false)
+	KayKitAnim.play_idle(_body_anim, false)
+	# Invisible na câmera, mas projeta sombra no chão/paredes.
+	_set_geometry_shadows_only(body_root)
+
+
+func _set_geometry_shadows_only(node: Node) -> void:
+	if node is GeometryInstance3D:
+		var gi := node as GeometryInstance3D
+		gi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+		gi.layers = BODY_SHADOW_LAYER
+	for child in node.get_children():
+		_set_geometry_shadows_only(child)
 
 
 func _attach_sword() -> void:
@@ -214,6 +272,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_push_enemies()
+	var planar_speed := Vector3(velocity.x, 0.0, velocity.z).length()
+	KayKitAnim.update_locomotion(_body_anim, planar_speed > 0.35, false)
 	# Area3D body_entered falha se o inimigo já estava sobreposto ao ativar a hitbox
 	if sword_hitbox.monitoring:
 		_poll_sword_overlaps()
@@ -374,9 +434,11 @@ func _swing() -> void:
 	tween.tween_property(sword_pivot, "transform", swung, SWING_TIME * 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(sword_pivot, "transform", _sword_rest, SWING_TIME * 0.55).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tween.tween_callback(_end_swing)
+	var hitbox_id := sword_hitbox.get_instance_id()
 	get_tree().create_timer(HITBOX_TIME).timeout.connect(func() -> void:
-		if is_instance_valid(sword_hitbox):
-			sword_hitbox.monitoring = false
+		var hb := instance_from_id(hitbox_id) as Area3D
+		if hb:
+			hb.monitoring = false
 	)
 
 
@@ -400,9 +462,11 @@ func _thrust() -> void:
 		sword_hitbox.monitoring = false
 		sword_pivot.transform = _sword_rest
 	)
+	var thrust_hitbox_id := sword_hitbox.get_instance_id()
 	get_tree().create_timer(HITBOX_TIME).timeout.connect(func() -> void:
-		if is_instance_valid(sword_hitbox):
-			sword_hitbox.monitoring = false
+		var hb := instance_from_id(thrust_hitbox_id) as Area3D
+		if hb:
+			hb.monitoring = false
 	)
 
 
@@ -428,9 +492,11 @@ func _throw_dagger() -> void:
 	dagger.global_position = camera.global_position + (-camera.global_transform.basis.z) * 0.6
 	dagger.setup(self, -camera.global_transform.basis.z, DAGGER_DAMAGE)
 	_active_dagger = dagger
+	var dagger_id := dagger.get_instance_id()
 	get_tree().create_timer(0.85).timeout.connect(func() -> void:
-		if is_instance_valid(dagger) and dagger.phase == dagger.Phase.FLY:
-			dagger.start_return()
+		var live := instance_from_id(dagger_id)
+		if live != null and int(live.get("phase")) == 0 and live.has_method("start_return"):
+			live.start_return()
 	)
 
 
