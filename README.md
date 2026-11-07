@@ -34,9 +34,12 @@ just build-linux-arm64
 just build-windows            # x86_64 + arm64 em build/windows/
 just build-windows-x86_64
 just build-windows-arm64
-just build-web                # build/web/index.html (WASM)
+just build-web                # single + multi em build/web/
+just build-web-single         # sem threads (host HTTP simples)
+just build-web-multi          # com threads (precisa COOP/COEP)
 just build-all
-just serve-web                # http://127.0.0.1:8080/
+just serve-web-single         # http://127.0.0.1:8080/
+just serve-web-multi          # idem, com headers p/ SharedArrayBuffer
 ```
 
 ## Controles

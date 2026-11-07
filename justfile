@@ -51,29 +51,51 @@ build-windows-arm64:
       "{{ project }}/build/windows/arm64/DungeonOfEchoes.exe"
     ls -lh "{{ project }}/build/windows/arm64/DungeonOfEchoes.exe"
 
-# Build HTML5 (WASM; não depende de CPU do host)
-build-web:
+# Web: single-thread + multi-thread (WASM)
+build-web: build-web-single build-web-multi
+
+build-web-single:
     #!/usr/bin/env bash
     set -euo pipefail
-    mkdir -p "{{ project }}/build/web"
+    mkdir -p "{{ project }}/build/web/single"
     "{{ godot }}" --path "{{ project }}" --headless \
-      --export-release "Web" "{{ project }}/build/web/index.html"
-    du -sh "{{ project }}/build/web"
+      --export-release "Web single" \
+      "{{ project }}/build/web/single/index.html"
+    du -sh "{{ project }}/build/web/single"
+
+build-web-multi:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    mkdir -p "{{ project }}/build/web/multi"
+    "{{ godot }}" --path "{{ project }}" --headless \
+      --export-release "Web multi" \
+      "{{ project }}/build/web/multi/index.html"
+    du -sh "{{ project }}/build/web/multi"
 
 # Todas as plataformas / arquiteturas
 build-all: build-linux build-windows build-web
 
-# Serve a build web em http://127.0.0.1:8080/
-serve-web:
+# Serve web single (qualquer host HTTP simples)
+serve-web: serve-web-single
+
+serve-web-single:
     #!/usr/bin/env bash
     set -euo pipefail
-    if [[ ! -f "{{ project }}/build/web/index.html" ]]; then
-      echo "Sem build web. Rode: just build-web"
+    if [[ ! -f "{{ project }}/build/web/single/index.html" ]]; then
+      echo "Sem build. Rode: just build-web-single"
       exit 1
     fi
-    cd "{{ project }}/build/web"
-    echo "Abrindo http://127.0.0.1:8080/"
-    python3 -m http.server 8080
+    python3 "{{ project }}/scripts/dev/serve_web.py" "{{ project }}/build/web/single"
+
+# Serve web multi (envia COOP/COEP para SharedArrayBuffer)
+serve-web-multi:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [[ ! -f "{{ project }}/build/web/multi/index.html" ]]; then
+      echo "Sem build. Rode: just build-web-multi"
+      exit 1
+    fi
+    python3 "{{ project }}/scripts/dev/serve_web.py" "{{ project }}/build/web/multi" --coop
 
 # Abre o editor Godot no projeto
 editor:
