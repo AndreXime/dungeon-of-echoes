@@ -1,7 +1,58 @@
-[gd_resource type="Theme" load_steps=2 format=3]
+[gd_resource type="Theme" load_steps=6 format=3]
 
 [ext_resource type="FontFile" path="res://assets/fonts/LilitaOne.ttf" id="1_font"]
+[ext_resource type="Texture2D" path="res://assets/ui/textures/panel_brown.png" id="2_panel"]
+[ext_resource type="Texture2D" path="res://assets/ui/textures/buttonLong_brown.png" id="4_btn"]
+[ext_resource type="Texture2D" path="res://assets/ui/textures/buttonLong_brown_pressed.png" id="5_btn_p"]
+
+[sub_resource type="StyleBoxTexture" id="StylePanel"]
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 18.0
+content_margin_bottom = 16.0
+texture = ExtResource("2_panel")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBtn"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture = ExtResource("4_btn")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 20.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBtnPressed"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+texture = ExtResource("5_btn_p")
+texture_margin_left = 20.0
+texture_margin_top = 12.0
+texture_margin_right = 20.0
+texture_margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource("1_font")
-default_font_size = 16
+default_font_size = 18
+Button/colors/font_color = Color(0.96, 0.9, 0.78, 1)
+Button/colors/font_disabled_color = Color(0.7, 0.62, 0.52, 0.75)
+Button/colors/font_focus_color = Color(1, 0.95, 0.82, 1)
+Button/colors/font_hover_color = Color(1, 0.96, 0.86, 1)
+Button/colors/font_pressed_color = Color(0.92, 0.84, 0.68, 1)
+Button/font_sizes/font_size = 18
+Button/styles/disabled = SubResource("StyleBtnPressed")
+Button/styles/focus = SubResource("StyleBtn")
+Button/styles/hover = SubResource("StyleBtn")
+Button/styles/normal = SubResource("StyleBtn")
+Button/styles/pressed = SubResource("StyleBtnPressed")
+Label/colors/font_color = Color(0.28, 0.16, 0.08, 1)
+Label/font_sizes/font_size = 18
+PanelContainer/styles/panel = SubResource("StylePanel")
+RichTextLabel/colors/default_color = Color(0.28, 0.16, 0.08, 1)

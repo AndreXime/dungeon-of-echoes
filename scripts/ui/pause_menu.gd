@@ -4,12 +4,14 @@ signal resumed
 signal quit_to_hub
 
 @onready var root: Control = $Root
-@onready var stats: Label = $Root/Panel/Tabs/Ficha/Stats
-@onready var controls: Label = $Root/Panel/Tabs/Controles/Controls
-@onready var tabs: TabContainer = $Root/Panel/Tabs
-@onready var btn_resume: Button = $Root/Panel/Resume
-@onready var btn_hub: Button = $Root/Panel/QuitHub
-@onready var btn_quit: Button = $Root/Panel/QuitGame
+@onready var panel: PanelContainer = $Root/Center/Panel
+@onready var stats: Label = $Root/Center/Panel/Margin/VBox/Body/Stats
+@onready var controls: Label = $Root/Center/Panel/Margin/VBox/Body/Controls
+@onready var tab_ficha: Button = $Root/Center/Panel/Margin/VBox/Tabs/TabFicha
+@onready var tab_controles: Button = $Root/Center/Panel/Margin/VBox/Tabs/TabControles
+@onready var btn_resume: Button = $Root/Center/Panel/Margin/VBox/Resume
+@onready var btn_hub: Button = $Root/Center/Panel/Margin/VBox/QuitHub
+@onready var btn_quit: Button = $Root/Center/Panel/Margin/VBox/QuitGame
 
 var _open := false
 var _allow_quit_hub := true
@@ -23,8 +25,11 @@ func _ready() -> void:
 	btn_resume.pressed.connect(close)
 	btn_hub.pressed.connect(_on_quit_hub)
 	btn_quit.pressed.connect(_on_quit_game)
+	tab_ficha.pressed.connect(func() -> void: _show_tab(true))
+	tab_controles.pressed.connect(func() -> void: _show_tab(false))
 	btn_hub.visible = _allow_quit_hub
 	_refresh_controls()
+	_show_tab(true)
 
 
 func setup(allow_quit_hub: bool) -> void:
@@ -43,8 +48,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if _open:
 		close()
-	else:
-		open()
+		get_viewport().set_input_as_handled()
+		return
+	for node in get_tree().get_nodes_in_group("npc_shop"):
+		if node.has_method("is_open") and node.is_open():
+			return
+	open()
 	get_viewport().set_input_as_handled()
 
 
@@ -55,10 +64,10 @@ func open() -> void:
 	visible = true
 	root.visible = true
 	Engine.time_scale = 1.0
-	if tabs:
-		tabs.current_tab = 0
+	_show_tab(true)
 	_refresh_stats()
 	_refresh_controls()
+	_fit_panel()
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	btn_resume.grab_focus()
@@ -73,6 +82,21 @@ func close() -> void:
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	resumed.emit()
+
+
+func _show_tab(ficha: bool) -> void:
+	tab_ficha.set_pressed_no_signal(ficha)
+	tab_controles.set_pressed_no_signal(not ficha)
+	stats.visible = ficha
+	controls.visible = not ficha
+	_fit_panel()
+
+
+func _fit_panel() -> void:
+	if panel == null:
+		return
+	panel.reset_size()
+
 
 
 func _refresh_stats() -> void:
@@ -139,9 +163,9 @@ func _refresh_controls() -> void:
 			"  Esc — ficha / controles / pausa",
 			"",
 			"Acampamento",
-			"  E — interagir com NPCs e portal",
-			"  E de novo — cicla ofertas do ferreiro/alquimista",
-			"  Portal — inicia a masmorra",
+			"  E — abrir loja do NPC / portal",
+			"  Na loja: clique na oferta · Esc fecha",
+			"  ‹ › — mudar página se houver várias",
 			"",
 			"Geral",
 			"  F4 — tela cheia",

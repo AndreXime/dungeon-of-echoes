@@ -1,12 +1,14 @@
 extends Node3D
 
 @onready var world: Node3D = $World
-@onready var hud_hp: Label = $HUD/HP
-@onready var hud_gold: Label = $HUD/Gold
-@onready var hud_weapon: Label = $HUD/Weapon
-@onready var hud_relics: Label = $HUD/Relics
-@onready var hud_message: Label = $HUD/Message
-@onready var hud_floor: Label = $HUD/Floor
+@onready var status_panel: PanelContainer = $HUD/Root/StatusPanel
+@onready var hud_hp: Label = $HUD/Root/StatusPanel/StatusBox/HP
+@onready var hud_gold: Label = $HUD/Root/StatusPanel/StatusBox/Gold
+@onready var hud_weapon: Label = $HUD/Root/StatusPanel/StatusBox/Weapon
+@onready var hud_relics: Label = $HUD/Root/StatusPanel/StatusBox/Relics
+@onready var hud_message: Label = $HUD/Root/MessageCenter/MessagePanel/Message
+@onready var hud_message_panel: PanelContainer = $HUD/Root/MessageCenter/MessagePanel
+@onready var hud_floor: Label = $HUD/Root/StatusPanel/StatusBox/Floor
 var _generator := preload("res://scripts/world/dungeon_generator.gd").new()
 var _pause_menu: Node
 
@@ -15,15 +17,13 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Music.play_dungeon()
 	hud_message.add_to_group("run_message")
+	hud_message_panel.visible = false
 	add_child(_generator)
 	_generator.generation_done.connect(_on_generated)
 	_generator.generate(world, RunState.seed_value)
 	_apply_biome_environment()
 	_spawn_pause_menu()
-	if has_node("HUD/Hint"):
-		$HUD/Hint.visible = false
-	if has_node("HUD/Map"):
-		$HUD/Map.visible = false
+	_fit_status_panel()
 
 
 func _spawn_pause_menu() -> void:
@@ -57,8 +57,8 @@ func _apply_biome_environment() -> void:
 
 
 func _process(_delta: float) -> void:
-	hud_hp.text = "HP %d/%d  |  Poções %d" % [RunState.hp, RunState.max_hp, RunState.potions]
-	hud_gold.text = "Ouro: %d  |  Essência: %d" % [RunState.gold, RunState.essence]
+	hud_hp.text = "HP %d/%d  ·  Poções %d" % [RunState.hp, RunState.max_hp, RunState.potions]
+	hud_gold.text = "Ouro %d  ·  Essência %d" % [RunState.gold, RunState.essence]
 	hud_floor.text = "Andar %d — %s" % [RunState.floor_index, RunState.biome_name()]
 	var player := $Player
 	if player and player.has_method("weapon_label"):
@@ -67,6 +67,17 @@ func _process(_delta: float) -> void:
 		hud_relics.text = "Relíquias: nenhuma"
 	else:
 		hud_relics.text = "Relíquias: %s" % ", ".join(PackedStringArray(RunState.relics))
+	var has_msg := hud_message.text.strip_edges() != ""
+	if hud_message_panel.visible != has_msg:
+		hud_message_panel.visible = has_msg
+	_fit_status_panel()
+
+
+func _fit_status_panel() -> void:
+	# Fixa canto e deixa a caixa crescer só o necessário.
+	var min_size := status_panel.get_combined_minimum_size()
+	status_panel.position = Vector2(14, 12)
+	status_panel.size = min_size
 
 
 func _on_generated(player_spawn: Vector3, _exit_pos: Vector3) -> void:

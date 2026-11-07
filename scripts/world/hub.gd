@@ -1,102 +1,87 @@
 extends Node3D
 
-@onready var hud: Label = $HUD/Status
-@onready var prompt: Label = $HUD/Prompt
-@onready var message: Label = $HUD/Message
+@onready var prompt_panel: PanelContainer = $HUD/PromptPanel
+@onready var prompt: Label = $HUD/PromptPanel/Prompt
+@onready var message_panel: PanelContainer = $HUD/MessagePanel
+@onready var message: Label = $HUD/MessagePanel/Message
 
 var _near_interactable: Area3D
-var _alchemist_mode := 0
-var _smith_mode := 0
 var _pause_menu: Node
+var _shop: Node
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Music.play_hub()
-	_refresh_hud()
-	message.text = ""
+	_hide_message()
+	prompt_panel.visible = false
 	for node in get_tree().get_nodes_in_group("hub_interactable"):
 		if node.has_signal("interacted"):
 			node.interacted.connect(_on_interact.bind(node))
-	var packed := load("res://scenes/pause_menu.tscn") as PackedScene
-	if packed:
-		_pause_menu = packed.instantiate()
+	var pause_packed := load("res://scenes/pause_menu.tscn") as PackedScene
+	if pause_packed:
+		_pause_menu = pause_packed.instantiate()
 		add_child(_pause_menu)
 		if _pause_menu.has_method("setup"):
 			_pause_menu.setup(false)
+	var shop_packed := load("res://scenes/ui/npc_shop.tscn") as PackedScene
+	if shop_packed:
+		_shop = shop_packed.instantiate()
+		add_child(_shop)
+		if _shop.has_signal("stock_changed"):
+			_shop.stock_changed.connect(_on_shop_stock_changed)
 
 
 func _process(_delta: float) -> void:
+	if _shop_open() or (_pause_menu and _pause_menu.has_method("is_open") and _pause_menu.is_open()):
+		prompt_panel.visible = false
+		return
 	_near_interactable = null
 	for node in get_tree().get_nodes_in_group("hub_interactable"):
 		if node.has_method("is_player_near") and node.is_player_near():
 			_near_interactable = node
 			break
 	if _near_interactable:
-		prompt.text = "E — %s" % _prompt_for(_near_interactable)
+		prompt.text = _prompt_for(_near_interactable)
+		prompt_panel.visible = true
 	else:
-		prompt.text = ""
+		prompt_panel.visible = false
+
+
+func _shop_open() -> bool:
+	return _shop != null and _shop.has_method("is_open") and _shop.is_open()
 
 
 func _prompt_for(node: Area3D) -> String:
 	var action := String(node.action_id) if "action_id" in node else ""
 	match action:
 		"blacksmith":
-			return _smith_prompt()
+			return "Falar com o Ferreiro"
 		"alchemist":
-			return _alchemist_prompt()
+			return "Falar com o Alquimista"
 		"cartographer":
-			return "Cartógrafo (mapa Nv.%d)" % MetaProgress.cartographer_level
+			return "Falar com o Cartógrafo"
+		"portal":
+			return "Entrar na masmorra"
 		_:
-			return String(node.prompt_text) if "prompt_text" in node else "Interagir"
+			var name := String(node.prompt_text) if "prompt_text" in node else "alguém"
+			return "Falar com %s" % name
 
 
-func _smith_prompt() -> String:
-	match _smith_mode % 4:
-		1:
-			return "Ferreiro: desbloquear Adaga (12 minério)"
-		2:
-			return "Ferreiro: desbloquear Besteira (18 minério)"
-		3:
-			return "Ferreiro: arma inicial (%s)" % MetaProgress.selected_start_weapon
-		_:
-			return "Ferreiro: reforçar espada (%d ouro)" % MetaProgress.upgrade_cost()
-
-
-func _alchemist_prompt() -> String:
-	match _alchemist_mode % 3:
-		1:
-			return "Alquimista: +1 poção (%d ouro)" % MetaProgress.potion_upgrade_cost()
-		2:
-			return "Alquimista: sorte de relíquia (%d ouro)" % MetaProgress.luck_upgrade_cost()
-		_:
-			return "Alquimista: +10 HP (%d ouro)" % MetaProgress.hp_upgrade_cost()
-
-
-func _refresh_hud() -> void:
-	hud.text = "Ouro: %d  |  Minério: %d" % [
-		MetaProgress.gold,
-		MetaProgress.ore,
-	]
+func _on_shop_stock_changed(msg: String) -> void:
+	_show_message(msg)
 
 
 func _on_interact(interactable: Node) -> void:
+	if _shop_open():
+		return
 	var action := ""
 	if "action_id" in interactable:
 		action = interactable.action_id
 	match action:
-		"blacksmith":
-			_do_blacksmith()
-		"alchemist":
-			_do_alchemist()
-		"cartographer":
-			if MetaProgress.cartographer_level >= MetaProgress.CARTO_CAP:
-				_show_message("Cartógrafo: mapa no máximo. Salas especiais reveladas.")
-			elif MetaProgress.try_upgrade_cartographer():
-				_show_message("Cartógrafo: revela +1 sala no mapa da run!")
-				_refresh_hud()
-			else:
-				_show_message("Ouro insuficiente. Precisa de %d." % MetaProgress.carto_upgrade_cost())
+		"blacksmith", "alchemist", "cartographer":
+			if _shop and _shop.has_method("open_for"):
+				_shop.open_for(action)
 		"portal":
 			RunState.reset_for_new_run()
 			get_tree().change_scene_to_file("res://scenes/dungeon_run.tscn")
@@ -104,81 +89,17 @@ func _on_interact(interactable: Node) -> void:
 			_show_message("...")
 
 
-func _do_blacksmith() -> void:
-	match _smith_mode % 4:
-		1:
-			if MetaProgress.unlocked_start_weapons.has("dagger"):
-				_show_message("Adaga já desbloqueada.")
-			elif MetaProgress.try_unlock_weapon("dagger", 12):
-				_show_message("Ferreiro: Adaga desbloqueada!")
-				_refresh_hud()
-			else:
-				_show_message("Minério insuficiente (12).")
-		2:
-			if MetaProgress.unlocked_start_weapons.has("crossbow"):
-				_show_message("Besteira já desbloqueada.")
-			elif MetaProgress.try_unlock_weapon("crossbow", 18):
-				_show_message("Ferreiro: Besteira desbloqueada!")
-				_refresh_hud()
-			else:
-				_show_message("Minério insuficiente (18).")
-		3:
-			var options: Array[String] = []
-			for w in MetaProgress.unlocked_start_weapons:
-				options.append(w)
-			if options.is_empty():
-				options.append("sword")
-			var idx := options.find(MetaProgress.selected_start_weapon)
-			idx = (idx + 1) % options.size()
-			MetaProgress.selected_start_weapon = options[idx]
-			MetaProgress.save()
-			_show_message("Arma inicial: %s" % MetaProgress.selected_start_weapon)
-			_refresh_hud()
-		_:
-			if MetaProgress.sword_damage_level >= MetaProgress.SWORD_DAMAGE_CAP:
-				_show_message("Espada já está no nível máximo.")
-			elif MetaProgress.try_upgrade_sword():
-				_show_message("Ferreiro: lâmina reforçada!")
-				_refresh_hud()
-			else:
-				_show_message("Ouro insuficiente. Precisa de %d." % MetaProgress.upgrade_cost())
-	_smith_mode += 1
-
-
-func _do_alchemist() -> void:
-	match _alchemist_mode % 3:
-		1:
-			if MetaProgress.potion_capacity >= MetaProgress.POTION_CAP:
-				_show_message("Capacidade de poções no máximo.")
-			elif MetaProgress.try_upgrade_potions():
-				_show_message("Alquimista: +1 poção por run!")
-				_refresh_hud()
-			else:
-				_show_message("Ouro insuficiente. Precisa de %d." % MetaProgress.potion_upgrade_cost())
-		2:
-			if MetaProgress.relic_luck >= 5:
-				_show_message("Sorte de relíquia no máximo.")
-			elif MetaProgress.try_upgrade_luck():
-				_show_message("Alquimista: relíquias aparecem mais!")
-				_refresh_hud()
-			else:
-				_show_message("Ouro insuficiente. Precisa de %d." % MetaProgress.luck_upgrade_cost())
-		_:
-			if MetaProgress.bonus_max_hp >= MetaProgress.HP_BONUS_CAP:
-				_show_message("Alquimista: vitalidade no máximo.")
-			elif MetaProgress.try_upgrade_max_hp():
-				_show_message("Alquimista: +10 vida máxima permanente!")
-				_refresh_hud()
-			else:
-				_show_message("Ouro insuficiente. Precisa de %d." % MetaProgress.hp_upgrade_cost())
-	_alchemist_mode += 1
-
-
 func _show_message(text: String) -> void:
 	message.text = text
-	var label_id := message.get_instance_id()
+	message_panel.visible = text != ""
+	var panel_id := message_panel.get_instance_id()
 	get_tree().create_timer(2.5).timeout.connect(func() -> void:
-		var live := instance_from_id(label_id) as Label
+		var live := instance_from_id(panel_id) as PanelContainer
 		if live:
-			live.text = ""
+			live.visible = false
 	)
+
+
+func _hide_message() -> void:
+	message.text = ""
+	message_panel.visible = false

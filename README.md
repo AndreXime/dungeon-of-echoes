@@ -31,7 +31,7 @@ godot --path /home/andre/Projetos/newgame --scene res://scenes/dungeon_run.tscn
 | Espaço | Pular |
 | Esc | Pausar / menu (abas Ficha e Controles) |
 | F4 | Alternar tela cheia (preferência salva) |
-| E | Interagir (NPCs, portal, relíquias) |
+| E | Interagir (abre loja do NPC, portal, relíquias) |
 | 1 / 2 / 3 | Espada+escudo / Adaga / Besteira |
 | LMB | Ataque (avançando = estocada) / adaga / besta |
 | RMB | Escudo (espada) ou puxar adaga |
@@ -99,6 +99,6 @@ assets/audio/            # BGM e SFX
 
 Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits, Halloween).
 
-Tipografia: **Lilita One** (SIL OFL) em `assets/fonts/`, tema global `assets/ui/game_theme.tres`.
+Tipografia: **Lilita One** (SIL OFL). UI em pergaminho (Kenney RPG UI, CC0) via `assets/ui/game_theme.tres`. Lojas de NPC abrem lista de ofertas (paginada).
 
 Áudio em `assets/audio/` (hub, dungeon e SFX). Gerado com o `music-studio` em Downloads (`just run dungeon_echoes_*.py` / `sfx_dungeon_echoes.py`).
