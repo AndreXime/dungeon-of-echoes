@@ -95,3 +95,5 @@ assets/*.zip             # zips originais KayKit (fonte)
 ```
 
 Assets visuais vêm do KayKit (Dungeon, Adventurers, Skeletons, Forest, Weapons, Tools, Mixed Bag, Block Bits).
+
+Áudio em `assets/audio/` (hub, dungeon e SFX). Gerado com o `music-studio` em Downloads (`just run dungeon_echoes_*.py` / `sfx_dungeon_echoes.py`).

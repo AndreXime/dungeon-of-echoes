@@ -13,6 +13,7 @@ var _pause_menu: Node
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Music.play_dungeon()
 	hud_message.add_to_group("run_message")
 	add_child(_generator)
 	_generator.generation_done.connect(_on_generated)

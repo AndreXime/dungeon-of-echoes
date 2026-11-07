@@ -14,6 +14,7 @@ MetaProgress="*res://scripts/autoload/meta_progress.gd"
 RunState="*res://scripts/autoload/run_state.gd"
 Sfx="*res://scripts/autoload/sfx.gd"
 Juice="*res://scripts/autoload/juice.gd"
+Music="*res://scripts/autoload/music.gd"
 
 [display]
 

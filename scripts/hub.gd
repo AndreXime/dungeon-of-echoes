@@ -12,6 +12,7 @@ var _pause_menu: Node
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Music.play_hub()
 	_refresh_hud()
 	message.text = ""
 	for node in get_tree().get_nodes_in_group("hub_interactable"):
