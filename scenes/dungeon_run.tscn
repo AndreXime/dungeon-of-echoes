@@ -69,15 +69,6 @@ theme_override_colors/font_color = Color(0.7, 0.95, 1, 1)
 theme_override_font_sizes/font_size = 16
 text = "Relíquias: nenhuma"
 
-[node name="Map" type="Label" parent="HUD"]
-offset_left = 16.0
-offset_top = 128.0
-offset_right = 900.0
-offset_bottom = 152.0
-theme_override_colors/font_color = Color(0.65, 0.9, 0.7, 1)
-theme_override_font_sizes/font_size = 14
-text = "Mapa: —"
-
 [node name="Message" type="Label" parent="HUD"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -92,6 +83,7 @@ theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
 [node name="Hint" type="Label" parent="HUD"]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -102,4 +94,4 @@ offset_bottom = -12.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.85)
 theme_override_font_sizes/font_size = 14
-text = "1/2/3 armas | LMB atacar | RMB escudo/puxar | E relíquia | Q poção | T tocha"
+text = ""

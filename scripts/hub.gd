@@ -7,6 +7,7 @@ extends Node3D
 var _near_interactable: Area3D
 var _alchemist_mode := 0
 var _smith_mode := 0
+var _pause_menu: Node
 
 
 func _ready() -> void:
@@ -16,6 +17,12 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("hub_interactable"):
 		if node.has_signal("interacted"):
 			node.interacted.connect(_on_interact.bind(node))
+	var packed := load("res://scenes/pause_menu.tscn") as PackedScene
+	if packed:
+		_pause_menu = packed.instantiate()
+		add_child(_pause_menu)
+		if _pause_menu.has_method("setup"):
+			_pause_menu.setup(false)
 
 
 func _process(_delta: float) -> void:
@@ -66,16 +73,9 @@ func _alchemist_prompt() -> String:
 
 
 func _refresh_hud() -> void:
-	hud.text = "Ouro: %d | Minério: %d | Espada Nv.%d (dano %d) | HP +%d | Poções %d | Sorte %d | Mapa Nv.%d | Início: %s" % [
+	hud.text = "Ouro: %d  |  Minério: %d" % [
 		MetaProgress.gold,
 		MetaProgress.ore,
-		MetaProgress.sword_damage_level,
-		MetaProgress.sword_damage(),
-		MetaProgress.bonus_max_hp,
-		MetaProgress.potion_capacity,
-		MetaProgress.relic_luck,
-		MetaProgress.cartographer_level,
-		MetaProgress.selected_start_weapon,
 	]
 
 

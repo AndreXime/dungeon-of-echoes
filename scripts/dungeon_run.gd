@@ -7,10 +7,8 @@ extends Node3D
 @onready var hud_relics: Label = $HUD/Relics
 @onready var hud_message: Label = $HUD/Message
 @onready var hud_floor: Label = $HUD/Floor
-@onready var hud_map: Label = $HUD/Map
-@onready var hud_hint: Label = $HUD/Hint
-
 var _generator := preload("res://scripts/dungeon_generator.gd").new()
+var _pause_menu: Node
 
 
 func _ready() -> void:
@@ -20,6 +18,21 @@ func _ready() -> void:
 	_generator.generation_done.connect(_on_generated)
 	_generator.generate(world, RunState.seed_value)
 	_apply_biome_environment()
+	_spawn_pause_menu()
+	if has_node("HUD/Hint"):
+		$HUD/Hint.visible = false
+	if has_node("HUD/Map"):
+		$HUD/Map.visible = false
+
+
+func _spawn_pause_menu() -> void:
+	var packed := load("res://scenes/pause_menu.tscn") as PackedScene
+	if packed == null:
+		return
+	_pause_menu = packed.instantiate()
+	add_child(_pause_menu)
+	if _pause_menu.has_method("setup"):
+		_pause_menu.setup(true)
 
 
 func _apply_biome_environment() -> void:
@@ -45,43 +58,11 @@ func _process(_delta: float) -> void:
 	hud_floor.text = "Andar %d — %s" % [RunState.floor_index, RunState.biome_name()]
 	var player := $Player
 	if player and player.has_method("weapon_label"):
-		hud_weapon.text = "Arma: %s  |  1/2/3  |  Q poção  |  T tocha" % player.weapon_label()
+		hud_weapon.text = "Arma: %s" % player.weapon_label()
 	if RunState.relics.is_empty():
 		hud_relics.text = "Relíquias: nenhuma"
 	else:
 		hud_relics.text = "Relíquias: %s" % ", ".join(PackedStringArray(RunState.relics))
-	hud_map.text = _map_text()
-	if hud_hint:
-		hud_hint.text = "LMB atacar (frente=estocada) | RMB escudo/puxar | E relíquia | Q poção | T tocha | Empurre no escudo"
-
-
-func _map_text() -> String:
-	if RunState.map_rooms.is_empty():
-		return "Mapa: —"
-	var parts: PackedStringArray = []
-	for room in RunState.map_rooms:
-		if not bool(room.get("revealed", false)):
-			parts.append("?")
-			continue
-		var kind := String(room.get("kind", "?"))
-		match kind:
-			"hall":
-				parts.append("Sala")
-			"bridge":
-				parts.append("Ponte")
-			"hazard":
-				parts.append("Armadilha")
-			"cross":
-				parts.append("Cruz")
-			"treasure":
-				parts.append("Tesouro")
-			"boss":
-				parts.append("Chefe")
-			"end":
-				parts.append("Saída")
-			_:
-				parts.append(kind)
-	return "Mapa: " + " → ".join(parts)
 
 
 func _on_generated(player_spawn: Vector3, _exit_pos: Vector3) -> void:
