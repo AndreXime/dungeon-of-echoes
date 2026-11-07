@@ -5,9 +5,9 @@ enum Weapon { SWORD, DAGGER, CROSSBOW }
 const SPEED := 5.0
 const JUMP_VELOCITY := 5.2
 const MOUSE_SENSITIVITY := 0.0025
-const SWING_TIME := 0.18
+const SWING_TIME := 0.2
 const THRUST_TIME := 0.16
-const HITBOX_TIME := 0.14
+const HITBOX_TIME := 0.18
 const KNOCKBACK_STRENGTH := 6.0
 const DAGGER_DAMAGE := 9
 const BOLT_DAMAGE := 14
@@ -42,7 +42,8 @@ var _active_dagger: Node3D
 var _crossbow_ready := true
 var _reload_left := 0.0
 var _torch_root: Node3D
-var _torch_on := true
+## Offhand: true = tocha, false = escudo. Nunca os dois ao mesmo tempo.
+var _torch_equipped := false
 
 
 func _ready() -> void:
@@ -61,6 +62,7 @@ func _ready() -> void:
 	sword_hitbox.area_entered.connect(_on_sword_hit_area)
 	_apply_start_weapon()
 	_apply_weapon_visibility()
+	_apply_offhand_visibility()
 
 
 func _apply_start_weapon() -> void:
@@ -90,8 +92,8 @@ func _attach_torch() -> void:
 	_torch_root = Node3D.new()
 	_torch_root.name = "TorchRoot"
 	camera.add_child(_torch_root)
-	_torch_root.position = Vector3(-0.35, -0.15, -0.4)
-	_torch_root.rotation_degrees = Vector3(15, 20, 0)
+	_torch_root.position = Vector3(-0.32, -0.38, -0.45)
+	_torch_root.rotation_degrees = Vector3(25, 15, -8)
 	if ResourceLoader.exists(TORCH_GLB):
 		var packed := load(TORCH_GLB) as PackedScene
 		if packed:
@@ -123,7 +125,11 @@ func _attach_weapon(path: String, pivot: Node3D, pos: Vector3, rot_deg: Vector3,
 
 
 func is_blocking() -> bool:
-	return _blocking and _weapon == Weapon.SWORD
+	return _blocking and _weapon == Weapon.SWORD and not _torch_equipped
+
+
+func has_torch() -> bool:
+	return _torch_equipped
 
 
 func on_dagger_returned() -> void:
@@ -138,12 +144,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera.rotation.x = clampf(camera.rotation.x, deg_to_rad(-85.0), deg_to_rad(85.0))
 
-	if event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 	if event.is_action_pressed("weapon_1"):
 		_set_weapon(Weapon.SWORD)
 	elif event.is_action_pressed("weapon_2"):
@@ -156,9 +156,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			Sfx.play(self, "block", global_position)
 
 	if event.is_action_pressed("toggle_torch"):
-		_torch_on = not _torch_on
-		if is_instance_valid(_torch_root):
-			_torch_root.visible = _torch_on
+		_toggle_offhand()
 
 	if event.is_action_pressed("attack"):
 		_primary_action()
@@ -166,12 +164,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		_recall_dagger()
 
 
+func _toggle_offhand() -> void:
+	_torch_equipped = not _torch_equipped
+	_blocking = false
+	_apply_offhand_visibility()
+	_update_shield_pose()
+
+
 func _physics_process(delta: float) -> void:
 	_reload_left = maxf(_reload_left - delta, 0.0)
 	if _reload_left <= 0.0:
 		_crossbow_ready = true
 
-	_blocking = Input.is_action_pressed("block") and _weapon == Weapon.SWORD and not _swinging and not _thrusting
+	_blocking = (
+		Input.is_action_pressed("block")
+		and _weapon == Weapon.SWORD
+		and not _torch_equipped
+		and not _swinging
+		and not _thrusting
+	)
 	_update_shield_pose()
 
 	if not is_on_floor():
@@ -191,6 +202,9 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_push_enemies()
+	# Area3D body_entered falha se o inimigo já estava sobreposto ao ativar a hitbox
+	if sword_hitbox.monitoring:
+		_poll_sword_overlaps()
 
 	if RunState.in_run and RunState.is_dead():
 		RunState.finish_run_and_return_to_hub()
@@ -205,23 +219,40 @@ func _set_weapon(w: Weapon) -> void:
 	_weapon = w
 	_blocking = false
 	_apply_weapon_visibility()
+	_apply_offhand_visibility()
 
 
 func _apply_weapon_visibility() -> void:
 	sword_pivot.visible = _weapon == Weapon.SWORD
-	shield_pivot.visible = _weapon == Weapon.SWORD
 	dagger_pivot.visible = _weapon == Weapon.DAGGER and not _dagger_out
 	crossbow_pivot.visible = _weapon == Weapon.CROSSBOW
+	_apply_offhand_visibility()
+
+
+func _apply_offhand_visibility() -> void:
+	var shield_ready := _weapon == Weapon.SWORD and not _torch_equipped
+	shield_pivot.visible = shield_ready
+	if is_instance_valid(_torch_root):
+		_torch_root.visible = _torch_equipped
+		var light := _torch_root.get_node_or_null("TorchLight") as OmniLight3D
+		if light:
+			light.visible = _torch_equipped
+			light.light_energy = 1.35 if _torch_equipped else 0.0
 
 
 func weapon_label() -> String:
+	var offhand := ""
+	if _torch_equipped:
+		offhand = " + Tocha"
+	elif _weapon == Weapon.SWORD:
+		offhand = " + Escudo"
 	match _weapon:
 		Weapon.SWORD:
-			return "Espada/Escudo"
+			return "Espada%s" % offhand
 		Weapon.DAGGER:
-			return "Adaga" + (" (fora)" if _dagger_out else "")
+			return "Adaga" + (" (fora)" if _dagger_out else "") + offhand
 		Weapon.CROSSBOW:
-			return "Besteira" + (" (recarregando)" if not _crossbow_ready else "")
+			return "Besteira" + (" (recarregando)" if not _crossbow_ready else "") + offhand
 	return "?"
 
 
@@ -266,7 +297,7 @@ func _just_pressed_space() -> bool:
 
 
 func _update_shield_pose() -> void:
-	if _weapon != Weapon.SWORD:
+	if _weapon != Weapon.SWORD or _torch_equipped:
 		return
 	if _blocking:
 		shield_pivot.position = _shield_rest.origin + Vector3(0.08, 0.04, -0.18)
@@ -275,15 +306,28 @@ func _update_shield_pose() -> void:
 		shield_pivot.transform = _shield_rest
 
 
+func _arm_sword_hitbox() -> void:
+	sword_hitbox.monitoring = true
+
+
+func _poll_sword_overlaps() -> void:
+	if not is_instance_valid(sword_hitbox) or not sword_hitbox.monitoring:
+		return
+	for body in sword_hitbox.get_overlapping_bodies():
+		_on_sword_hit(body)
+	for area in sword_hitbox.get_overlapping_areas():
+		_on_sword_hit_area(area)
+
+
 func _swing() -> void:
 	_swinging = true
 	_hit_targets.clear()
-	sword_hitbox.monitoring = true
+	_arm_sword_hitbox()
 	Sfx.play(self, "swing", global_position)
 
 	var swung := _sword_rest
-	swung.origin = _sword_rest.origin + Vector3(-0.05, -0.05, -0.35)
-	swung.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-70.0)).rotated(Vector3.UP, deg_to_rad(-40.0))
+	swung.origin = _sword_rest.origin + Vector3(-0.08, -0.04, -0.55)
+	swung.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-75.0)).rotated(Vector3.UP, deg_to_rad(-45.0))
 
 	var tween := create_tween()
 	tween.tween_property(sword_pivot, "transform", swung, SWING_TIME * 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -299,12 +343,12 @@ func _thrust() -> void:
 	_thrusting = true
 	_blocking = false
 	_hit_targets.clear()
-	sword_hitbox.monitoring = true
+	_arm_sword_hitbox()
 	Sfx.play(self, "swing", global_position)
 
 	var thrusted := _sword_rest
-	thrusted.origin = _sword_rest.origin + Vector3(0.0, -0.02, -0.55)
-	thrusted.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-20.0))
+	thrusted.origin = _sword_rest.origin + Vector3(0.0, -0.02, -0.85)
+	thrusted.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-25.0))
 
 	var tween := create_tween()
 	tween.tween_property(sword_pivot, "transform", thrusted, THRUST_TIME * 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -411,8 +455,25 @@ func _try_damage(node: Node) -> void:
 
 	if target.has_method("take_hit"):
 		target.take_hit(RunState.melee_damage_against(target), knock)
+		_weapon_recoil()
 	if RunState.has_relic(RunState.RELIC_VOLCANIC):
 		_volcanic_burst(target.global_position if target is Node3D else sword_hitbox.global_position)
+
+
+func _weapon_recoil() -> void:
+	var pivot: Node3D = sword_pivot
+	match _weapon:
+		Weapon.DAGGER:
+			pivot = dagger_pivot
+		Weapon.CROSSBOW:
+			pivot = crossbow_pivot
+		_:
+			pivot = sword_pivot
+	var rest := pivot.position
+	var kick := rest + Vector3(0.0, 0.01, 0.05)
+	var tween := create_tween()
+	tween.tween_property(pivot, "position", kick, 0.04).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(pivot, "position", rest, 0.07).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
 
 func _volcanic_burst(pos: Vector3) -> void:

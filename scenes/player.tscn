@@ -7,7 +7,7 @@ radius = 0.35
 height = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape_sword"]
-size = Vector3(0.2, 0.15, 0.55)
+size = Vector3(0.55, 0.4, 1.35)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -41,7 +41,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/WeaponsRoot/SwordPivot/SwordHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 shape = SubResource("BoxShape_sword")
 
 [node name="ShieldPivot" type="Node3D" parent="Camera3D/WeaponsRoot"]
