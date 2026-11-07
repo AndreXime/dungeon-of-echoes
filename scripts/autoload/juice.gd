@@ -82,7 +82,11 @@ func flash(node: Node3D, color: Color = Color(2.0, 2.0, 2.0), duration: float = 
 	if tree == null:
 		_restore_flash(restores)
 		return
+	var token := node.get_instance_id()
 	tree.create_timer(duration, true, false, true).timeout.connect(func() -> void:
+		# Se o alvo já morreu/foi liberado, não restaura material.
+		if instance_from_id(token) == null:
+			return
 		_restore_flash(restores)
 	)
 
@@ -94,23 +98,31 @@ func _collect_flash_targets(node: Node, restores: Array[Dictionary], color: Colo
 			for s in mi.mesh.get_surface_count():
 				var mat := mi.get_active_material(s)
 				if mat is StandardMaterial3D:
-					var original: Material = mi.get_surface_override_material(s)
+					var original: Variant = mi.get_surface_override_material(s)
 					var sm := (mat as StandardMaterial3D).duplicate() as StandardMaterial3D
 					sm.emission_enabled = true
 					sm.emission = color
 					sm.emission_energy_multiplier = 2.2
 					mi.set_surface_override_material(s, sm)
-					restores.append({"mi": mi, "surface": s, "mat": original})
+					restores.append({
+						"mi_id": mi.get_instance_id(),
+						"surface": s,
+						"mat": original,
+					})
 	for child in node.get_children():
 		_collect_flash_targets(child, restores, color)
 
 
 func _restore_flash(restores: Array[Dictionary]) -> void:
 	for entry in restores:
-		var mi: MeshInstance3D = entry["mi"]
-		if not is_instance_valid(mi):
+		var mi_obj := instance_from_id(int(entry["mi_id"]))
+		if mi_obj == null or not (mi_obj is MeshInstance3D):
 			continue
-		mi.set_surface_override_material(int(entry["surface"]), entry["mat"])
+		var mi := mi_obj as MeshInstance3D
+		var mat: Variant = entry.get("mat")
+		if mat != null and not is_instance_valid(mat):
+			mat = null
+		mi.set_surface_override_material(int(entry["surface"]), mat as Material)
 
 
 func burst(pos: Vector3, color: Color, count: int = 8) -> void:
@@ -143,9 +155,11 @@ func burst(pos: Vector3, color: Color, count: int = 8) -> void:
 	tree.current_scene.add_child(parts)
 	parts.global_position = pos + Vector3(0, 0.6, 0)
 	parts.emitting = true
+	var parts_id := parts.get_instance_id()
 	tree.create_timer(0.7, true, false, true).timeout.connect(func() -> void:
-		if is_instance_valid(parts):
-			parts.queue_free()
+		var live := instance_from_id(parts_id)
+		if live:
+			live.queue_free()
 	)
 
 
@@ -156,7 +170,7 @@ func on_hit(target: Node3D, is_kill: bool = false) -> void:
 	if is_kill:
 		hitstop(KILL_STOP, KILL_SCALE)
 		shake(KILL_SHAKE, 0.18)
-		flash(target, Color(2.2, 1.4, 0.6), 0.12)
+		# Sem flash material: o alvo costuma queue_free no mesmo frame.
 		burst(pos, Color(1.0, 0.65, 0.25), 14)
 		Sfx.play(self, "kill", pos)
 	else:

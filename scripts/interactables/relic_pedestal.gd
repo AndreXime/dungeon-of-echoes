@@ -48,7 +48,9 @@ func _take() -> void:
 	var msg := get_tree().get_first_node_in_group("run_message") as Label
 	if msg:
 		msg.text = "%s: %s" % [relic_name, relic_desc]
+		var label_id := msg.get_instance_id()
 		get_tree().create_timer(3.0).timeout.connect(func() -> void:
-			if is_instance_valid(msg):
-				msg.text = ""
+			var live := instance_from_id(label_id) as Label
+			if live:
+				live.text = ""
 		)

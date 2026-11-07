@@ -32,9 +32,11 @@ func play(host: Node, kind: String, pos: Vector3 = Vector3.ZERO) -> void:
 		p2.stream = stream
 		p2.volume_db = -6.0
 		p2.play()
+	var player_id := player.get_instance_id()
 	tree.create_timer(duration, true, false, true).timeout.connect(func() -> void:
-		if is_instance_valid(player):
-			player.queue_free()
+		var live := instance_from_id(player_id)
+		if live:
+			live.queue_free()
 	)
 
 

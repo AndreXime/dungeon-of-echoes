@@ -176,7 +176,9 @@ func _do_alchemist() -> void:
 
 func _show_message(text: String) -> void:
 	message.text = text
+	var label_id := message.get_instance_id()
 	get_tree().create_timer(2.5).timeout.connect(func() -> void:
-		if is_instance_valid(message):
-			message.text = ""
+		var live := instance_from_id(label_id) as Label
+		if live:
+			live.text = ""
 	)
