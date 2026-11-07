@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://fb6myj2yi0my"
-path="res://.godot/imported/trowel.gltf-6e0306d18b0bb769f131119c43d6aabf.scn"
+path="res://.godot/imported/trowel.gltf-ed4c75269630bd3125650f697f7be091.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/trowel.gltf"
-dest_files=["res://.godot/imported/trowel.gltf-6e0306d18b0bb769f131119c43d6aabf.scn"]
+dest_files=["res://.godot/imported/trowel.gltf-ed4c75269630bd3125650f697f7be091.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbpe17kvhwro"
-path="res://.godot/imported/wrench_A.gltf-5d25f17e63bee9d7ff9b0f9086c2e2c3.scn"
+path="res://.godot/imported/wrench_A.gltf-f1ab6180630002723fc4afc18404c2ab.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/wrench_A.gltf"
-dest_files=["res://.godot/imported/wrench_A.gltf-5d25f17e63bee9d7ff9b0f9086c2e2c3.scn"]
+dest_files=["res://.godot/imported/wrench_A.gltf-f1ab6180630002723fc4afc18404c2ab.scn"]
 
 [params]
 

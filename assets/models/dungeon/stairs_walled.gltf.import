@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cepvygsx68lux"
-path="res://.godot/imported/stairs_walled.gltf-b3f7c3e1c9848a963f1ac3742af1096f.scn"
+path="res://.godot/imported/stairs_walled.gltf-df1536cf0975e0aefeeb3f3c327d2076.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/stairs_walled.gltf"
-dest_files=["res://.godot/imported/stairs_walled.gltf-b3f7c3e1c9848a963f1ac3742af1096f.scn"]
+dest_files=["res://.godot/imported/stairs_walled.gltf-df1536cf0975e0aefeeb3f3c327d2076.scn"]
 
 [params]
 

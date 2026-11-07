@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bsw71ro00n1um"
-path="res://.godot/imported/barrier.gltf-7b0995d813faf1e399bc1f001361b37c.scn"
+path="res://.godot/imported/barrier.gltf-691cbf997018ce4ba7769199de6da4f3.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/barrier.gltf"
-dest_files=["res://.godot/imported/barrier.gltf-7b0995d813faf1e399bc1f001361b37c.scn"]
+dest_files=["res://.godot/imported/barrier.gltf-691cbf997018ce4ba7769199de6da4f3.scn"]
 
 [params]
 

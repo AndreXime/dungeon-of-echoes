@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dmxbm0kgxbboc"
-path="res://.godot/imported/plate_food_A.gltf-262e28da8e450e538e1a23d2af56dbe3.scn"
+path="res://.godot/imported/plate_food_A.gltf-592cd089a64243d1a024519442e894ae.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/plate_food_A.gltf"
-dest_files=["res://.godot/imported/plate_food_A.gltf-262e28da8e450e538e1a23d2af56dbe3.scn"]
+dest_files=["res://.godot/imported/plate_food_A.gltf-592cd089a64243d1a024519442e894ae.scn"]
 
 [params]
 

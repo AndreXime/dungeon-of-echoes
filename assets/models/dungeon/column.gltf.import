@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbbr2qnipykr8"
-path="res://.godot/imported/column.gltf-c8d7b4451f93bcf2586df5404ef0764d.scn"
+path="res://.godot/imported/column.gltf-73fa4e96d5e3bd2cd61b4077347222c3.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/column.gltf"
-dest_files=["res://.godot/imported/column.gltf-c8d7b4451f93bcf2586df5404ef0764d.scn"]
+dest_files=["res://.godot/imported/column.gltf-73fa4e96d5e3bd2cd61b4077347222c3.scn"]
 
 [params]
 

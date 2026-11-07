@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://7fvhaogaek8u"
-path="res://.godot/imported/quiver.gltf-3aba3a55d4c073bb5f8da6a7a70c4196.scn"
+path="res://.godot/imported/quiver.gltf-7b5f7077127d3216b9ab627479559fe8.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/quiver.gltf"
-dest_files=["res://.godot/imported/quiver.gltf-3aba3a55d4c073bb5f8da6a7a70c4196.scn"]
+dest_files=["res://.godot/imported/quiver.gltf-7b5f7077127d3216b9ab627479559fe8.scn"]
 
 [params]
 

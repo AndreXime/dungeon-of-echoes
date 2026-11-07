@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dupltk51y0dk2"
-path="res://.godot/imported/bow_withString.gltf-51bf785765f12ee044ec6d258335f388.scn"
+path="res://.godot/imported/bow_withString.gltf-99061a3d1a469be6796f0ad891206bae.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/bow_withString.gltf"
-dest_files=["res://.godot/imported/bow_withString.gltf-51bf785765f12ee044ec6d258335f388.scn"]
+dest_files=["res://.godot/imported/bow_withString.gltf-99061a3d1a469be6796f0ad891206bae.scn"]
 
 [params]
 

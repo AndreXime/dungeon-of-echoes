@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c1pf4vdubhote"
-path="res://.godot/imported/bottle_A_green.gltf-2a50934c79411990bfb6d4f0aab4f02e.scn"
+path="res://.godot/imported/bottle_A_green.gltf-db0d13be224308e3d063dc61cf40e490.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/bottle_A_green.gltf"
-dest_files=["res://.godot/imported/bottle_A_green.gltf-2a50934c79411990bfb6d4f0aab4f02e.scn"]
+dest_files=["res://.godot/imported/bottle_A_green.gltf-db0d13be224308e3d063dc61cf40e490.scn"]
 
 [params]
 

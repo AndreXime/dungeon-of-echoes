@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dibf7bfjtedd6"
-path="res://.godot/imported/keyring.gltf-1caace30f262c0b19dc46397cbd78931.scn"
+path="res://.godot/imported/keyring.gltf-9d1bf61c0849aedfacc6ebadb71a3639.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/keyring.gltf"
-dest_files=["res://.godot/imported/keyring.gltf-1caace30f262c0b19dc46397cbd78931.scn"]
+dest_files=["res://.godot/imported/keyring.gltf-9d1bf61c0849aedfacc6ebadb71a3639.scn"]
 
 [params]
 

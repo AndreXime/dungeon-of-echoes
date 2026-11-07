@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bn2uqr11yjtbd"
-path="res://.godot/imported/spellbook_open.gltf-a8f6b01cb178e09c02332b1889bb8f0a.scn"
+path="res://.godot/imported/spellbook_open.gltf-eed5ef787c86e138842edbd967c671ca.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/spellbook_open.gltf"
-dest_files=["res://.godot/imported/spellbook_open.gltf-a8f6b01cb178e09c02332b1889bb8f0a.scn"]
+dest_files=["res://.godot/imported/spellbook_open.gltf-eed5ef787c86e138842edbd967c671ca.scn"]
 
 [params]
 

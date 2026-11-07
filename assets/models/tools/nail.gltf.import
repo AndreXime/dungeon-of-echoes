@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b4lnm80gl71lm"
-path="res://.godot/imported/nail.gltf-2869d45e7a1ab0c492144efb6d772808.scn"
+path="res://.godot/imported/nail.gltf-cab36da3a528fe9fb12318ff3d352832.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/nail.gltf"
-dest_files=["res://.godot/imported/nail.gltf-2869d45e7a1ab0c492144efb6d772808.scn"]
+dest_files=["res://.godot/imported/nail.gltf-cab36da3a528fe9fb12318ff3d352832.scn"]
 
 [params]
 

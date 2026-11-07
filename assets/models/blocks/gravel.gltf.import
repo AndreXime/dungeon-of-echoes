@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://blskb0cas1roc"
-path="res://.godot/imported/gravel.gltf-ce8379d013ad02c11d3312e9d60a35aa.scn"
+path="res://.godot/imported/gravel.gltf-8e6aac95f9ad91975f534ccade195397.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/gravel.gltf"
-dest_files=["res://.godot/imported/gravel.gltf-ce8379d013ad02c11d3312e9d60a35aa.scn"]
+dest_files=["res://.godot/imported/gravel.gltf-8e6aac95f9ad91975f534ccade195397.scn"]
 
 [params]
 

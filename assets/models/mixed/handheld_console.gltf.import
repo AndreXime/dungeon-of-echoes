@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c7qvert2khlxg"
-path="res://.godot/imported/handheld_console.gltf-a94d47113453e890559a4901246a6958.scn"
+path="res://.godot/imported/handheld_console.gltf-428982ee892221873e885359d7e19699.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/handheld_console.gltf"
-dest_files=["res://.godot/imported/handheld_console.gltf-a94d47113453e890559a4901246a6958.scn"]
+dest_files=["res://.godot/imported/handheld_console.gltf-428982ee892221873e885359d7e19699.scn"]
 
 [params]
 

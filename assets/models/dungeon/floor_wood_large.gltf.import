@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d1qj4un06udou"
-path="res://.godot/imported/floor_wood_large.gltf-ccc9d00fd823a1cf628d6cf8fc44ed28.scn"
+path="res://.godot/imported/floor_wood_large.gltf-afc9ec89abe1f5206a0f6dd0b6fe7d60.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/floor_wood_large.gltf"
-dest_files=["res://.godot/imported/floor_wood_large.gltf-ccc9d00fd823a1cf628d6cf8fc44ed28.scn"]
+dest_files=["res://.godot/imported/floor_wood_large.gltf-afc9ec89abe1f5206a0f6dd0b6fe7d60.scn"]
 
 [params]
 

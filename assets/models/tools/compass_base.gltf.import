@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://di6ej27kc8i6k"
-path="res://.godot/imported/compass_base.gltf-03001c0c73d8b4d84ae4984abd996b3f.scn"
+path="res://.godot/imported/compass_base.gltf-55020eb035810b803feb7dd8e170c932.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/compass_base.gltf"
-dest_files=["res://.godot/imported/compass_base.gltf-03001c0c73d8b4d84ae4984abd996b3f.scn"]
+dest_files=["res://.godot/imported/compass_base.gltf-55020eb035810b803feb7dd8e170c932.scn"]
 
 [params]
 

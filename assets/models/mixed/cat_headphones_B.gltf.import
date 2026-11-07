@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cshw6mmg056h2"
-path="res://.godot/imported/cat_headphones_B.gltf-ab43cd81b78af71b7eaa70ebb084b1ae.scn"
+path="res://.godot/imported/cat_headphones_B.gltf-ce29db2cd740ac8baaf09e0f2a4216ea.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/cat_headphones_B.gltf"
-dest_files=["res://.godot/imported/cat_headphones_B.gltf-ab43cd81b78af71b7eaa70ebb084b1ae.scn"]
+dest_files=["res://.godot/imported/cat_headphones_B.gltf-ce29db2cd740ac8baaf09e0f2a4216ea.scn"]
 
 [params]
 

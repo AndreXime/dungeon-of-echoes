@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://crf055ktbpc72"
-path="res://.godot/imported/mug_full.gltf-0e8301d1d989c94353d138610a66b958.scn"
+path="res://.godot/imported/mug_full.gltf-380fb0b4d06a7f4755ef448061035266.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/mug_full.gltf"
-dest_files=["res://.godot/imported/mug_full.gltf-0e8301d1d989c94353d138610a66b958.scn"]
+dest_files=["res://.godot/imported/mug_full.gltf-380fb0b4d06a7f4755ef448061035266.scn"]
 
 [params]
 

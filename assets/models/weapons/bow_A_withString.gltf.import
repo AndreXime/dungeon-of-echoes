@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://yuma2a1t2dd2"
-path="res://.godot/imported/bow_A_withString.gltf-4a1f2068cb1564a58f87a91e95c09d81.scn"
+path="res://.godot/imported/bow_A_withString.gltf-15f4ef91c0e48adb5a4edfe88667417b.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/bow_A_withString.gltf"
-dest_files=["res://.godot/imported/bow_A_withString.gltf-4a1f2068cb1564a58f87a91e95c09d81.scn"]
+dest_files=["res://.godot/imported/bow_A_withString.gltf-15f4ef91c0e48adb5a4edfe88667417b.scn"]
 
 [params]
 

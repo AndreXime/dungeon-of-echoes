@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dc806aplvhykf"
-path="res://.godot/imported/candle.gltf-0cc0e3fa24a5fe8e38bdb69d2985542c.scn"
+path="res://.godot/imported/candle.gltf-4a7085dd396cb780e1a999c2f16e54f3.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/candle.gltf"
-dest_files=["res://.godot/imported/candle.gltf-0cc0e3fa24a5fe8e38bdb69d2985542c.scn"]
+dest_files=["res://.godot/imported/candle.gltf-4a7085dd396cb780e1a999c2f16e54f3.scn"]
 
 [params]
 

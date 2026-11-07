@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djoua2jtig7dm"
-path="res://.godot/imported/colored_block_red.gltf-9d85b6842bbae08e3981672eba825744.scn"
+path="res://.godot/imported/colored_block_red.gltf-1c835ade84a582066fafb02e6667149f.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/colored_block_red.gltf"
-dest_files=["res://.godot/imported/colored_block_red.gltf-9d85b6842bbae08e3981672eba825744.scn"]
+dest_files=["res://.godot/imported/colored_block_red.gltf-1c835ade84a582066fafb02e6667149f.scn"]
 
 [params]
 

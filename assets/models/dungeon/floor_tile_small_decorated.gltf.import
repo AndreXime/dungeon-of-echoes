@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bc2ew1rg3luk8"
-path="res://.godot/imported/floor_tile_small_decorated.gltf-87a48f92d03584bbc95651811dae3ae8.scn"
+path="res://.godot/imported/floor_tile_small_decorated.gltf-eeee6a9db58e4751968ef5b2771a406a.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/floor_tile_small_decorated.gltf"
-dest_files=["res://.godot/imported/floor_tile_small_decorated.gltf-87a48f92d03584bbc95651811dae3ae8.scn"]
+dest_files=["res://.godot/imported/floor_tile_small_decorated.gltf-eeee6a9db58e4751968ef5b2771a406a.scn"]
 
 [params]
 

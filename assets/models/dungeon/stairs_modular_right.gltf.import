@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bba2ae75ajb36"
-path="res://.godot/imported/stairs_modular_right.gltf-e6c4af7a557327fab24ce6aa8d7186e5.scn"
+path="res://.godot/imported/stairs_modular_right.gltf-d9c0933595bc834973b9b326c7aacfff.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/stairs_modular_right.gltf"
-dest_files=["res://.godot/imported/stairs_modular_right.gltf-e6c4af7a557327fab24ce6aa8d7186e5.scn"]
+dest_files=["res://.godot/imported/stairs_modular_right.gltf-d9c0933595bc834973b9b326c7aacfff.scn"]
 
 [params]
 

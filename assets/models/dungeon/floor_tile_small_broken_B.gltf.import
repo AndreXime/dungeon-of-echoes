@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dqhv8m4gckcpq"
-path="res://.godot/imported/floor_tile_small_broken_B.gltf-db5ee1e7326501f4c28b848941b0fdeb.scn"
+path="res://.godot/imported/floor_tile_small_broken_B.gltf-62938e768c47485224d65e06f4175b54.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/floor_tile_small_broken_B.gltf"
-dest_files=["res://.godot/imported/floor_tile_small_broken_B.gltf-db5ee1e7326501f4c28b848941b0fdeb.scn"]
+dest_files=["res://.godot/imported/floor_tile_small_broken_B.gltf-62938e768c47485224d65e06f4175b54.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cnu8jpcckysjj"
-path="res://.godot/imported/Rig_Medium_General.glb-4cebbbba39fe9e0895b9835d6d7ff1d1.scn"
+path="res://.godot/imported/Rig_Medium_General.glb-2c5c8322bf10bf938cdeb9cec0bd0481.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/animations/Rig_Medium/Rig_Medium_General.glb"
-dest_files=["res://.godot/imported/Rig_Medium_General.glb-4cebbbba39fe9e0895b9835d6d7ff1d1.scn"]
+dest_files=["res://.godot/imported/Rig_Medium_General.glb-2c5c8322bf10bf938cdeb9cec0bd0481.scn"]
 
 [params]
 

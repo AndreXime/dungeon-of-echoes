@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c7ipr2uc7ckpx"
-path="res://.godot/imported/map_empty.gltf-f14ef3f58d2142e1623a93c05d6a5b6a.scn"
+path="res://.godot/imported/map_empty.gltf-3ccba3c4aff8592b49b23c51bb0d7249.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/map_empty.gltf"
-dest_files=["res://.godot/imported/map_empty.gltf-f14ef3f58d2142e1623a93c05d6a5b6a.scn"]
+dest_files=["res://.godot/imported/map_empty.gltf-3ccba3c4aff8592b49b23c51bb0d7249.scn"]
 
 [params]
 

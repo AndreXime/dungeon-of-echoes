@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d4fa0vijvl0cw"
-path="res://.godot/imported/Skeleton_Blade.gltf-88ee8852828bf3e795ec1d27feb5a4c3.scn"
+path="res://.godot/imported/Skeleton_Blade.gltf-d463a7eb83f9cfa38636419c5ed8eb4b.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/props/Skeleton_Blade.gltf"
-dest_files=["res://.godot/imported/Skeleton_Blade.gltf-88ee8852828bf3e795ec1d27feb5a4c3.scn"]
+dest_files=["res://.godot/imported/Skeleton_Blade.gltf-d463a7eb83f9cfa38636419c5ed8eb4b.scn"]
 
 [params]
 

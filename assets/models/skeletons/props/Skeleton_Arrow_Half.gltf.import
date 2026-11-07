@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bt0ab1reuwstr"
-path="res://.godot/imported/Skeleton_Arrow_Half.gltf-9807d6db3f8c612bcbc348dbf58301b2.scn"
+path="res://.godot/imported/Skeleton_Arrow_Half.gltf-6a0ac608315ffc8fc19340eac3dd9c4b.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/props/Skeleton_Arrow_Half.gltf"
-dest_files=["res://.godot/imported/Skeleton_Arrow_Half.gltf-9807d6db3f8c612bcbc348dbf58301b2.scn"]
+dest_files=["res://.godot/imported/Skeleton_Arrow_Half.gltf-6a0ac608315ffc8fc19340eac3dd9c4b.scn"]
 
 [params]
 

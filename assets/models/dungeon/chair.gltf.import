@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c7flynhqasx0s"
-path="res://.godot/imported/chair.gltf-f83ee588d61bf16d17c8440e0a4c7b16.scn"
+path="res://.godot/imported/chair.gltf-ae79358cc8817cff9a85aba658843cc9.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/chair.gltf"
-dest_files=["res://.godot/imported/chair.gltf-f83ee588d61bf16d17c8440e0a4c7b16.scn"]
+dest_files=["res://.godot/imported/chair.gltf-ae79358cc8817cff9a85aba658843cc9.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://kb50vmw4dvpq"
-path="res://.godot/imported/wood.gltf-e9a913e6c5e48236c611c66ea18d81a8.scn"
+path="res://.godot/imported/wood.gltf-1448f9790cf65c89d7c9a6a9b2da6215.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/wood.gltf"
-dest_files=["res://.godot/imported/wood.gltf-e9a913e6c5e48236c611c66ea18d81a8.scn"]
+dest_files=["res://.godot/imported/wood.gltf-1448f9790cf65c89d7c9a6a9b2da6215.scn"]
 
 [params]
 

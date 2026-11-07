@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c5r03banjhe3d"
-path="res://.godot/imported/shield_B.gltf-75a4f60e55a0e83dfd61c24245029a4e.scn"
+path="res://.godot/imported/shield_B.gltf-dfe4adf4bde19b2fc523d28dc359c79d.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/shield_B.gltf"
-dest_files=["res://.godot/imported/shield_B.gltf-75a4f60e55a0e83dfd61c24245029a4e.scn"]
+dest_files=["res://.godot/imported/shield_B.gltf-dfe4adf4bde19b2fc523d28dc359c79d.scn"]
 
 [params]
 

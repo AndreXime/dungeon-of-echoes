@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bllwvolnp602"
-path="res://.godot/imported/beartrap_A.gltf-971ad6d8e880e92e9c07a458ef78a118.scn"
+path="res://.godot/imported/beartrap_A.gltf-210c5a45509132f9984bc78a25751a47.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/beartrap_A.gltf"
-dest_files=["res://.godot/imported/beartrap_A.gltf-971ad6d8e880e92e9c07a458ef78a118.scn"]
+dest_files=["res://.godot/imported/beartrap_A.gltf-210c5a45509132f9984bc78a25751a47.scn"]
 
 [params]
 

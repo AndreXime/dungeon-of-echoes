@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c0ydnkl6ftmld"
-path="res://.godot/imported/ghost_tote.gltf-b6755697fb7dbc80a92df82fd6b16285.scn"
+path="res://.godot/imported/ghost_tote.gltf-aa3cfe91635c470de730aed92076968d.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/ghost_tote.gltf"
-dest_files=["res://.godot/imported/ghost_tote.gltf-b6755697fb7dbc80a92df82fd6b16285.scn"]
+dest_files=["res://.godot/imported/ghost_tote.gltf-aa3cfe91635c470de730aed92076968d.scn"]
 
 [params]
 

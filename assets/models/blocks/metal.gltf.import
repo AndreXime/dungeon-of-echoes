@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b11yglmtavgw2"
-path="res://.godot/imported/metal.gltf-8c4f953f5e82827b4ff28f74512b2fc0.scn"
+path="res://.godot/imported/metal.gltf-9371af1053d08a304c9924ba91506b98.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/metal.gltf"
-dest_files=["res://.godot/imported/metal.gltf-8c4f953f5e82827b4ff28f74512b2fc0.scn"]
+dest_files=["res://.godot/imported/metal.gltf-9371af1053d08a304c9924ba91506b98.scn"]
 
 [params]
 

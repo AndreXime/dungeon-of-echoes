@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cjhe5yltejqn2"
-path="res://.godot/imported/rubble_half.gltf-aba9f787eb25de86e26f652cd1a612ee.scn"
+path="res://.godot/imported/rubble_half.gltf-f8a5d92ce5fad6880fe7b0733a03cf4a.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/rubble_half.gltf"
-dest_files=["res://.godot/imported/rubble_half.gltf-aba9f787eb25de86e26f652cd1a612ee.scn"]
+dest_files=["res://.godot/imported/rubble_half.gltf-f8a5d92ce5fad6880fe7b0733a03cf4a.scn"]
 
 [params]
 

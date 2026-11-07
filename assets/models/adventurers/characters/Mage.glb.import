@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://baumfdodswgau"
-path="res://.godot/imported/Mage.glb-48603509cbc214a50d3e1d3a76595d24.scn"
+path="res://.godot/imported/Mage.glb-876fa7e2b6277ad5ad5c9a1209bcb0de.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/characters/Mage.glb"
-dest_files=["res://.godot/imported/Mage.glb-48603509cbc214a50d3e1d3a76595d24.scn"]
+dest_files=["res://.godot/imported/Mage.glb-876fa7e2b6277ad5ad5c9a1209bcb0de.scn"]
 
 [params]
 

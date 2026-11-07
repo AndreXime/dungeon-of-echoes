@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bmawh1u0vqnpa"
-path="res://.godot/imported/ouija_board.gltf-55c160855fa30f1169190a8d394e5fd4.scn"
+path="res://.godot/imported/ouija_board.gltf-fcc48ace9a7104969691cf82b8703454.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/ouija_board.gltf"
-dest_files=["res://.godot/imported/ouija_board.gltf-55c160855fa30f1169190a8d394e5fd4.scn"]
+dest_files=["res://.godot/imported/ouija_board.gltf-fcc48ace9a7104969691cf82b8703454.scn"]
 
 [params]
 

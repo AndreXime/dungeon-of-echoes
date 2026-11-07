@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cvpyoqvyw5i1u"
-path="res://.godot/imported/axe_1handed.gltf-488a9013b15f9489a03c4d398120152d.scn"
+path="res://.godot/imported/axe_1handed.gltf-0be74423e0de0d96b3b3565087f46fa8.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/axe_1handed.gltf"
-dest_files=["res://.godot/imported/axe_1handed.gltf-488a9013b15f9489a03c4d398120152d.scn"]
+dest_files=["res://.godot/imported/axe_1handed.gltf-0be74423e0de0d96b3b3565087f46fa8.scn"]
 
 [params]
 

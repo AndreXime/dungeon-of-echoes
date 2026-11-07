@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cloak1ea620bq"
-path="res://.godot/imported/Skeleton_Shield_Large_A.gltf-295ba94b3bb0c391dbf889cfb17b5d40.scn"
+path="res://.godot/imported/Skeleton_Shield_Large_A.gltf-377ebfa3895c215604c38982131ab1c9.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/props/Skeleton_Shield_Large_A.gltf"
-dest_files=["res://.godot/imported/Skeleton_Shield_Large_A.gltf-295ba94b3bb0c391dbf889cfb17b5d40.scn"]
+dest_files=["res://.godot/imported/Skeleton_Shield_Large_A.gltf-377ebfa3895c215604c38982131ab1c9.scn"]
 
 [params]
 

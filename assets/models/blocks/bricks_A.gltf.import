@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://detfhg7tbhf6o"
-path="res://.godot/imported/bricks_A.gltf-36a2c62eff0e9def8d7202a6ce4edc93.scn"
+path="res://.godot/imported/bricks_A.gltf-5afebd1f87e3222d4eda21803923ec7f.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/bricks_A.gltf"
-dest_files=["res://.godot/imported/bricks_A.gltf-36a2c62eff0e9def8d7202a6ce4edc93.scn"]
+dest_files=["res://.godot/imported/bricks_A.gltf-5afebd1f87e3222d4eda21803923ec7f.scn"]
 
 [params]
 

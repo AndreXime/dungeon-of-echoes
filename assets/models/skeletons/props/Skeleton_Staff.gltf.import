@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://8n7h7a0pvt2e"
-path="res://.godot/imported/Skeleton_Staff.gltf-77093bf0f9d7cb914dbe221034a83d32.scn"
+path="res://.godot/imported/Skeleton_Staff.gltf-a9d2c10757c0d61c8dbcad0bf1ead52b.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/props/Skeleton_Staff.gltf"
-dest_files=["res://.godot/imported/Skeleton_Staff.gltf-77093bf0f9d7cb914dbe221034a83d32.scn"]
+dest_files=["res://.godot/imported/Skeleton_Staff.gltf-a9d2c10757c0d61c8dbcad0bf1ead52b.scn"]
 
 [params]
 

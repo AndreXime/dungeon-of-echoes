@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dgl7ihwtfmiik"
-path="res://.godot/imported/bicycle_helmet.gltf-2f548573c2a4f9f41c805bc76dd5a26d.scn"
+path="res://.godot/imported/bicycle_helmet.gltf-509ba65a4ede1b5a07186efbcd18e39a.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/bicycle_helmet.gltf"
-dest_files=["res://.godot/imported/bicycle_helmet.gltf-2f548573c2a4f9f41c805bc76dd5a26d.scn"]
+dest_files=["res://.godot/imported/bicycle_helmet.gltf-509ba65a4ede1b5a07186efbcd18e39a.scn"]
 
 [params]
 

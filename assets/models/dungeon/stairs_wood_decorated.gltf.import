@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c2nf40s323nda"
-path="res://.godot/imported/stairs_wood_decorated.gltf-d8e7e326398f1b982d7aa5db90aecb9c.scn"
+path="res://.godot/imported/stairs_wood_decorated.gltf-40b905f2476bd8804ed6ff6ed9dff000.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/stairs_wood_decorated.gltf"
-dest_files=["res://.godot/imported/stairs_wood_decorated.gltf-d8e7e326398f1b982d7aa5db90aecb9c.scn"]
+dest_files=["res://.godot/imported/stairs_wood_decorated.gltf-40b905f2476bd8804ed6ff6ed9dff000.scn"]
 
 [params]
 

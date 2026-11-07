@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cmgsuqyma2agu"
-path="res://.godot/imported/stone_dark.gltf-2f36cc99ec134702ca225a6146ab1e08.scn"
+path="res://.godot/imported/stone_dark.gltf-ffcdf99d66f86883d06577c965635172.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/stone_dark.gltf"
-dest_files=["res://.godot/imported/stone_dark.gltf-2f36cc99ec134702ca225a6146ab1e08.scn"]
+dest_files=["res://.godot/imported/stone_dark.gltf-ffcdf99d66f86883d06577c965635172.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dlb8d7d0nqoeb"
-path="res://.godot/imported/autumn_wreath.gltf-1700162331395421e25abfcf866ea1d1.scn"
+path="res://.godot/imported/autumn_wreath.gltf-bf04c9a0ca201266e8781c70c2900cfb.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/autumn_wreath.gltf"
-dest_files=["res://.godot/imported/autumn_wreath.gltf-1700162331395421e25abfcf866ea1d1.scn"]
+dest_files=["res://.godot/imported/autumn_wreath.gltf-bf04c9a0ca201266e8781c70c2900cfb.scn"]
 
 [params]
 

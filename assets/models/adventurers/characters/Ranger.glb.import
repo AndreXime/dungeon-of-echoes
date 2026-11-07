@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://n3eehi78byfe"
-path="res://.godot/imported/Ranger.glb-903cc3e785dc4d3c9de32bf5e0490b9f.scn"
+path="res://.godot/imported/Ranger.glb-b9e5a06e37b1ccbac0417fc84f4a94b2.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/characters/Ranger.glb"
-dest_files=["res://.godot/imported/Ranger.glb-903cc3e785dc4d3c9de32bf5e0490b9f.scn"]
+dest_files=["res://.godot/imported/Ranger.glb-b9e5a06e37b1ccbac0417fc84f4a94b2.scn"]
 
 [params]
 

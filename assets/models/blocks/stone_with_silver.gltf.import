@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dwetdqu3gbvl6"
-path="res://.godot/imported/stone_with_silver.gltf-8bec366234f6b55bacd59604aea8d674.scn"
+path="res://.godot/imported/stone_with_silver.gltf-aacb59717ed9fc5fbc260f91274debc7.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/stone_with_silver.gltf"
-dest_files=["res://.godot/imported/stone_with_silver.gltf-8bec366234f6b55bacd59604aea8d674.scn"]
+dest_files=["res://.godot/imported/stone_with_silver.gltf-aacb59717ed9fc5fbc260f91274debc7.scn"]
 
 [params]
 

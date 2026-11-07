@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dxrjglkefsdef"
-path="res://.godot/imported/wall_archedwindow_gated.gltf-0eb7c33fb333d8768669270446bc89cd.scn"
+path="res://.godot/imported/wall_archedwindow_gated.gltf-40286a6ae03c17ce521b2cf1f0a5bedb.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/wall_archedwindow_gated.gltf"
-dest_files=["res://.godot/imported/wall_archedwindow_gated.gltf-0eb7c33fb333d8768669270446bc89cd.scn"]
+dest_files=["res://.godot/imported/wall_archedwindow_gated.gltf-40286a6ae03c17ce521b2cf1f0a5bedb.scn"]
 
 [params]
 

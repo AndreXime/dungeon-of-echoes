@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cw5m2on2ld0p3"
-path="res://.godot/imported/rubble_large.gltf-f50d8db57b2b3f8f0f255ed6d8626362.scn"
+path="res://.godot/imported/rubble_large.gltf-d62a964b5869cb94e59ee538e08689e8.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/rubble_large.gltf"
-dest_files=["res://.godot/imported/rubble_large.gltf-f50d8db57b2b3f8f0f255ed6d8626362.scn"]
+dest_files=["res://.godot/imported/rubble_large.gltf-d62a964b5869cb94e59ee538e08689e8.scn"]
 
 [params]
 

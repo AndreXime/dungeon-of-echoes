@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bjf0jfo6wegy3"
-path="res://.godot/imported/grass_with_snow.gltf-049cc1882b165994b11c4f8eddcf8be3.scn"
+path="res://.godot/imported/grass_with_snow.gltf-60f78bf2805fafe5cbd3068002ffb543.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/grass_with_snow.gltf"
-dest_files=["res://.godot/imported/grass_with_snow.gltf-049cc1882b165994b11c4f8eddcf8be3.scn"]
+dest_files=["res://.godot/imported/grass_with_snow.gltf-60f78bf2805fafe5cbd3068002ffb543.scn"]
 
 [params]
 

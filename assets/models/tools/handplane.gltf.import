@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ddd0ycad315ja"
-path="res://.godot/imported/handplane.gltf-bf0d920b34e1a2eab20fbed5d5dfd284.scn"
+path="res://.godot/imported/handplane.gltf-f21503d304dd597c2ea1a4d0110bdbfc.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/handplane.gltf"
-dest_files=["res://.godot/imported/handplane.gltf-bf0d920b34e1a2eab20fbed5d5dfd284.scn"]
+dest_files=["res://.godot/imported/handplane.gltf-f21503d304dd597c2ea1a4d0110bdbfc.scn"]
 
 [params]
 

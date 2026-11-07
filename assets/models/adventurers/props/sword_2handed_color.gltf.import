@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctrjhac80g56s"
-path="res://.godot/imported/sword_2handed_color.gltf-a6e839ac83fab1b888b86c4a1d28b110.scn"
+path="res://.godot/imported/sword_2handed_color.gltf-5d82110f12535666a7e20f36b8813e70.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/sword_2handed_color.gltf"
-dest_files=["res://.godot/imported/sword_2handed_color.gltf-a6e839ac83fab1b888b86c4a1d28b110.scn"]
+dest_files=["res://.godot/imported/sword_2handed_color.gltf-5d82110f12535666a7e20f36b8813e70.scn"]
 
 [params]
 

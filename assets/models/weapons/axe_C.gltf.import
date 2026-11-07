@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cjce33oq1085o"
-path="res://.godot/imported/axe_C.gltf-567d6a0564501c758e3c642ba5c670bb.scn"
+path="res://.godot/imported/axe_C.gltf-30266005ead0e9eb107c9db420b64d15.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/axe_C.gltf"
-dest_files=["res://.godot/imported/axe_C.gltf-567d6a0564501c758e3c642ba5c670bb.scn"]
+dest_files=["res://.godot/imported/axe_C.gltf-30266005ead0e9eb107c9db420b64d15.scn"]
 
 [params]
 

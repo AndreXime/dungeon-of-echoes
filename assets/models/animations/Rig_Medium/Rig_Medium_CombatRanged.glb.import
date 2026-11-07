@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bymjo4eckgel5"
-path="res://.godot/imported/Rig_Medium_CombatRanged.glb-ab59b26735b058ade3bae32e98d82641.scn"
+path="res://.godot/imported/Rig_Medium_CombatRanged.glb-dd301bfadaaa878310cfcd24052ed981.scn"
 
 [deps]
 
 source_file="res://assets/models/animations/Rig_Medium/Rig_Medium_CombatRanged.glb"
-dest_files=["res://.godot/imported/Rig_Medium_CombatRanged.glb-ab59b26735b058ade3bae32e98d82641.scn"]
+dest_files=["res://.godot/imported/Rig_Medium_CombatRanged.glb-dd301bfadaaa878310cfcd24052ed981.scn"]
 
 [params]
 

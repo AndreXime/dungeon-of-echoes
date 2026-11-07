@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bf6ssekn60kdo"
-path="res://.godot/imported/handdrill.gltf-06c799d665219db374a08441f7f0ade7.scn"
+path="res://.godot/imported/handdrill.gltf-c5bb0bb0b4aab751e46004e58a5ebc08.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/handdrill.gltf"
-dest_files=["res://.godot/imported/handdrill.gltf-06c799d665219db374a08441f7f0ade7.scn"]
+dest_files=["res://.godot/imported/handdrill.gltf-c5bb0bb0b4aab751e46004e58a5ebc08.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dj0w83tlpvgi3"
-path="res://.godot/imported/Rock_2_A_Color1.gltf-7fb7cbc0029bc965e615b8452495bd3b.scn"
+path="res://.godot/imported/Rock_2_A_Color1.gltf-a6d028baf85e91fafd41498e164b1196.scn"
 
 [deps]
 
 source_file="res://assets/models/forest/Rock_2_A_Color1.gltf"
-dest_files=["res://.godot/imported/Rock_2_A_Color1.gltf-7fb7cbc0029bc965e615b8452495bd3b.scn"]
+dest_files=["res://.godot/imported/Rock_2_A_Color1.gltf-a6d028baf85e91fafd41498e164b1196.scn"]
 
 [params]
 

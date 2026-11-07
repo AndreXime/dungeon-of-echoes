@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cba6wqco7r7d0"
-path="res://.godot/imported/wall_crossing.gltf-b015440ea25ebc23f5b4c258ef9dd72c.scn"
+path="res://.godot/imported/wall_crossing.gltf-54c8de055300a518f9ba2abd194cc18a.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/wall_crossing.gltf"
-dest_files=["res://.godot/imported/wall_crossing.gltf-b015440ea25ebc23f5b4c258ef9dd72c.scn"]
+dest_files=["res://.godot/imported/wall_crossing.gltf-54c8de055300a518f9ba2abd194cc18a.scn"]
 
 [params]
 

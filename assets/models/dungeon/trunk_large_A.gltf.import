@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://3gs7f56ea7so"
-path="res://.godot/imported/trunk_large_A.gltf-ed4326e0fd731710733b63cb26356cfe.scn"
+path="res://.godot/imported/trunk_large_A.gltf-eb29c58b0ce53b180fb4618d616ba87b.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/trunk_large_A.gltf"
-dest_files=["res://.godot/imported/trunk_large_A.gltf-ed4326e0fd731710733b63cb26356cfe.scn"]
+dest_files=["res://.godot/imported/trunk_large_A.gltf-eb29c58b0ce53b180fb4618d616ba87b.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://q7x5eat2mmiu"
-path="res://.godot/imported/dirt_with_snow.gltf-0c6e82206e78dbd8e08945fd45f27a2f.scn"
+path="res://.godot/imported/dirt_with_snow.gltf-e4f0b95a758ae7378666b3754bdbbb26.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/dirt_with_snow.gltf"
-dest_files=["res://.godot/imported/dirt_with_snow.gltf-0c6e82206e78dbd8e08945fd45f27a2f.scn"]
+dest_files=["res://.godot/imported/dirt_with_snow.gltf-e4f0b95a758ae7378666b3754bdbbb26.scn"]
 
 [params]
 

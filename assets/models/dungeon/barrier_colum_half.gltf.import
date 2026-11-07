@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://vets2yf2x0xt"
-path="res://.godot/imported/barrier_colum_half.gltf-ff762d85a37f06cf37104ed434b9ea86.scn"
+path="res://.godot/imported/barrier_colum_half.gltf-f85ff9106e3e6dd58019f43989ef935f.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/barrier_colum_half.gltf"
-dest_files=["res://.godot/imported/barrier_colum_half.gltf-ff762d85a37f06cf37104ed434b9ea86.scn"]
+dest_files=["res://.godot/imported/barrier_colum_half.gltf-f85ff9106e3e6dd58019f43989ef935f.scn"]
 
 [params]
 

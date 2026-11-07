@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://oqrbbkjcbixs"
-path="res://.godot/imported/blueprint.gltf-976e5241da727bbd995319ad52b4c2d0.scn"
+path="res://.godot/imported/blueprint.gltf-30e28927c8b8d3cc4dfd7cb4a4acfe68.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/blueprint.gltf"
-dest_files=["res://.godot/imported/blueprint.gltf-976e5241da727bbd995319ad52b4c2d0.scn"]
+dest_files=["res://.godot/imported/blueprint.gltf-30e28927c8b8d3cc4dfd7cb4a4acfe68.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bhmj6vukph1ci"
-path="res://.godot/imported/shelves.gltf-9f5f54778624a6d237d7eaf463549bcb.scn"
+path="res://.godot/imported/shelves.gltf-69d805abea701f0bc7b1528e6a7f15e1.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/shelves.gltf"
-dest_files=["res://.godot/imported/shelves.gltf-9f5f54778624a6d237d7eaf463549bcb.scn"]
+dest_files=["res://.godot/imported/shelves.gltf-69d805abea701f0bc7b1528e6a7f15e1.scn"]
 
 [params]
 

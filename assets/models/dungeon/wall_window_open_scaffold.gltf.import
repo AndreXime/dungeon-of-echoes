@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://7sibsbg1t0ty"
-path="res://.godot/imported/wall_window_open_scaffold.gltf-1307d83c067c0a2cf3e08c915f3bf978.scn"
+path="res://.godot/imported/wall_window_open_scaffold.gltf-5366cc2c66b2c271e548ba5a3f3cf4f6.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/wall_window_open_scaffold.gltf"
-dest_files=["res://.godot/imported/wall_window_open_scaffold.gltf-1307d83c067c0a2cf3e08c915f3bf978.scn"]
+dest_files=["res://.godot/imported/wall_window_open_scaffold.gltf-5366cc2c66b2c271e548ba5a3f3cf4f6.scn"]
 
 [params]
 

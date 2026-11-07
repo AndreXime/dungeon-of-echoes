@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cwgorb66vnhlx"
-path="res://.godot/imported/Skeleton_Crossbow.gltf-97cc7f39abd505e15d536bf90a574839.scn"
+path="res://.godot/imported/Skeleton_Crossbow.gltf-48af5b4ae0344fe4bd76562423bd88d4.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/props/Skeleton_Crossbow.gltf"
-dest_files=["res://.godot/imported/Skeleton_Crossbow.gltf-97cc7f39abd505e15d536bf90a574839.scn"]
+dest_files=["res://.godot/imported/Skeleton_Crossbow.gltf-48af5b4ae0344fe4bd76562423bd88d4.scn"]
 
 [params]
 

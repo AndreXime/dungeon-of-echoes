@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dyo7hve4lcp8x"
-path="res://.godot/imported/book_mimic.gltf-497ced657ab42adaea2c8d438f3cb686.scn"
+path="res://.godot/imported/book_mimic.gltf-4264948ee8b6fddf77c81741d9c040ed.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/book_mimic.gltf"
-dest_files=["res://.godot/imported/book_mimic.gltf-497ced657ab42adaea2c8d438f3cb686.scn"]
+dest_files=["res://.godot/imported/book_mimic.gltf-4264948ee8b6fddf77c81741d9c040ed.scn"]
 
 [params]
 

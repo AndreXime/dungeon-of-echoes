@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://sesppdgwal4b"
-path="res://.godot/imported/saw.gltf-6b24f3205d960c8f45b1aacfa6b37781.scn"
+path="res://.godot/imported/saw.gltf-c1370c09de9c47d4a1158657a3e1620b.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/saw.gltf"
-dest_files=["res://.godot/imported/saw.gltf-6b24f3205d960c8f45b1aacfa6b37781.scn"]
+dest_files=["res://.godot/imported/saw.gltf-c1370c09de9c47d4a1158657a3e1620b.scn"]
 
 [params]
 

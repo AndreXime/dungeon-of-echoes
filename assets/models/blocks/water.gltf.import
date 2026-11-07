@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dkidu7777evf7"
-path="res://.godot/imported/water.gltf-0185915ac84b95319c899b180ec3177b.scn"
+path="res://.godot/imported/water.gltf-efcf1e5a5018f2d10f2aa849b8bc1a44.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/water.gltf"
-dest_files=["res://.godot/imported/water.gltf-0185915ac84b95319c899b180ec3177b.scn"]
+dest_files=["res://.godot/imported/water.gltf-efcf1e5a5018f2d10f2aa849b8bc1a44.scn"]
 
 [params]
 

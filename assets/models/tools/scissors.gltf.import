@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c4d0ay3e6j0cu"
-path="res://.godot/imported/scissors.gltf-910b5e4270f062aaa8ef69dd53bc2c9a.scn"
+path="res://.godot/imported/scissors.gltf-d97338cd28861dd0252ccbd3dab66bc2.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/scissors.gltf"
-dest_files=["res://.godot/imported/scissors.gltf-910b5e4270f062aaa8ef69dd53bc2c9a.scn"]
+dest_files=["res://.godot/imported/scissors.gltf-d97338cd28861dd0252ccbd3dab66bc2.scn"]
 
 [params]
 

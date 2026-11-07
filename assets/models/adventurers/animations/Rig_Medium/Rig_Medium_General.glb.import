@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://y8iv6u0bdho7"
-path="res://.godot/imported/Rig_Medium_General.glb-f2e53e9009800cf2c648519bfd6e0398.scn"
+path="res://.godot/imported/Rig_Medium_General.glb-563c128fa96606f64baadd556215e751.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/animations/Rig_Medium/Rig_Medium_General.glb"
-dest_files=["res://.godot/imported/Rig_Medium_General.glb-f2e53e9009800cf2c648519bfd6e0398.scn"]
+dest_files=["res://.godot/imported/Rig_Medium_General.glb-563c128fa96606f64baadd556215e751.scn"]
 
 [params]
 

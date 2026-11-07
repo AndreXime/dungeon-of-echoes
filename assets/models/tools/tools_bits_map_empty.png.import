@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6k2kk2yo68s3"
-path="res://.godot/imported/tools_bits_map_empty.png-de691f666186a9d4e529ec556404a506.ctex"
+path="res://.godot/imported/tools_bits_map_empty.png-2dcf48cde0d91e103162f28a63ff2188.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/models/tools/tools_bits_map_empty.png"
-dest_files=["res://.godot/imported/tools_bits_map_empty.png-de691f666186a9d4e529ec556404a506.ctex"]
+dest_files=["res://.godot/imported/tools_bits_map_empty.png-2dcf48cde0d91e103162f28a63ff2188.ctex"]
 
 [params]
 

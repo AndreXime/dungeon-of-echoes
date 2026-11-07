@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cma485quq5moo"
-path="res://.godot/imported/rogue_texture.png-ec4b58f00c279879afa60110d0629c34.ctex"
+path="res://.godot/imported/rogue_texture.png-085337596357cc281875780309c3a6ce.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/models/adventurers/props/rogue_texture.png"
-dest_files=["res://.godot/imported/rogue_texture.png-ec4b58f00c279879afa60110d0629c34.ctex"]
+dest_files=["res://.godot/imported/rogue_texture.png-085337596357cc281875780309c3a6ce.ctex"]
 
 [params]
 

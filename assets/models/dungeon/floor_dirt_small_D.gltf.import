@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cnd1le5rf71mn"
-path="res://.godot/imported/floor_dirt_small_D.gltf-76de1f816f0b8ee46ace1dd14f247cd3.scn"
+path="res://.godot/imported/floor_dirt_small_D.gltf-2bcc8158855ecd371a442e019bd5f65f.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/floor_dirt_small_D.gltf"
-dest_files=["res://.godot/imported/floor_dirt_small_D.gltf-76de1f816f0b8ee46ace1dd14f247cd3.scn"]
+dest_files=["res://.godot/imported/floor_dirt_small_D.gltf-2bcc8158855ecd371a442e019bd5f65f.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://el3cd0j4fnol"
-path="res://.godot/imported/tongs.gltf-38328bc4f5449f866815cd708a0abae7.scn"
+path="res://.godot/imported/tongs.gltf-af77a22fba977d3dd0422df729feffbd.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/tongs.gltf"
-dest_files=["res://.godot/imported/tongs.gltf-38328bc4f5449f866815cd708a0abae7.scn"]
+dest_files=["res://.godot/imported/tongs.gltf-af77a22fba977d3dd0422df729feffbd.scn"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pdyk4uigriea"
-path="res://.godot/imported/Skeleton_Minion_skeleton_texture.png-687da3bb78d6dea730aa53f3617d5290.ctex"
+path="res://.godot/imported/Skeleton_Minion_skeleton_texture.png-cc3599fc97f6dd9fc990c9197ba6b45f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -14,7 +14,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/skeletons/characters/Skeleton_Minion_skeleton_texture.png"
-dest_files=["res://.godot/imported/Skeleton_Minion_skeleton_texture.png-687da3bb78d6dea730aa53f3617d5290.ctex"]
+dest_files=["res://.godot/imported/Skeleton_Minion_skeleton_texture.png-cc3599fc97f6dd9fc990c9197ba6b45f.ctex"]
 
 [params]
 

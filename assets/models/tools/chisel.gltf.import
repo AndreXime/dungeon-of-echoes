@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dcoccu3g0ef5d"
-path="res://.godot/imported/chisel.gltf-f62d51127af12923122c287dd5bd0a6d.scn"
+path="res://.godot/imported/chisel.gltf-10d903aab068806b471a094cd402371b.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/chisel.gltf"
-dest_files=["res://.godot/imported/chisel.gltf-f62d51127af12923122c287dd5bd0a6d.scn"]
+dest_files=["res://.godot/imported/chisel.gltf-10d903aab068806b471a094cd402371b.scn"]
 
 [params]
 

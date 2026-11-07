@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cyessegb0md1s"
-path="res://.godot/imported/striped_block_red.gltf-6b34403b9423a0e0cb9f84e2d18bd8c9.scn"
+path="res://.godot/imported/striped_block_red.gltf-18fd3fd7cf1cfeca4998965a2e0a53d9.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/striped_block_red.gltf"
-dest_files=["res://.godot/imported/striped_block_red.gltf-6b34403b9423a0e0cb9f84e2d18bd8c9.scn"]
+dest_files=["res://.godot/imported/striped_block_red.gltf-18fd3fd7cf1cfeca4998965a2e0a53d9.scn"]
 
 [params]
 

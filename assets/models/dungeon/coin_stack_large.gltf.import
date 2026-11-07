@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdcyqqeslgs2y"
-path="res://.godot/imported/coin_stack_large.gltf-de727499eb09a26a752cf23f8c5bd59f.scn"
+path="res://.godot/imported/coin_stack_large.gltf-780fa0b7282e232ff847fe2d53e1e3da.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/coin_stack_large.gltf"
-dest_files=["res://.godot/imported/coin_stack_large.gltf-de727499eb09a26a752cf23f8c5bd59f.scn"]
+dest_files=["res://.godot/imported/coin_stack_large.gltf-780fa0b7282e232ff847fe2d53e1e3da.scn"]
 
 [params]
 

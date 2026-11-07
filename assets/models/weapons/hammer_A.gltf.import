@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b3ay757lxsvc"
-path="res://.godot/imported/hammer_A.gltf-539cd00f2ac763e3313be3ef39dd300b.scn"
+path="res://.godot/imported/hammer_A.gltf-17fddb918e4b1548564c95902a39580c.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/hammer_A.gltf"
-dest_files=["res://.godot/imported/hammer_A.gltf-539cd00f2ac763e3313be3ef39dd300b.scn"]
+dest_files=["res://.godot/imported/hammer_A.gltf-17fddb918e4b1548564c95902a39580c.scn"]
 
 [params]
 

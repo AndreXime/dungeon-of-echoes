@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://lbdnfnvf8dmw"
-path="res://.godot/imported/shield_round_barbarian.gltf-3ab582052f222f4f6a8eb2e36050ce3c.scn"
+path="res://.godot/imported/shield_round_barbarian.gltf-1a9d33c5c1eaa162036d9c5fb8feb718.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/shield_round_barbarian.gltf"
-dest_files=["res://.godot/imported/shield_round_barbarian.gltf-3ab582052f222f4f6a8eb2e36050ce3c.scn"]
+dest_files=["res://.godot/imported/shield_round_barbarian.gltf-1a9d33c5c1eaa162036d9c5fb8feb718.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://durxomnr75gqo"
-path="res://.godot/imported/ornate_mirror.gltf-2eafba2938e73f7ac2805bd62a663ed6.scn"
+path="res://.godot/imported/ornate_mirror.gltf-dfe34a5661c76cb188def390c45c0094.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/ornate_mirror.gltf"
-dest_files=["res://.godot/imported/ornate_mirror.gltf-2eafba2938e73f7ac2805bd62a663ed6.scn"]
+dest_files=["res://.godot/imported/ornate_mirror.gltf-dfe34a5661c76cb188def390c45c0094.scn"]
 
 [params]
 

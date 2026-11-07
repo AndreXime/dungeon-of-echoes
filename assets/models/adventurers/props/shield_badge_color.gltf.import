@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b01rjp2xdover"
-path="res://.godot/imported/shield_badge_color.gltf-0bcc8ac3c1604bb6c7f15823b7b6c545.scn"
+path="res://.godot/imported/shield_badge_color.gltf-77ae252ef3a0938747caf7d4f880a078.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/shield_badge_color.gltf"
-dest_files=["res://.godot/imported/shield_badge_color.gltf-0bcc8ac3c1604bb6c7f15823b7b6c545.scn"]
+dest_files=["res://.godot/imported/shield_badge_color.gltf-77ae252ef3a0938747caf7d4f880a078.scn"]
 
 [params]
 

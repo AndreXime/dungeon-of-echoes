@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cd2w50wjeng1i"
-path="res://.godot/imported/floor_foundation_corner.gltf-ba1680d2e29d2512f106d7187dd85328.scn"
+path="res://.godot/imported/floor_foundation_corner.gltf-04e023aaa7831ef4bd4fb8c3b6ec139b.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/floor_foundation_corner.gltf"
-dest_files=["res://.godot/imported/floor_foundation_corner.gltf-ba1680d2e29d2512f106d7187dd85328.scn"]
+dest_files=["res://.godot/imported/floor_foundation_corner.gltf-04e023aaa7831ef4bd4fb8c3b6ec139b.scn"]
 
 [params]
 

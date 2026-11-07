@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ddltxcufg387n"
-path="res://.godot/imported/arrow_bow.gltf-1c14bb762705c49789473e8924d4ded8.scn"
+path="res://.godot/imported/arrow_bow.gltf-34ad854b8d444b4064cfbcf54863a22d.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/arrow_bow.gltf"
-dest_files=["res://.godot/imported/arrow_bow.gltf-1c14bb762705c49789473e8924d4ded8.scn"]
+dest_files=["res://.godot/imported/arrow_bow.gltf-34ad854b8d444b4064cfbcf54863a22d.scn"]
 
 [params]
 

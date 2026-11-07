@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://br75odde6hikn"
-path="res://.godot/imported/Tree_Bare_2_A_Color1.gltf-c556153ff78a669f27bb81f9bc847583.scn"
+path="res://.godot/imported/Tree_Bare_2_A_Color1.gltf-0997bb49912099b6965b025218061452.scn"
 
 [deps]
 
 source_file="res://assets/models/forest/Tree_Bare_2_A_Color1.gltf"
-dest_files=["res://.godot/imported/Tree_Bare_2_A_Color1.gltf-c556153ff78a669f27bb81f9bc847583.scn"]
+dest_files=["res://.godot/imported/Tree_Bare_2_A_Color1.gltf-0997bb49912099b6965b025218061452.scn"]
 
 [params]
 

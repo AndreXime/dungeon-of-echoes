@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c8xje5s68m58t"
-path="res://.godot/imported/Rig_Large_CombatMelee.glb-9f3d15980a9b6135791c332a279a2bdf.scn"
+path="res://.godot/imported/Rig_Large_CombatMelee.glb-16a6e5403395a4d843eedbf7bc322588.scn"
 
 [deps]
 
 source_file="res://assets/models/animations/Rig_Large/Rig_Large_CombatMelee.glb"
-dest_files=["res://.godot/imported/Rig_Large_CombatMelee.glb-9f3d15980a9b6135791c332a279a2bdf.scn"]
+dest_files=["res://.godot/imported/Rig_Large_CombatMelee.glb-16a6e5403395a4d843eedbf7bc322588.scn"]
 
 [params]
 

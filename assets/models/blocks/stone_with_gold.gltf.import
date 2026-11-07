@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bpnhplbuqjxtx"
-path="res://.godot/imported/stone_with_gold.gltf-1d1aa16bf03f4c5187d46154f3299aa8.scn"
+path="res://.godot/imported/stone_with_gold.gltf-35c3614db5b462056109bc68f0c2cd8e.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/stone_with_gold.gltf"
-dest_files=["res://.godot/imported/stone_with_gold.gltf-1d1aa16bf03f4c5187d46154f3299aa8.scn"]
+dest_files=["res://.godot/imported/stone_with_gold.gltf-35c3614db5b462056109bc68f0c2cd8e.scn"]
 
 [params]
 

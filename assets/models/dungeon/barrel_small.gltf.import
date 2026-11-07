@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dsh5yep25t6xm"
-path="res://.godot/imported/barrel_small.gltf-4d61d03a828f3c5cc28d46bb01bd4d75.scn"
+path="res://.godot/imported/barrel_small.gltf-705e68ec1246b7847cb5ce2543b29373.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/barrel_small.gltf"
-dest_files=["res://.godot/imported/barrel_small.gltf-4d61d03a828f3c5cc28d46bb01bd4d75.scn"]
+dest_files=["res://.godot/imported/barrel_small.gltf-705e68ec1246b7847cb5ce2543b29373.scn"]
 
 [params]
 

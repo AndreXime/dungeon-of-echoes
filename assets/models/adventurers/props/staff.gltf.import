@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dgj7rp1j8311i"
-path="res://.godot/imported/staff.gltf-2ca2e09a5aa010ad49b8131bd0f3548c.scn"
+path="res://.godot/imported/staff.gltf-a4e822b70a4b2b1bfecda84c4a232809.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/staff.gltf"
-dest_files=["res://.godot/imported/staff.gltf-2ca2e09a5aa010ad49b8131bd0f3548c.scn"]
+dest_files=["res://.godot/imported/staff.gltf-a4e822b70a4b2b1bfecda84c4a232809.scn"]
 
 [params]
 

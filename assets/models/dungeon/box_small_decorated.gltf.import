@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cxk3iln0kf406"
-path="res://.godot/imported/box_small_decorated.gltf-46c3bcfbb747ec56cc07d019ccbfb0ed.scn"
+path="res://.godot/imported/box_small_decorated.gltf-37e497e7dbfd52ba4e19ad734b41e949.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/box_small_decorated.gltf"
-dest_files=["res://.godot/imported/box_small_decorated.gltf-46c3bcfbb747ec56cc07d019ccbfb0ed.scn"]
+dest_files=["res://.godot/imported/box_small_decorated.gltf-37e497e7dbfd52ba4e19ad734b41e949.scn"]
 
 [params]
 

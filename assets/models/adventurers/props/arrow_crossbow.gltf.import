@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://mp7t66y08wfi"
-path="res://.godot/imported/arrow_crossbow.gltf-a760cb829db1ca3ca2bd6c41cbd80933.scn"
+path="res://.godot/imported/arrow_crossbow.gltf-eda7f7c4276fa1560fdb2f6a1783cda8.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/arrow_crossbow.gltf"
-dest_files=["res://.godot/imported/arrow_crossbow.gltf-a760cb829db1ca3ca2bd6c41cbd80933.scn"]
+dest_files=["res://.godot/imported/arrow_crossbow.gltf-eda7f7c4276fa1560fdb2f6a1783cda8.scn"]
 
 [params]
 

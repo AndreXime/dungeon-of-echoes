@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b1tmwbmdpfrqg"
-path="res://.godot/imported/decorative_block_blue.gltf-cd37b9ee179d65c11ba067a72e29472d.scn"
+path="res://.godot/imported/decorative_block_blue.gltf-a5369ad405e949c443dcbf9c6df6fe16.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/decorative_block_blue.gltf"
-dest_files=["res://.godot/imported/decorative_block_blue.gltf-cd37b9ee179d65c11ba067a72e29472d.scn"]
+dest_files=["res://.godot/imported/decorative_block_blue.gltf-a5369ad405e949c443dcbf9c6df6fe16.scn"]
 
 [params]
 

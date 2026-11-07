@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bkmgridupaq61"
-path="res://.godot/imported/Rogue_Hooded.glb-79946f85c30659c35b7e2a9b2233a0d9.scn"
+path="res://.godot/imported/Rogue_Hooded.glb-ed1cea03cd5a83dc20400f73ddafe0cf.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/characters/Rogue_Hooded.glb"
-dest_files=["res://.godot/imported/Rogue_Hooded.glb-79946f85c30659c35b7e2a9b2233a0d9.scn"]
+dest_files=["res://.godot/imported/Rogue_Hooded.glb-ed1cea03cd5a83dc20400f73ddafe0cf.scn"]
 
 [params]
 

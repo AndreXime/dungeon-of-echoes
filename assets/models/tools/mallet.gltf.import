@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://de16y30cfr1s"
-path="res://.godot/imported/mallet.gltf-6943abef803fa38e1da2d254d80d1ff3.scn"
+path="res://.godot/imported/mallet.gltf-aa14cea954f24d36ac29b14569183c97.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/mallet.gltf"
-dest_files=["res://.godot/imported/mallet.gltf-6943abef803fa38e1da2d254d80d1ff3.scn"]
+dest_files=["res://.godot/imported/mallet.gltf-aa14cea954f24d36ac29b14569183c97.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bt352mqv6lrpq"
-path="res://.godot/imported/dirt.gltf-f41287ca5837f5a81a7363c6960d3350.scn"
+path="res://.godot/imported/dirt.gltf-6bb61fd83e3d545a7222d19cf156759b.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/dirt.gltf"
-dest_files=["res://.godot/imported/dirt.gltf-f41287ca5837f5a81a7363c6960d3350.scn"]
+dest_files=["res://.godot/imported/dirt.gltf-6bb61fd83e3d545a7222d19cf156759b.scn"]
 
 [params]
 

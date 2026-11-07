@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://chcxpg5vny7l7"
-path="res://.godot/imported/sand_with_snow.gltf-580040084299acc388df6baaf57c8dd8.scn"
+path="res://.godot/imported/sand_with_snow.gltf-711304b7eaf5d9c2b217e43204ab5f44.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/sand_with_snow.gltf"
-dest_files=["res://.godot/imported/sand_with_snow.gltf-580040084299acc388df6baaf57c8dd8.scn"]
+dest_files=["res://.godot/imported/sand_with_snow.gltf-711304b7eaf5d9c2b217e43204ab5f44.scn"]
 
 [params]
 

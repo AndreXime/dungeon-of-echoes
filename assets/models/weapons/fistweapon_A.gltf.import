@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dwht0x7y7go3g"
-path="res://.godot/imported/fistweapon_A.gltf-2f07a21c6580d0ccbf73cfdf98d58a58.scn"
+path="res://.godot/imported/fistweapon_A.gltf-c45bd6aeab0839ff10a9ed0ef3e1bbe3.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/fistweapon_A.gltf"
-dest_files=["res://.godot/imported/fistweapon_A.gltf-2f07a21c6580d0ccbf73cfdf98d58a58.scn"]
+dest_files=["res://.godot/imported/fistweapon_A.gltf-c45bd6aeab0839ff10a9ed0ef3e1bbe3.scn"]
 
 [params]
 

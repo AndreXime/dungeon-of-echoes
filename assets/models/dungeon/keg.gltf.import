@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c4hpevxenmox"
-path="res://.godot/imported/keg.gltf-76b32ffc353aa8cbc94772626322c2e2.scn"
+path="res://.godot/imported/keg.gltf-8561b1c151cfc81436dc00d63072adcf.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/keg.gltf"
-dest_files=["res://.godot/imported/keg.gltf-76b32ffc353aa8cbc94772626322c2e2.scn"]
+dest_files=["res://.godot/imported/keg.gltf-8561b1c151cfc81436dc00d63072adcf.scn"]
 
 [params]
 

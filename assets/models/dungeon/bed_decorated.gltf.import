@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dc1smodv2gnjy"
-path="res://.godot/imported/bed_decorated.gltf-52d70b8849e9302338148aa9b7d4d20a.scn"
+path="res://.godot/imported/bed_decorated.gltf-1a01e802194932361bb5554786213512.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/bed_decorated.gltf"
-dest_files=["res://.godot/imported/bed_decorated.gltf-52d70b8849e9302338148aa9b7d4d20a.scn"]
+dest_files=["res://.godot/imported/bed_decorated.gltf-1a01e802194932361bb5554786213512.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://vgit3gjtcsnr"
-path="res://.godot/imported/knife.gltf-fff344f4b3665682171c7a4f442bdfda.scn"
+path="res://.godot/imported/knife.gltf-f5a19d6df5b6ac4486655088a7ead222.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/knife.gltf"
-dest_files=["res://.godot/imported/knife.gltf-fff344f4b3665682171c7a4f442bdfda.scn"]
+dest_files=["res://.godot/imported/knife.gltf-f5a19d6df5b6ac4486655088a7ead222.scn"]
 
 [params]
 

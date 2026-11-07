@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://clcjcetnvughu"
-path="res://.godot/imported/plate.gltf-606ca0599295324954508bfd3ff8f299.scn"
+path="res://.godot/imported/plate.gltf-cd9e91f0c7298c2510a4d1a4e05232f5.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/plate.gltf"
-dest_files=["res://.godot/imported/plate.gltf-606ca0599295324954508bfd3ff8f299.scn"]
+dest_files=["res://.godot/imported/plate.gltf-cd9e91f0c7298c2510a4d1a4e05232f5.scn"]
 
 [params]
 

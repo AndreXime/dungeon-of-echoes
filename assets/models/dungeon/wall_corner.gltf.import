@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://gpeajqq3yacx"
-path="res://.godot/imported/wall_corner.gltf-c74986839480c2190a547476a2eb8811.scn"
+path="res://.godot/imported/wall_corner.gltf-a94dba2d67ae86320ed9d75fc1e4ecbe.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/wall_corner.gltf"
-dest_files=["res://.godot/imported/wall_corner.gltf-c74986839480c2190a547476a2eb8811.scn"]
+dest_files=["res://.godot/imported/wall_corner.gltf-a94dba2d67ae86320ed9d75fc1e4ecbe.scn"]
 
 [params]
 

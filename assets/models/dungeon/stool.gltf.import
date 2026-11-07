@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bgl7saekqsf6b"
-path="res://.godot/imported/stool.gltf-3731ef2aed1ca1bc94629b486378e161.scn"
+path="res://.godot/imported/stool.gltf-6c0d59ac88ffed03f0aae6c870501c26.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/stool.gltf"
-dest_files=["res://.godot/imported/stool.gltf-3731ef2aed1ca1bc94629b486378e161.scn"]
+dest_files=["res://.godot/imported/stool.gltf-6c0d59ac88ffed03f0aae6c870501c26.scn"]
 
 [params]
 

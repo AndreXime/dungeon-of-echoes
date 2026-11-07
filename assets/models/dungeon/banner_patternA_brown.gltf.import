@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cepht2mr7y25o"
-path="res://.godot/imported/banner_patternA_brown.gltf-5b2b08c43b2d83bc4d572c52f8aa6809.scn"
+path="res://.godot/imported/banner_patternA_brown.gltf-dee3c5929eff72f3f2919bbd0eb565f3.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/banner_patternA_brown.gltf"
-dest_files=["res://.godot/imported/banner_patternA_brown.gltf-5b2b08c43b2d83bc4d572c52f8aa6809.scn"]
+dest_files=["res://.godot/imported/banner_patternA_brown.gltf-dee3c5929eff72f3f2919bbd0eb565f3.scn"]
 
 [params]
 

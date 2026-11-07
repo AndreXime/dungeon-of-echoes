@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bxqdlapukh4wx"
-path="res://.godot/imported/shield_round.gltf-64fdbe6813d2b4c377249b467e30284b.scn"
+path="res://.godot/imported/shield_round.gltf-72209f2b6054b16834667c50354fe7bc.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/shield_round.gltf"
-dest_files=["res://.godot/imported/shield_round.gltf-64fdbe6813d2b4c377249b467e30284b.scn"]
+dest_files=["res://.godot/imported/shield_round.gltf-72209f2b6054b16834667c50354fe7bc.scn"]
 
 [params]
 

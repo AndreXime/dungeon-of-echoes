@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://w4wl43tjgir4"
-path="res://.godot/imported/lava.gltf-cb10cd6e3e6cda38df3a22a7714abfc9.scn"
+path="res://.godot/imported/lava.gltf-772b3b191313f961aa68437166c9f0f8.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/lava.gltf"
-dest_files=["res://.godot/imported/lava.gltf-cb10cd6e3e6cda38df3a22a7714abfc9.scn"]
+dest_files=["res://.godot/imported/lava.gltf-772b3b191313f961aa68437166c9f0f8.scn"]
 
 [params]
 

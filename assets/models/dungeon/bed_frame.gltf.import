@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bwd88bndjpg0i"
-path="res://.godot/imported/bed_frame.gltf-97c164babd99b7e91ad537086e4da2a5.scn"
+path="res://.godot/imported/bed_frame.gltf-7972bc8b91bdbd0e69fcc54a1141625e.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/bed_frame.gltf"
-dest_files=["res://.godot/imported/bed_frame.gltf-97c164babd99b7e91ad537086e4da2a5.scn"]
+dest_files=["res://.godot/imported/bed_frame.gltf-7972bc8b91bdbd0e69fcc54a1141625e.scn"]
 
 [params]
 

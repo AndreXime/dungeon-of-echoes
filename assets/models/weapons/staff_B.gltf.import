@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cxexbnh53v60c"
-path="res://.godot/imported/staff_B.gltf-a532d7320b3261fd4c77ee8210d32494.scn"
+path="res://.godot/imported/staff_B.gltf-864f9f44d17d049df9697e03ca1f34d5.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/staff_B.gltf"
-dest_files=["res://.godot/imported/staff_B.gltf-a532d7320b3261fd4c77ee8210d32494.scn"]
+dest_files=["res://.godot/imported/staff_B.gltf-864f9f44d17d049df9697e03ca1f34d5.scn"]
 
 [params]
 

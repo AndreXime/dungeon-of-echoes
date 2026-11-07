@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://j8rknv14qqww"
-path="res://.godot/imported/pickle.gltf-96085c36dd68399fcd13a38132309570.scn"
+path="res://.godot/imported/pickle.gltf-b8e04ad2a327a955959d3a2fcb3770e5.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/pickle.gltf"
-dest_files=["res://.godot/imported/pickle.gltf-96085c36dd68399fcd13a38132309570.scn"]
+dest_files=["res://.godot/imported/pickle.gltf-b8e04ad2a327a955959d3a2fcb3770e5.scn"]
 
 [params]
 

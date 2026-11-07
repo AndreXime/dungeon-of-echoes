@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do4m0to38bpwf"
-path="res://.godot/imported/Knight_knight_texture.png-d869aa05ee12aabe5b3cdb687e8bc462.ctex"
+path="res://.godot/imported/Knight_knight_texture.png-485ab0c7f8f24b0d30200b9139b4c8b2.ctex"
 metadata={
 "vram_texture": false
 }
@@ -14,7 +14,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/adventurers/characters/Knight_knight_texture.png"
-dest_files=["res://.godot/imported/Knight_knight_texture.png-d869aa05ee12aabe5b3cdb687e8bc462.ctex"]
+dest_files=["res://.godot/imported/Knight_knight_texture.png-485ab0c7f8f24b0d30200b9139b4c8b2.ctex"]
 
 [params]
 

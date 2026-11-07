@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djvalhe8qcrvd"
-path="res://.godot/imported/wand_A.gltf-a933f373416f3cecda770b552eabdbfb.scn"
+path="res://.godot/imported/wand_A.gltf-4459409a6663b1c3bf73e4b9a05ee8ec.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/wand_A.gltf"
-dest_files=["res://.godot/imported/wand_A.gltf-a933f373416f3cecda770b552eabdbfb.scn"]
+dest_files=["res://.godot/imported/wand_A.gltf-4459409a6663b1c3bf73e4b9a05ee8ec.scn"]
 
 [params]
 

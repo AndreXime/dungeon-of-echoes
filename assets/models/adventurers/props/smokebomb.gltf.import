@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d15vjso5mltoc"
-path="res://.godot/imported/smokebomb.gltf-8d3ace26b45c9a8704e942739073eb7e.scn"
+path="res://.godot/imported/smokebomb.gltf-f13996e94fdb2d48af16b1aa106b844c.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/smokebomb.gltf"
-dest_files=["res://.godot/imported/smokebomb.gltf-8d3ace26b45c9a8704e942739073eb7e.scn"]
+dest_files=["res://.godot/imported/smokebomb.gltf-f13996e94fdb2d48af16b1aa106b844c.scn"]
 
 [params]
 

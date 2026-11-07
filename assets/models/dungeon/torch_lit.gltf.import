@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c73cq0jc0rhy3"
-path="res://.godot/imported/torch_lit.gltf-b5d14a18e7d37ac52ecc83e50a79a581.scn"
+path="res://.godot/imported/torch_lit.gltf-2f2a5b5d6f9b39bc8d8139e4706c15c4.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/torch_lit.gltf"
-dest_files=["res://.godot/imported/torch_lit.gltf-b5d14a18e7d37ac52ecc83e50a79a581.scn"]
+dest_files=["res://.godot/imported/torch_lit.gltf-2f2a5b5d6f9b39bc8d8139e4706c15c4.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d2ct01vt2r7sw"
-path="res://.godot/imported/spear_A.gltf-2ef78a52432ef9f00599d2758f3dbbd4.scn"
+path="res://.godot/imported/spear_A.gltf-0d9d6aafdcc9b45f5f27847ee1164049.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/spear_A.gltf"
-dest_files=["res://.godot/imported/spear_A.gltf-2ef78a52432ef9f00599d2758f3dbbd4.scn"]
+dest_files=["res://.godot/imported/spear_A.gltf-0d9d6aafdcc9b45f5f27847ee1164049.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dvjem7v4pc8y4"
-path="res://.godot/imported/floor_tile_big_spikes.gltf-6f971650f8ab1c4cee2c355b5b02da93.scn"
+path="res://.godot/imported/floor_tile_big_spikes.gltf-723ae189d2577e875ecdb21ecc316cb5.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/floor_tile_big_spikes.gltf"
-dest_files=["res://.godot/imported/floor_tile_big_spikes.gltf-6f971650f8ab1c4cee2c355b5b02da93.scn"]
+dest_files=["res://.godot/imported/floor_tile_big_spikes.gltf-723ae189d2577e875ecdb21ecc316cb5.scn"]
 
 [params]
 

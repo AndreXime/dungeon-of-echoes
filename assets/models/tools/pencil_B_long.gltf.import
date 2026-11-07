@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bgmhcts6121vt"
-path="res://.godot/imported/pencil_B_long.gltf-d515d0f7c68da7cd1bfe35d4c4707cad.scn"
+path="res://.godot/imported/pencil_B_long.gltf-77743ef7456c4aa812c1ab0660cab14d.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/pencil_B_long.gltf"
-dest_files=["res://.godot/imported/pencil_B_long.gltf-d515d0f7c68da7cd1bfe35d4c4707cad.scn"]
+dest_files=["res://.godot/imported/pencil_B_long.gltf-77743ef7456c4aa812c1ab0660cab14d.scn"]
 
 [params]
 

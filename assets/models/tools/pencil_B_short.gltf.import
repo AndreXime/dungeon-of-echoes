@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bit48g272sr4"
-path="res://.godot/imported/pencil_B_short.gltf-4eea9ae9c370bfd9e70c47a93e43a60a.scn"
+path="res://.godot/imported/pencil_B_short.gltf-36bb7212ac73967034b21192a0daf10f.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/pencil_B_short.gltf"
-dest_files=["res://.godot/imported/pencil_B_short.gltf-4eea9ae9c370bfd9e70c47a93e43a60a.scn"]
+dest_files=["res://.godot/imported/pencil_B_short.gltf-36bb7212ac73967034b21192a0daf10f.scn"]
 
 [params]
 

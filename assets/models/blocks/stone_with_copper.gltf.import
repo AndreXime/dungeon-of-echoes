@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dhe4vvm5hsmdw"
-path="res://.godot/imported/stone_with_copper.gltf-4bb5c85dcf58391ae1732e40bd103b94.scn"
+path="res://.godot/imported/stone_with_copper.gltf-aec135702beebbb75903684aba15a0cc.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/stone_with_copper.gltf"
-dest_files=["res://.godot/imported/stone_with_copper.gltf-4bb5c85dcf58391ae1732e40bd103b94.scn"]
+dest_files=["res://.godot/imported/stone_with_copper.gltf-aec135702beebbb75903684aba15a0cc.scn"]
 
 [params]
 

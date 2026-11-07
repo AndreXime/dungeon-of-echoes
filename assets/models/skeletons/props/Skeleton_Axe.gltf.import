@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cwrejwn77st30"
-path="res://.godot/imported/Skeleton_Axe.gltf-1ee491f998f7b5826238800c8ea10c22.scn"
+path="res://.godot/imported/Skeleton_Axe.gltf-a8cd9b5be38dca7c5270d9c550375029.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/props/Skeleton_Axe.gltf"
-dest_files=["res://.godot/imported/Skeleton_Axe.gltf-1ee491f998f7b5826238800c8ea10c22.scn"]
+dest_files=["res://.godot/imported/Skeleton_Axe.gltf-a8cd9b5be38dca7c5270d9c550375029.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dk2qbvj7e801m"
-path="res://.godot/imported/Bush_1_E_Color1.gltf-55c138051e880c07abcd7ce3baa28a72.scn"
+path="res://.godot/imported/Bush_1_E_Color1.gltf-f58b6a8ddee8d2e04b3a65426bf20d50.scn"
 
 [deps]
 
 source_file="res://assets/models/forest/Bush_1_E_Color1.gltf"
-dest_files=["res://.godot/imported/Bush_1_E_Color1.gltf-55c138051e880c07abcd7ce3baa28a72.scn"]
+dest_files=["res://.godot/imported/Bush_1_E_Color1.gltf-f58b6a8ddee8d2e04b3a65426bf20d50.scn"]
 
 [params]
 

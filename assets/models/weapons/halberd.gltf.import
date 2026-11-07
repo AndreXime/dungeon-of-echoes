@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dn4j42lf8hmkb"
-path="res://.godot/imported/halberd.gltf-37dea7fc2525cdddbf624d3900dff98b.scn"
+path="res://.godot/imported/halberd.gltf-068d9f0a112d2a5dadf4a7a73a07d5dd.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/halberd.gltf"
-dest_files=["res://.godot/imported/halberd.gltf-37dea7fc2525cdddbf624d3900dff98b.scn"]
+dest_files=["res://.godot/imported/halberd.gltf-068d9f0a112d2a5dadf4a7a73a07d5dd.scn"]
 
 [params]
 

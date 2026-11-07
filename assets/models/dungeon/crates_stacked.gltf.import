@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djumlanl5cdfu"
-path="res://.godot/imported/crates_stacked.gltf-268c0a29e5ecbfafe37756591074d0df.scn"
+path="res://.godot/imported/crates_stacked.gltf-80973dcb2c584a0f7f6254122d6fe9e1.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/crates_stacked.gltf"
-dest_files=["res://.godot/imported/crates_stacked.gltf-268c0a29e5ecbfafe37756591074d0df.scn"]
+dest_files=["res://.godot/imported/crates_stacked.gltf-80973dcb2c584a0f7f6254122d6fe9e1.scn"]
 
 [params]
 

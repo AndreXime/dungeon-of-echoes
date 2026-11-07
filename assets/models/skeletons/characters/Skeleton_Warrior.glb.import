@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ycmnjnfoovqh"
-path="res://.godot/imported/Skeleton_Warrior.glb-2d7902fc79027ed0f899db0fca19f3b0.scn"
+path="res://.godot/imported/Skeleton_Warrior.glb-840fa811c5149ca444a7846e7d6116e5.scn"
 
 [deps]
 
 source_file="res://assets/models/skeletons/characters/Skeleton_Warrior.glb"
-dest_files=["res://.godot/imported/Skeleton_Warrior.glb-2d7902fc79027ed0f899db0fca19f3b0.scn"]
+dest_files=["res://.godot/imported/Skeleton_Warrior.glb-840fa811c5149ca444a7846e7d6116e5.scn"]
 
 [params]
 

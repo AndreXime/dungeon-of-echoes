@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://rd5cuaagcbx5"
-path="res://.godot/imported/shield_spikes.gltf-e387e469061606544f2cd793dcf58e38.scn"
+path="res://.godot/imported/shield_spikes.gltf-f56e13608bc4bf6c058d0ceab0c399d4.scn"
 
 [deps]
 
 source_file="res://assets/models/adventurers/props/shield_spikes.gltf"
-dest_files=["res://.godot/imported/shield_spikes.gltf-e387e469061606544f2cd793dcf58e38.scn"]
+dest_files=["res://.godot/imported/shield_spikes.gltf-f56e13608bc4bf6c058d0ceab0c399d4.scn"]
 
 [params]
 

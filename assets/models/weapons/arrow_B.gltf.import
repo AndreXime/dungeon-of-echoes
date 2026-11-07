@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d0vxrci2swcl"
-path="res://.godot/imported/arrow_B.gltf-80cbcdcb44565cb0c3eebf5ac5693429.scn"
+path="res://.godot/imported/arrow_B.gltf-4bcb7f3cfeddb012a134e9c353a2d19a.scn"
 
 [deps]
 
 source_file="res://assets/models/weapons/arrow_B.gltf"
-dest_files=["res://.godot/imported/arrow_B.gltf-80cbcdcb44565cb0c3eebf5ac5693429.scn"]
+dest_files=["res://.godot/imported/arrow_B.gltf-4bcb7f3cfeddb012a134e9c353a2d19a.scn"]
 
 [params]
 

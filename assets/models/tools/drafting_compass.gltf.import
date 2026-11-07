@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dqt1otp1uawgs"
-path="res://.godot/imported/drafting_compass.gltf-3ff721f8eb6567dd5704a83931d56c01.scn"
+path="res://.godot/imported/drafting_compass.gltf-596514b4c1b9b9f50c726665bdd15d9a.scn"
 
 [deps]
 
 source_file="res://assets/models/tools/drafting_compass.gltf"
-dest_files=["res://.godot/imported/drafting_compass.gltf-3ff721f8eb6567dd5704a83931d56c01.scn"]
+dest_files=["res://.godot/imported/drafting_compass.gltf-596514b4c1b9b9f50c726665bdd15d9a.scn"]
 
 [params]
 

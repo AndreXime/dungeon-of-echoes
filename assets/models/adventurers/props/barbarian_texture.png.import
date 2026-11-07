@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uyc7t611tsqg"
-path="res://.godot/imported/barbarian_texture.png-ed3ef348b5c0ec805c2a07c04dd54df4.ctex"
+path="res://.godot/imported/barbarian_texture.png-755ee86815db983429f0ee307a7e5439.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/models/adventurers/props/barbarian_texture.png"
-dest_files=["res://.godot/imported/barbarian_texture.png-ed3ef348b5c0ec805c2a07c04dd54df4.ctex"]
+dest_files=["res://.godot/imported/barbarian_texture.png-755ee86815db983429f0ee307a7e5439.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dxauc24evuqi0"
-path="res://.godot/imported/grass.gltf-168a20009466f251eecbb8ebb906546c.scn"
+path="res://.godot/imported/grass.gltf-9666db431486aaf6bbd973f9bc7ef76a.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/grass.gltf"
-dest_files=["res://.godot/imported/grass.gltf-168a20009466f251eecbb8ebb906546c.scn"]
+dest_files=["res://.godot/imported/grass.gltf-9666db431486aaf6bbd973f9bc7ef76a.scn"]
 
 [params]
 

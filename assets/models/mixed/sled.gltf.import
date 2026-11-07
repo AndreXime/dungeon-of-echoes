@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bux6jqw8uwg1i"
-path="res://.godot/imported/sled.gltf-8dd886f547602dca1da480f9c76607e4.scn"
+path="res://.godot/imported/sled.gltf-f014e1b42ed0b679504ec42741f6d3fd.scn"
 
 [deps]
 
 source_file="res://assets/models/mixed/sled.gltf"
-dest_files=["res://.godot/imported/sled.gltf-8dd886f547602dca1da480f9c76607e4.scn"]
+dest_files=["res://.godot/imported/sled.gltf-f014e1b42ed0b679504ec42741f6d3fd.scn"]
 
 [params]
 

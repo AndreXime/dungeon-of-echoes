@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dojp2twfb1e3i"
-path="res://.godot/imported/colored_block_yellow.gltf-9c8b7b04258016f92d75cacfed439dcd.scn"
+path="res://.godot/imported/colored_block_yellow.gltf-8eeda8a25b8491cedfc1c2263b6afcb9.scn"
 
 [deps]
 
 source_file="res://assets/models/blocks/colored_block_yellow.gltf"
-dest_files=["res://.godot/imported/colored_block_yellow.gltf-9c8b7b04258016f92d75cacfed439dcd.scn"]
+dest_files=["res://.godot/imported/colored_block_yellow.gltf-8eeda8a25b8491cedfc1c2263b6afcb9.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://clm5fowg8h88v"
-path="res://.godot/imported/wall_half_endcap.gltf-6ba6dc67d2f7a300e1f61bc96fd93b4c.scn"
+path="res://.godot/imported/wall_half_endcap.gltf-e50cbfe5fb40794ec6c8911f11c8ecc1.scn"
 
 [deps]
 
 source_file="res://assets/models/dungeon/wall_half_endcap.gltf"
-dest_files=["res://.godot/imported/wall_half_endcap.gltf-6ba6dc67d2f7a300e1f61bc96fd93b4c.scn"]
+dest_files=["res://.godot/imported/wall_half_endcap.gltf-e50cbfe5fb40794ec6c8911f11c8ecc1.scn"]
 
 [params]
 
