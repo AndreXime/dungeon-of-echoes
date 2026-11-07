@@ -7,7 +7,7 @@ radius = 0.35
 height = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape_sword"]
-size = Vector3(0.55, 0.4, 1.35)
+size = Vector3(0.45, 1.45, 0.45)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -29,10 +29,10 @@ fov = 80.0
 near = 0.05
 
 [node name="WeaponsRoot" type="Node3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, -0.55)
 
 [node name="SwordPivot" type="Node3D" parent="Camera3D/WeaponsRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.05, 0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.18, 0.06)
 
 [node name="SwordHitbox" type="Area3D" parent="Camera3D/WeaponsRoot/SwordPivot"]
 collision_layer = 8
@@ -41,11 +41,11 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/WeaponsRoot/SwordPivot/SwordHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, -0.08)
 shape = SubResource("BoxShape_sword")
 
 [node name="ShieldPivot" type="Node3D" parent="Camera3D/WeaponsRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.08, 0.02)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42, -0.14, 0.08)
 
 [node name="DaggerPivot" type="Node3D" parent="Camera3D/WeaponsRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.06, 0.0)

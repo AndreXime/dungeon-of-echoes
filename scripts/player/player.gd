@@ -42,6 +42,7 @@ var _reload_left := 0.0
 var _torch_root: Node3D
 ## Offhand: true = tocha, false = escudo. Nunca os dois ao mesmo tempo.
 var _torch_equipped := false
+var _melee_slash_shape: BoxShape3D
 
 
 func _ready() -> void:
@@ -50,16 +51,19 @@ func _ready() -> void:
 	# FPS: sem corpo local (o Knight inteiro ficava dentro da câmera).
 	if body_root:
 		body_root.visible = false
-	_attach_weapon(SWORD_GLB, sword_pivot, Vector3(0.02, -0.02, -0.05), Vector3(10, 0, -10), 1.1)
-	_attach_weapon(SHIELD_GLB, shield_pivot, Vector3(0, 0, 0), Vector3(0, 0, 0), 1.0)
+	_attach_sword()
+	_attach_weapon(SHIELD_GLB, shield_pivot, Vector3(0, -0.02, 0.04), Vector3(8, 20, -8), 0.72)
 	_attach_weapon(DAGGER_GLB, dagger_pivot, Vector3(0, 0, 0), Vector3(-90, 0, 0), 1.15)
-	_attach_weapon(CROSSBOW_GLB, crossbow_pivot, Vector3(0, 0, 0), Vector3(-80, 0, 0), 1.0)
+	# KayKit crossbow aponta no +Z. Câmera FPS olha no -Z, então 180° em Y.
+	_attach_weapon(CROSSBOW_GLB, crossbow_pivot, Vector3(0.02, -0.02, 0.05), Vector3(-8, 180, 0), 1.05)
 	_attach_torch()
 	_sword_rest = sword_pivot.transform
 	_shield_rest = shield_pivot.transform
 	sword_hitbox.monitoring = false
 	sword_hitbox.body_entered.connect(_on_sword_hit)
 	sword_hitbox.area_entered.connect(_on_sword_hit_area)
+	_melee_slash_shape = BoxShape3D.new()
+	_melee_slash_shape.size = Vector3(1.15, 1.35, 1.75)
 	_apply_start_weapon()
 	_apply_weapon_visibility()
 	_apply_offhand_visibility()
@@ -96,6 +100,27 @@ func _attach_torch() -> void:
 	glow.omni_range = 9.0
 	glow.shadow_enabled = true
 	_torch_root.add_child(glow)
+
+
+func _attach_sword() -> void:
+	if not ResourceLoader.exists(SWORD_GLB):
+		return
+	var packed := load(SWORD_GLB) as PackedScene
+	if packed == null:
+		return
+	var model := packed.instantiate() as Node3D
+	sword_pivot.add_child(model)
+	model.position = Vector3(0.04, -0.02, 0.0)
+	model.scale = Vector3.ONE * 0.8
+	# KayKit: +Y = ponta, +X = largura, +Z = espessura.
+	# Idle: ponta pra cima. Largura no eixo da câmera pra ver o fio de perfil.
+	var tip_up := Vector3(0, 1, 0)
+	var width_along_view := Vector3(0, 0, -1)
+	var thickness := width_along_view.cross(tip_up).normalized()
+	model.basis = Basis(width_along_view, tip_up, thickness)
+	# Inclina um pouco a ponta pra frente/fora, sem deitar.
+	model.rotate_object_local(Vector3.RIGHT, deg_to_rad(-18.0))
+	model.rotate_object_local(Vector3.FORWARD, deg_to_rad(12.0))
 
 
 func _attach_weapon(path: String, pivot: Node3D, pos: Vector3, rot_deg: Vector3, scale_f: float) -> void:
@@ -304,6 +329,29 @@ func _poll_sword_overlaps() -> void:
 		_on_sword_hit(body)
 	for area in sword_hitbox.get_overlapping_areas():
 		_on_sword_hit_area(area)
+	# Area filha da espada erra props baixos: volume frontal na câmera.
+	_query_melee_volume()
+
+
+func _query_melee_volume() -> void:
+	var space := get_world_3d().direct_space_state
+	if space == null or _melee_slash_shape == null:
+		return
+	var forward := -camera.global_transform.basis.z
+	var up := camera.global_transform.basis.y
+	var right := camera.global_transform.basis.x
+	var origin := camera.global_position + forward * 1.05 + up * -0.4 + right * 0.12
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = _melee_slash_shape
+	query.transform = Transform3D(camera.global_transform.basis, origin)
+	query.collision_mask = 4
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	query.exclude = [get_rid()]
+	for hit in space.intersect_shape(query, 32):
+		var collider: Variant = hit.get("collider")
+		if collider is Node:
+			_try_damage(collider as Node)
 
 
 func _swing() -> void:
@@ -313,8 +361,14 @@ func _swing() -> void:
 	Sfx.play(self, "swing", global_position)
 
 	var swung := _sword_rest
-	swung.origin = _sword_rest.origin + Vector3(-0.08, -0.04, -0.55)
-	swung.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-75.0)).rotated(Vector3.UP, deg_to_rad(-45.0))
+	# Desce o pivot pra lâmina (eixo +Y) cruzar props no chão.
+	swung.origin = _sword_rest.origin + Vector3(-0.08, -0.42, -0.52)
+	# Idle ponta pra cima (+Y) → corte diagonal à frente (−Z).
+	swung.basis = (
+		_sword_rest.basis
+		.rotated(Vector3.RIGHT, deg_to_rad(-100.0))
+		.rotated(Vector3.UP, deg_to_rad(-40.0))
+	)
 
 	var tween := create_tween()
 	tween.tween_property(sword_pivot, "transform", swung, SWING_TIME * 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -334,8 +388,9 @@ func _thrust() -> void:
 	Sfx.play(self, "swing", global_position)
 
 	var thrusted := _sword_rest
-	thrusted.origin = _sword_rest.origin + Vector3(0.0, -0.02, -0.85)
-	thrusted.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-25.0))
+	thrusted.origin = _sword_rest.origin + Vector3(0.0, -0.28, -0.7)
+	# Estoca: ponta (+Y) vira pra frente (−Z).
+	thrusted.basis = _sword_rest.basis.rotated(Vector3.RIGHT, deg_to_rad(-85.0))
 
 	var tween := create_tween()
 	tween.tween_property(sword_pivot, "transform", thrusted, THRUST_TIME * 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
