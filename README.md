@@ -4,23 +4,18 @@ Roguelike de ação em primeira pessoa. Você entra numa masmorra que muda a cad
 
 Projeto em **Godot 4.7** (Forward+).
 
-## Requisitos
+## Jogar
+
+Jogue online em [itch.io](https://andrexime.itch.io/dungeon-of-echoes), ou baixe o zip da sua plataforma na [página de Releases](https://github.com/AndreXime/dungeon-of-echoes/releases), extraia e execute o binário (Linux/Windows).
+
+## Requisitos (desenvolvimento)
 
 - [Godot 4.7+](https://godotengine.org/) no `PATH` (testado com `4.7.2`)
 
-## Como rodar
+## Como rodar (dev)
 
 ```bash
 just run
-# ou: godot --path .
-```
-
-Cena principal: `scenes/hub.tscn`. Editor: `just editor`.
-
-### Abrir só a masmorra (debug)
-
-```bash
-godot --path . --scene res://scenes/dungeon_run.tscn
 ```
 
 ## Builds (`just`)
@@ -29,17 +24,9 @@ Requer Godot 4.7+ no `PATH` e export templates instalados.
 
 ```bash
 just build-linux              # x86_64 + arm64 em build/linux/
-just build-linux-x86_64
-just build-linux-arm64
 just build-windows            # x86_64 + arm64 em build/windows/
-just build-windows-x86_64
-just build-windows-arm64
-just build-web                # single + multi em build/web/
-just build-web-single         # sem threads (host HTTP simples)
-just build-web-multi          # com threads (precisa COOP/COEP)
+just build-web                # sem threads + com threads
 just build-all
-just serve-web-single         # http://127.0.0.1:8080/
-just serve-web-multi          # idem, com headers p/ SharedArrayBuffer
 ```
 
 ## Controles
