@@ -1,0 +1,12 @@
+default:
+    just --list
+
+build:
+    docker build -t gerador-midi -f engine/Dockerfile engine
+
+run script:
+    docker run --rm \
+        --user "$(id -u):$(id -g)" \
+        -v "$(pwd)":/app \
+        -e HOME=/tmp \
+        gerador-midi {{script}}
